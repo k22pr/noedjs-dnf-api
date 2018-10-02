@@ -1,8 +1,7 @@
+import index from "../../src";
+
 import axios from "axios";
 import querystring from "querystring";
-
-import auth from "../config/config.auth";
-import config from "../config/config";
 
 /**
  *  던전앤파이터 API 서버에 응답을 요청하는 함수 입니다.
@@ -12,19 +11,23 @@ import config from "../config/config";
  * @returns
  */
 async function request(opt) {
+  if (index.opt.APIKey === "") {
+    return console.error("\x1b[31mPlease change to your api key. \n", "\x1b[33min ./config/config.auth.js\x1b[0m");
+  }
+
   var instance = axios.create({
     baseURL: "https://api.neople.co.kr",
-    timeout: config.requestTimeout
+    timeout: index.opt.requestTimeout
   });
   if (opt.params == undefined) opt.params = {};
-  opt.params.apikey = auth.APIKey;
+  opt.params.apikey = index.opt.APIKey;
   opt.url = `${opt.base}?${querystring.stringify(opt.params)}`;
 
   let rsp = {};
   await instance
     .get(opt.url)
     .then(res => {
-      rsp = config.responeHeader
+      rsp = index.opt.responeHeader
         ? {
             status: res.status,
             statusText: res.statusText,
@@ -34,10 +37,10 @@ async function request(opt) {
         : res.data;
     })
     .catch(err => {
-      if (config.hideOnErrorApiKey) err.response.data.url = err.response.config.url.replace(auth.APIKey, config.hidekeyText);
+      if (index.opt.hideOnErrorApiKey) err.response.data.url = err.response.config.url.replace(index.opt.APIKey, index.opt.hidekeyText);
       else err.response.data.url = err.response.config.url;
       rsp = {
-        err: config.responeHeader
+        err: index.opt.responeHeader
           ? {
               status: err.response.status,
               statusText: err.response.statusText,
@@ -46,11 +49,11 @@ async function request(opt) {
             }
           : err.response.data
       };
-      console.log("\x1b[31m[DNF_API] RequestError\x1b[0m :", err.response.data.url.replace(config.hidekeyText, `\x1b[33m${config.hidekeyText}\x1b[0m`));
+      console.log("\x1b[31m[DNF_API] RequestError\x1b[0m :", err.response.data.url.replace(index.opt.hidekeyText, `\x1b[33m${index.opt.hidekeyText}\x1b[0m`));
     });
 
   //convert JSON
-  if (config.returnJSON) rsp = JSON.stringify(rsp);
+  if (index.opt.returnJSON) rsp = JSON.stringify(rsp);
 
   return await rsp;
 }

@@ -21,6 +21,19 @@ const characters = {
   },
 
   /**
+   * 캐릭터 ID를 입력하여 해당 캐릭터 정보를 받아옵니다
+   *
+   * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
+   * @param {string} characterId 검색할 캐릭터의 ID입니다.
+   */
+  characterId: async (serverId, characterId) => {
+    let opt = {
+      base: `df/servers/${serverId}/characters/${characterId}`
+    };
+    return await request(opt);
+  },
+
+  /**
    * 캐릭터 ID를 입력하여 해당 캐릭터의 타임라인 정보를 검색합니다.
    *
    * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.

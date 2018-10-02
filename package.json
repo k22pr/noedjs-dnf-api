@@ -11,7 +11,7 @@
     "test": "yarn run babel-node ./example/character_info.js"
   },
   "name": "dnf-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "던전 앤 파이터 API",
   "main": "./dist/index.js",
   "devDependencies": {
