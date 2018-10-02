@@ -1,10 +1,5 @@
 import api from "../dist/bundle";
 
-let opt = {
-  wordType: api.config.characters.wordType.match,
-  limit: 1
-};
-
 getChar(api.config.servers.cain, "쑤남");
 /**
  * (릭터가 존재하는 서버명과 캐릭터의 이름을 입력하면 해당 캐릭터의 정보를 출력해주는 함수)
@@ -14,6 +9,10 @@ getChar(api.config.servers.cain, "쑤남");
  */
 async function getChar(serverName, charName) {
   //해당 캐릭터의 정보를 받아옵니다.
+  let opt = {
+    wordType: api.config.characters.wordType.match,
+    limit: 1
+  };
   const charBase = await api.characters.character(serverName, charName, opt).then(data => {
     if (data.err) return console.log(data.err);
     return data.rows[0];

@@ -64,7 +64,7 @@ yarn add dnf-api
 
 ### 사용법
 
-소스 상단에 dng-api 를 호출하신 뒤 사용하실 수 있습니다.
+소스 상단에 dnf-api 를 호출하신 뒤 사용하실 수 있습니다.
 혹은 ES5 문법 사용시 아래의 형태로 호출 하실 수 있습니다.
 
 ```js
@@ -99,11 +99,6 @@ api.opt = {
 //API KEY SETTING
 api.opt.APIKey = "YOUR API KEY";
 
-let opt = {
-  wordType: api.config.characters.wordType.match, // same to string type"match"
-  limit: 1
-};
-
 //"카인"서버에 닉네임이 "쑤남"인 캐릭터를 호출합니다.
 getChar(api.config.servers.cain, "쑤남");
 /**
@@ -114,6 +109,10 @@ getChar(api.config.servers.cain, "쑤남");
  */
 async function getChar(serverName, charName) {
   //해당 캐릭터의 정보를 받아옵니다.
+  let opt = {
+    wordType: api.config.characters.wordType.match, // same to string type"match"
+    limit: 1
+  };
   const charBase = await api.characters.character(serverName, charName, opt).then(data => {
     if (data.err) return console.log(data.err);
     return data.rows[0];

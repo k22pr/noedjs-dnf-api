@@ -1,4 +1,8 @@
 {
+  "name": "dnf-api",
+  "version": "0.1.2",
+  "description": "던전 앤 파이터 API",
+  "main": "./dist/index.js",
   "dependencies": {
     "axios": "^0.18.0",
     "querystring": "^0.2.0"
@@ -10,10 +14,6 @@
     "bundle": "node ./dist/bundle.js",
     "test": "yarn run babel-node ./example/character_info.js"
   },
-  "name": "dnf-api",
-  "version": "0.1.1",
-  "description": "던전 앤 파이터 API",
-  "main": "./dist/index.js",
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
