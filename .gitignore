@@ -1,3 +1,8 @@
+#custom
+*/config/config.auth.js
+yarn.lock
+
+
 # Logs
 logs
 *.log
