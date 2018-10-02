@@ -4,7 +4,7 @@
 //  Copyright (c) 2018 k22pr, 서버지기
 //
 ////////////////////////////////////////
-
+import "@babel/polyfill";
 import api from "./api";
 import auth from "./config/config.auth";
 

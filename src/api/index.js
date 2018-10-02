@@ -8,7 +8,6 @@ import setitems from "./routes/setitems";
 import request from "./request";
 
 const api = {
-  config: config,
   servers: async () => {
     let opt = {
       base: "df/servers"
@@ -26,5 +25,6 @@ const api = {
   },
   setitems: setitems
 };
+api.config = config;
 
 export default api;

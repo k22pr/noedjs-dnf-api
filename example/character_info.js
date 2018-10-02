@@ -1,4 +1,5 @@
-import api from "../api";
+import api from "../dist/bundle";
+
 let opt = {
   wordType: api.config.characters.wordType.match,
   limit: 1
