@@ -1,26 +1,25 @@
 {
   "name": "dnf-api",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "던전 앤 파이터 API",
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "querystring": "^0.2.0"
   },
   "scripts": {
     "babel-node": "babel-node --presets @babel/preset-env",
     "start": "nodemon --exec yarn run babel-node -- ./src/index.js",
-    "build": "babel ./src -d ./dist",
-    "bundle": "node ./dist/bundle.js",
-    "test": "yarn run babel-node ./example/character_info.js"
+    "build": "babel ./src -d ./lib",
+    "bundle": "node ./lib/bundle.js",
+    "test": "nodemon --exec yarn run babel-node -- ./test.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
-    "@babel/preset-es2015": "^7.0.0-beta.53",
     "babel-loader": "^8.0.0-beta.6",
     "nodemon": "^1.18.4"
   },

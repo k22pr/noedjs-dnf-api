@@ -7,11 +7,11 @@ const equip = {
    * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
    * @param {string} characterId 검색할 캐릭터의 ID입니다.
    */
-  equipment: async (serverId, characterId) => {
+  equipment: (serverId, characterId) => {
     let opt = {
       base: `df/servers/${serverId}/characters/${characterId}/equip/equipment`
     };
-    return await request(opt);
+    return request(opt);
   },
 
   /**
@@ -20,11 +20,11 @@ const equip = {
    * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
    * @param {string} characterId 검색할 캐릭터의 ID입니다.
    */
-  avatar: async (serverId, characterId) => {
+  avatar: (serverId, characterId) => {
     let opt = {
       base: `df/servers/${serverId}/characters/${characterId}/equip/avatar`
     };
-    return await request(opt);
+    return request(opt);
   },
 
   /**
@@ -33,11 +33,11 @@ const equip = {
    * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
    * @param {string} characterId 검색할 캐릭터의 ID입니다.
    */
-  creature: async (serverId, characterId) => {
+  creature: (serverId, characterId) => {
     let opt = {
       base: `df/servers/${serverId}/characters/${characterId}/equip/creature`
     };
-    return await request(opt);
+    return request(opt);
   },
 
   /**
@@ -46,11 +46,11 @@ const equip = {
    * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
    * @param {string} characterId 검색할 캐릭터의 ID입니다.
    */
-  flag: async (serverId, characterId) => {
+  flag: (serverId, characterId) => {
     let opt = {
       base: `df/servers/${serverId}/characters/${characterId}/equip/flag`
     };
-    return await request(opt);
+    return request(opt);
   }
 };
 

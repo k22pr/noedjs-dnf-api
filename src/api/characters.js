@@ -10,14 +10,14 @@ const characters = {
    * @param {string} [characterName=""] 검색할 캐릭터의 이름입니다.
    * @param {object} [params={}] 선택적 요청변수의 Object입니다.
    */
-  character: async (serverId, characterName, params = {}) => {
+  character: (serverId, characterName, params = {}) => {
     if (params === undefined) params = {};
     params.characterName = characterName;
     let opt = {
       base: `df/servers/${serverId}/characters/`,
       params: params
     };
-    return await request(opt);
+    return request(opt);
   },
 
   /**
@@ -26,11 +26,11 @@ const characters = {
    * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
    * @param {string} characterId 검색할 캐릭터의 ID입니다.
    */
-  characterId: async (serverId, characterId) => {
+  characterId: (serverId, characterId) => {
     let opt = {
       base: `df/servers/${serverId}/characters/${characterId}`
     };
-    return await request(opt);
+    return request(opt);
   },
 
   /**
@@ -40,12 +40,12 @@ const characters = {
    * @param {string} characterId 검색할 캐릭터의 ID입니다.
    * @param {object} params 선택적 요청변수의 Object입니다.
    */
-  timeline: async (serverId, characterId, params = {}) => {
+  timeline: (serverId, characterId, params = {}) => {
     let opt = {
       base: `df/servers/${serverId}/characters/${characterId}/timeline`,
       params: params
     };
-    return await request(opt);
+    return request(opt);
   },
 
   /**
@@ -54,11 +54,11 @@ const characters = {
    * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
    * @param {string} characterId 검색할 캐릭터의 ID입니다.
    */
-  status: async (serverId, characterId) => {
+  status: (serverId, characterId) => {
     let opt = {
       base: `df/servers/${serverId}/characters/${characterId}/status`
     };
-    return await request(opt);
+    return request(opt);
   },
   equip: equip,
   skill: skill

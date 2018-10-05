@@ -1,6 +1,7 @@
 #custom
 */config/config.auth.js
 yarn.lock
+test*.js
 
 
 # Logs

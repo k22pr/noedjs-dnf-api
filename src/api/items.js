@@ -8,7 +8,7 @@ const items = {
    * @param {string} params 선택적 요청변수의 Object입니다.
    * @param {string} query 선택적 요청변수의 Object입니다. (실제 요청의 q에 해당하는 부분입니다.)
    */
-  item: async (itemName, params, query) => {
+  item: (itemName, params, query) => {
     if (params === undefined) params = {};
     params.itemName = itemName;
     if (query) params.q = makeItemQuery(query);
@@ -17,18 +17,18 @@ const items = {
       base: `df/items`,
       params: params
     };
-    return await request(opt);
+    return request(opt);
   },
   /**
    * 해당하는 아이템의 상세정보를 요청합니다.
    *
    * @param {string} itemId 검색할 아이템의 ID
    */
-  detail: async itemId => {
+  detail: itemId => {
     let opt = {
       base: `df/items/${itemId}`
     };
-    return await request(opt);
+    return request(opt);
   }
 };
 
