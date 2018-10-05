@@ -3,10 +3,10 @@
  <a href="https://github.com/prettier/prettier">
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge">
   </a>
- <a href="https://www.npmjs.com/package/dnf-dnfApi">
-    <img alt="code style: prettier" src="https://img.shields.io/npm/v/dnf-dnfApi.svg?style=for-the-badge">
+ <a href="https://www.npmjs.com/package/dnf-api">
+    <img alt="code style: prettier" src="https://img.shields.io/npm/v/dnf-api.svg?style=for-the-badge">
   </a>
- <a href="https://github.com/k22pr/dnf-dnfApi/blob/master/LICENSE">
+ <a href="https://github.com/k22pr/dnf-api/blob/master/LICENSE">
     <img alt="code style: prettier" src="https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge">
   </a>
 </p>
