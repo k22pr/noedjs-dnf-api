@@ -70,7 +70,7 @@ yarn add dnf-api
 ```js
 import dnfApi from "dnf-api";
 //or
-var dnfApi = require("dnf-api").default;
+var dnfApi = require("dnf-api");
 
 dnfApi.setOptions({ key: "YOUR API KEY" });
 //or
@@ -113,6 +113,8 @@ async function getChar(serverName, charName) {
     wordType: dnfApi.config.characters.wordType.match, // same to string type"match"
     limit: 1
   };
+
+  if (charBase === undefined) return;
   const charBase = await dnfApi.characters.character(serverName, charName, opt).then(data => {
     if (data.err) return console.log(data.err);
     return data.rows[0];

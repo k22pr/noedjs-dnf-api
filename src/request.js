@@ -13,7 +13,7 @@ import querystring from "querystring";
  */
 function request(opt) {
   if (index.opt.key === "") {
-    return console.error("\x1b[31mPlease change to your api key. \n", "\x1b[33min ./config/config.auth.js\x1b[0m");
+    return console.error("\x1b[31mPlease change to your api key. \n", "\x1b[33min setOptions({key:YOURKEY})\x1b[0m");
   }
 
   var instance = axios.create({

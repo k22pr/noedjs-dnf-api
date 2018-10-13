@@ -1,6 +1,6 @@
 {
   "name": "dnf-api",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "던전 앤 파이터 API",
   "main": "./index.js",
   "dependencies": {
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "babel-node": "babel-node --presets @babel/preset-env",
-    "start": "nodemon --exec yarn run babel-node -- ./src/index.js",
+    "start": "nodemon --exec yarn run babel-node -- ./test2.js",
     "build": "babel ./src -d ./lib",
     "bundle": "node ./lib/bundle.js",
     "test": "nodemon --exec yarn run babel-node -- ./test.js"
