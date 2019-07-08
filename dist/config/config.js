@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 var config = {
   //////////////////////////////////////
   //던전 앤 파이터 서버명
@@ -54,7 +54,6 @@ var config = {
   items: {},
   setitems: {}
 };
-config.items.rarity = config.auction.query.rarity;
-config.setitems.wordType = config.auction.wordType;
 var _default = config;
-exports.default = _default;
+exports["default"] = _default;
+module.exports = exports.default;

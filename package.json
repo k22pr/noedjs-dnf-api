@@ -2,26 +2,36 @@
   "name": "dnf-api",
   "version": "0.3.1",
   "description": "던전 앤 파이터 API",
-  "main": "./index.js",
+  "main": "./dist/chain.js",
+  "types": "./dist/chain.d.ts",
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
+    "@babel/runtime": "^7.5.1",
+    "@types/node": "^12.0.12",
     "axios": "^0.18.0",
+    "consola": "^2.9.0",
     "querystring": "^0.2.0"
-  },
-  "scripts": {
-    "babel-node": "babel-node --presets @babel/preset-env",
-    "start": "nodemon --exec yarn run babel-node -- ./test2.js",
-    "build": "babel ./src -d ./lib",
-    "bundle": "node ./lib/bundle.js",
-    "test": "nodemon --exec yarn run babel-node -- ./test.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "babel-loader": "^8.0.0-beta.6",
-    "nodemon": "^1.18.4"
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/plugin-transform-typescript": "^7.5.1",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-loader": "^8.0.6",
+    "nodemon": "^1.18.4",
+    "ts-loader": "^6.0.4"
+  },
+  "scripts": {
+    "babel-node": "babel-node --presets @babel/preset-env",
+    "serve": "nodemon --exec yarn run babel-node -- ./src/index.ts",
+    "build": "babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "bundle": "node ./lib/bundle.js",
+    "test": "nodemon --exec yarn run babel-node -- ./test.js"
   },
   "repository": {
     "type": "git",

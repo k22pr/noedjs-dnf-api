@@ -49,6 +49,4 @@ const config = {
   setitems: {}
 };
 
-config.items.rarity = config.auction.query.rarity;
-config.setitems.wordType = config.auction.wordType;
 export default config;
