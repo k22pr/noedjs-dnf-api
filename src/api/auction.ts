@@ -1,8 +1,5 @@
 import { Query, Static } from "../util";
 
-let urlBuilder = (): string => {
-  return `Static.BaseUri.Auction`;
-};
 /**
  * 경매장에 등록된 아이템을 "아이템 이름"을 기준으로 받아옵니다
  *

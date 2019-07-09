@@ -1,4 +1,4 @@
-import { Query, Static } from "../util";
+import { Query, Static, Params } from "../util";
 
 /**
  * 서버 이름과 캐릭터 닉네임을 입력하여 해당 캐릭터를 검색합니다.
@@ -7,7 +7,7 @@ import { Query, Static } from "../util";
  * @param {string} [characterName=""] 검색할 캐릭터의 이름입니다.
  * @param {object} [params={}] 선택적 요청변수의 Object입니다.
  */
-export const character = (serverId: Static.Server, characterName: string, params: any = {}) => {
+export const character = (serverId: Static.Server, characterName: string, params: Params.CharactorParams = {}) => {
   if (params === undefined) params = {};
   params.characterName = characterName;
   let opt = {
