@@ -1,4 +1,4 @@
-import * as Util from "../util";
+import { Query, Static } from "../util";
 
 /**
  * 현재 인게임에서 획득 가능한 아이템의 경우만 검색 가능합니다.
@@ -10,13 +10,13 @@ import * as Util from "../util";
 export const item = (itemName: string, params: any, query: any) => {
   if (params === undefined) params = {};
   params.itemName = itemName;
-  if (query) params.q = Util.Query.makeItemQuery(query);
+  if (query) params.q = Query.makeItemQuery(query);
   //let querystring =
   let opt = {
-    base: `df/items`,
+    base: Query.UriBuilder(Static.BaseUri.Item),
     params: params,
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };
 /**
  * 해당하는 아이템의 상세정보를 요청합니다.
@@ -25,7 +25,7 @@ export const item = (itemName: string, params: any, query: any) => {
  */
 export const detail = (itemId: string) => {
   let opt = {
-    base: `df/items/${itemId}`,
+    base: Query.UriBuilder(Static.BaseUri.Item, itemId),
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };

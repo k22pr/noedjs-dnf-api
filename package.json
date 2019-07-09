@@ -35,7 +35,7 @@
     "babel-node": "babel-node --extensions \".ts,.tsx\"",
     "serve": "nodemon --exec yarn run babel-node -- ./src/index.ts",
     "build": "babel src --out-dir dist --extensions \".ts,.tsx\"",
-    "test:dev": "nodemon --exec yarn run babel-node -- ./test.js",
+    "test:dev": "nodemon --exec yarn run babel-node -- ./test.ts",
     "test": "jest"
   },
   "repository": {

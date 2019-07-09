@@ -1,5 +1,8 @@
-import { Query } from "../util";
+import { Query, Static } from "../util";
 
+let urlBuilder = (): string => {
+  return `Static.BaseUri.Auction`;
+};
 /**
  * 경매장에 등록된 아이템을 "아이템 이름"을 기준으로 받아옵니다
  *
@@ -13,7 +16,7 @@ export const itemName = (itemName: string, params: any, query: any) => {
   if (query) params.q = Query.makeItemQuery(query);
   //let querystring =
   let opt = {
-    base: `df/auction`,
+    base: Query.UriBuilder(Static.BaseUri.Auction),
     params: params,
   };
   return Query.Request(opt);
@@ -31,7 +34,7 @@ export const itemId = (itemId: string, params: any, query: any) => {
   params.itemId = itemId;
   if (query) params.q = Query.makeItemQuery(query);
   let opt = {
-    base: `df/auction`,
+    base: Query.UriBuilder(Static.BaseUri.Auction),
     params: params,
   };
   return Query.Request(opt);
@@ -43,7 +46,7 @@ export const itemId = (itemId: string, params: any, query: any) => {
  */
 export const no = (auctionNo: string) => {
   let opt = {
-    base: `df/auction/${Number(auctionNo)}`,
+    base: Query.UriBuilder(Static.BaseUri.Auction, auctionNo),
   };
   return Query.Request(opt);
 };

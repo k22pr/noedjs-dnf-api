@@ -25,6 +25,13 @@ enum WordType {
   full = "full",
 }
 
+enum BaseUri {
+  Servers = "df/servers",
+  Auction = "df/auction",
+  Item = "df/items",
+  SetItem = "df/setitems",
+}
+
 enum CharactersWordType {
   match = "match",
   full = "full",
@@ -49,7 +56,7 @@ interface Auctions {
 interface Items {
   rarity: Rarity;
 }
-export { Server };
+export { Server, BaseUri, Rarity };
 
 // export default class Static {
 //   public static characters: Characters;

@@ -8,7 +8,7 @@ import { Query, Static } from "../util";
  */
 export const equipment = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/equip/equipment`,
+    base: Query.UriBuilder(Static.Server, serverId, "characters", characterId, "equip", "equipment"),
   };
   return Query.Request(opt);
 };
@@ -21,7 +21,7 @@ export const equipment = (serverId: Static.Server, characterId: string) => {
  */
 export const avatar = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/equip/avatar`,
+    base: Query.UriBuilder(Static.Server, serverId, "characters", characterId, "equip", "avatar"),
   };
   return Query.Request(opt);
 };
@@ -34,7 +34,7 @@ export const avatar = (serverId: Static.Server, characterId: string) => {
  */
 export const creature = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/equip/creature`,
+    base: Query.UriBuilder(Static.Server, serverId, "characters", characterId, "equip", "creature"),
   };
   return Query.Request(opt);
 };
@@ -47,7 +47,7 @@ export const creature = (serverId: Static.Server, characterId: string) => {
  */
 export const flag = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/equip/flag`,
+    base: Query.UriBuilder(Static.Server, serverId, "characters", characterId, "equip", "flag"),
   };
   return Query.Request(opt);
 };

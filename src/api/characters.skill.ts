@@ -7,7 +7,7 @@ import { Query, Static } from "../util";
  */
 export const style = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/skill/style`,
+    base: `${Query.UriBuilder(Static.Server, serverId, "characters", characterId, "skill", "style")}`,
   };
   return Query.Request(opt);
 };
@@ -20,7 +20,7 @@ export const style = (serverId: Static.Server, characterId: string) => {
  */
 export const equipment = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/skill/buff/equip/equipment`,
+    base: `${Query.UriBuilder(Static.Server, serverId, "characters", characterId, "skill", "buff", "equip", "equipment")}`,
   };
   return Query.Request(opt);
 };
@@ -33,7 +33,7 @@ export const equipment = (serverId: Static.Server, characterId: string) => {
  */
 export const avatar = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/skill/buff/equip/avatar`,
+    base: `${Query.UriBuilder(Static.Server, serverId, "characters", characterId, "skill", "buff", "equip", "avatar")}`,
   };
   return Query.Request(opt);
 };
@@ -46,7 +46,7 @@ export const avatar = (serverId: Static.Server, characterId: string) => {
  */
 export const creature = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/skill/buff/equip/creature`,
+    base: `${Query.UriBuilder(Static.Server, serverId, "characters", characterId, "skill", "buff", "equip", "creature")}`,
   };
   return Query.Request(opt);
 };
