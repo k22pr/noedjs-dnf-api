@@ -11,7 +11,7 @@ const dnfApi = {
   opt: {},
   servers: () => {
     let opt = {
-      base: "df/servers"
+      base: "df/servers",
     };
     return request(opt);
   },
@@ -20,7 +20,7 @@ const dnfApi = {
   items: items,
   jobs: () => {
     let opt = {
-      base: "df/jobs"
+      base: "df/jobs",
     };
     return request(opt);
   },
@@ -37,7 +37,7 @@ const dnfApi = {
     this.opt.returnJSON = opt.returnJSON || false;
     //응답내용을 상세하게 출력하도록 변경합니다.
     this.opt.responeHeader = opt.responeHeader || false;
-  }
+  },
 };
 
 dnfApi.config = config;

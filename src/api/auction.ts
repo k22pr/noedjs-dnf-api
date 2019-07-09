@@ -1,4 +1,4 @@
-import Util from "../util";
+import { Query } from "../util";
 
 /**
  * 경매장에 등록된 아이템을 "아이템 이름"을 기준으로 받아옵니다
@@ -10,13 +10,13 @@ import Util from "../util";
 export const itemName = (itemName: string, params: any, query: any) => {
   if (params === undefined) params = {};
   params.itemName = itemName;
-  if (query) params.q = Util.Query.makeItemQuery(query);
+  if (query) params.q = Query.makeItemQuery(query);
   //let querystring =
   let opt = {
     base: `df/auction`,
-    params: params
+    params: params,
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };
 
 /**
@@ -29,12 +29,12 @@ export const itemName = (itemName: string, params: any, query: any) => {
 export const itemId = (itemId: string, params: any, query: any) => {
   if (params === undefined) params = {};
   params.itemId = itemId;
-  if (query) params.q = Util.Query.makeItemQuery(query);
+  if (query) params.q = Query.makeItemQuery(query);
   let opt = {
     base: `df/auction`,
-    params: params
+    params: params,
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };
 /**
  * 경매장에 등록된 경매장번호로 받아옵니다.
@@ -43,7 +43,7 @@ export const itemId = (itemId: string, params: any, query: any) => {
  */
 export const no = (auctionNo: string) => {
   let opt = {
-    base: `df/auction/${Number(auctionNo)}`
+    base: `df/auction/${Number(auctionNo)}`,
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };

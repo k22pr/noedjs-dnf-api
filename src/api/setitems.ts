@@ -1,4 +1,4 @@
-import Util from "../util";
+import * as Util from "../util";
 
 /**
  * 세트 아이템 정보를 세트의 이름으로 검색합니다.
@@ -11,7 +11,7 @@ export const setitem = (setItemName: string, params: any = {}) => {
   params.setItemName = setItemName;
   let opt = {
     base: `df/setitems`,
-    params: params
+    params: params,
   };
   return Util.Query.Request(opt);
 };
@@ -23,7 +23,7 @@ export const setitem = (setItemName: string, params: any = {}) => {
  */
 export const detail = (setItemId: string) => {
   let opt = {
-    base: `df/setitems/${setItemId}`
+    base: `df/setitems/${setItemId}`,
   };
   return Util.Query.Request(opt);
 };

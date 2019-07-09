@@ -5,4 +5,4 @@ import * as Characters from "./characters";
 import * as Item from "./items";
 import * as SetItem from "./setitems";
 
-export default { Action, Equip, Skill, Characters, Item, SetItem };
+export { Action, Equip, Skill, Characters, Item, SetItem };

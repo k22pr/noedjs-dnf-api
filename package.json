@@ -4,13 +4,6 @@
   "description": "던전 앤 파이터 API",
   "main": "./dist/chain.js",
   "types": "./dist/chain.d.ts",
-  "dependencies": {
-    "@babel/runtime": "^7.5.1",
-    "@types/node": "^12.0.12",
-    "axios": "^0.18.0",
-    "consola": "^2.9.0",
-    "querystring": "^0.2.0"
-  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
@@ -26,11 +19,17 @@
     "nodemon": "^1.18.4",
     "ts-loader": "^6.0.4"
   },
+  "dependencies": {
+    "@babel/runtime": "^7.5.1",
+    "@types/node": "^12.0.12",
+    "axios": "^0.18.0",
+    "consola": "^2.9.0",
+    "querystring": "^0.2.0"
+  },
   "scripts": {
-    "babel-node": "babel-node --presets @babel/preset-env",
+    "babel-node": "babel-node --extensions \".ts,.tsx\"",
     "serve": "nodemon --exec yarn run babel-node -- ./src/index.ts",
     "build": "babel src --out-dir dist --extensions \".ts,.tsx\"",
-    "bundle": "node ./lib/bundle.js",
     "test": "nodemon --exec yarn run babel-node -- ./test.js"
   },
   "repository": {

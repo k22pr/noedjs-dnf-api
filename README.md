@@ -87,7 +87,7 @@ dnfApi.setOptions({
   returnJSON: false,
 
   //응답내용을 상세하게 출력하도록 변경합니다.
-  responeHeader: false
+  responeHeader: false,
 });
 
 //아래에 소스코드를 작성합니다.
@@ -111,28 +111,28 @@ async function getChar(serverName, charName) {
   //해당 캐릭터의 정보를 받아옵니다.
   let opt = {
     wordType: dnfApi.config.characters.wordType.match, // same to string type"match"
-    limit: 1
+    limit: 1,
   };
 
   if (charBase === undefined) return;
-  const charBase = await dnfApi.characters.character(serverName, charName, opt).then(data => {
+  const charBase = await dnfApi.characters.character(serverName, charName, opt).then((data) => {
     if (data.err) return console.log(data.err);
     return data.rows[0];
   });
 
   //해당 캐릭터가 장착하고 있는 장비정보를 받아옵니다.
-  var equipment = await dnfApi.characters.equip.equipment(serverName, charBase.characterId).then(data => {
+  var equipment = await dnfApi.characters.equip.equipment(serverName, charBase.characterId).then((data) => {
     if (data.err) return console.log(data.err);
     return data;
   });
 
   opt = {
     limit: 20,
-    code: 505
+    code: 505,
   };
 
   //해당 캐릭터의 타임라인중 505(지옥파티 에픽획득) 정보를 받아옵니다.
-  var timeline = await dnfApi.characters.timeline(serverName, charBase.characterId, opt).then(data => {
+  var timeline = await dnfApi.characters.timeline(serverName, charBase.characterId, opt).then((data) => {
     if (data.err) return console.log(data.err);
     return data;
   });
@@ -141,12 +141,12 @@ async function getChar(serverName, charName) {
   console.log(charBase);
 
   console.log("\n\t [창작한 장비]");
-  equipment.equipment.map(now => {
+  equipment.equipment.map((now) => {
     console.log(`${now.slotName} - ${now.itemName}(${now.itemRarity})`);
   });
 
   console.log("\n\t [최근 획득 에픽]");
-  timeline.timeline.rows.map(now => {
+  timeline.timeline.rows.map((now) => {
     console.log(`${now.data.dungeonName} : ${now.data.itemName}`);
   });
 }
@@ -161,7 +161,7 @@ async function getChar(serverName, charName) {
 서버목록애 대한 정보는 [이곳](https://developers.neople.co.kr/contents/guide/pages/all#%EC%84%9C%EB%B2%84)을 참고해주세요.
 
 ```js
-dnfApi.servers.servers().then(data => {
+dnfApi.servers.servers().then((data) => {
   console.log(data);
 });
 ```
@@ -177,7 +177,7 @@ dnfApi.servers.servers().then(data => {
 캐릭터를 닉네임으로 검색하여 받아옵니다.
 
 ```js
-dnfApi.characters.character("cain", "쑤남", opt).then(data => {
+dnfApi.characters.character("cain", "쑤남", opt).then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -188,7 +188,7 @@ dnfApi.characters.character("cain", "쑤남", opt).then(data => {
 캐릭터에 대한 기본적인 정보를 받아옵니다.
 
 ```js
-dnfApi.characters.characterId("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.characterId("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -202,9 +202,9 @@ dnfApi.characters.characterId("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(d
 
 ```js
 let opt = {
-  limit: 10
+  limit: 10,
 };
-dnfApi.characters.timeline("cain", "d018e5f7e7519e34b8ef21db0c40fd98", opt).then(data => {
+dnfApi.characters.timeline("cain", "d018e5f7e7519e34b8ef21db0c40fd98", opt).then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -213,7 +213,7 @@ dnfApi.characters.timeline("cain", "d018e5f7e7519e34b8ef21db0c40fd98", opt).then
 ## 능력치 정보
 
 ```js
-dnfApi.characters.status("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.status("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -226,7 +226,7 @@ dnfApi.characters.status("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data =
 ## 장착 장비 정보
 
 ```js
-dnfApi.characters.equip.equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.equip.equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -235,7 +235,7 @@ dnfApi.characters.equip.equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98").th
 ## 장착 아바타 정보
 
 ```js
-dnfApi.characters.equip.avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.equip.avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -244,7 +244,7 @@ dnfApi.characters.equip.avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(
 ## 장착 크리쳐 정보
 
 ```js
-dnfApi.characters.equip.creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.equip.creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -253,7 +253,7 @@ dnfApi.characters.equip.creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98").the
 ## 장착 휘장 정보
 
 ```js
-dnfApi.characters.equip.flag("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.equip.flag("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -266,7 +266,7 @@ dnfApi.characters.equip.flag("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(da
 ## 스위칭 장착 장비
 
 ```js
-dnfApi.characters.skill.equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.skill.equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -275,7 +275,7 @@ dnfApi.characters.skill.equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98").th
 ## 스위칭 장착 아바타
 
 ```js
-dnfApi.characters.skill.avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.skill.avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -284,7 +284,7 @@ dnfApi.characters.skill.avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(
 ## 스위칭 장착 크리처
 
 ```js
-dnfApi.characters.skill.creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then(data => {
+dnfApi.characters.skill.creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -300,14 +300,14 @@ dnfApi.characters.skill.creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98").the
 let opt = {
   sort: dnfApi.config.auction.sort.unitPrice,
   limit: 10,
-  wordType: dnfApi.config.auction.wordType.match
+  wordType: dnfApi.config.auction.wordType.match,
 };
 let query = {
   minLevel: 1,
   maxlevel: 10,
-  rarity: dnfApi.config.auction.query.rarity.rare
+  rarity: dnfApi.config.auction.query.rarity.rare,
 };
-dnfApi.auction.itemName("마그토늄", opt).then(data => {
+dnfApi.auction.itemName("마그토늄", opt).then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -316,7 +316,7 @@ dnfApi.auction.itemName("마그토늄", opt).then(data => {
 ## 경매장 등록 아이템 조회 (경매장 등록 번호)
 
 ```js
-dnfApi.auction.no("670998412").then(data => {
+dnfApi.auction.no("670998412").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -329,7 +329,7 @@ dnfApi.auction.no("670998412").then(data => {
 ## 아이템 검색
 
 ```js
-dnfApi.items.item("마그토늄").then(data => {
+dnfApi.items.item("마그토늄").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -338,7 +338,7 @@ dnfApi.items.item("마그토늄").then(data => {
 ## 아이템 상세 정보
 
 ```js
-dnfApi.items.detail("c6a38ab8c7540cfc51ea2b0b8b610fa7").then(data => {
+dnfApi.items.detail("c6a38ab8c7540cfc51ea2b0b8b610fa7").then((data) => {
   if (data.err) return console.log(data.err);
   console.log(data);
 });
@@ -351,7 +351,7 @@ dnfApi.items.detail("c6a38ab8c7540cfc51ea2b0b8b610fa7").then(data => {
 ## 직업 정보
 
 ```js
-dnfApi.jobs().then(data => {
+dnfApi.jobs().then((data) => {
   console.log(data);
 });
 ```
@@ -365,9 +365,9 @@ dnfApi.jobs().then(data => {
 ```js
 let opt = {
   limit: 2,
-  wordType: dnfApi.config.setitems.wordType.front
+  wordType: dnfApi.config.setitems.wordType.front,
 };
-dnfApi.setitems.setitem("오감", opt).then(data => {
+dnfApi.setitems.setitem("오감", opt).then((data) => {
   console.log(data);
 });
 ```
@@ -375,7 +375,7 @@ dnfApi.setitems.setitem("오감", opt).then(data => {
 ## 세트 아이템 상세 정보
 
 ```js
-dnfApi.setitems.detail("040d72e3585ea068f2d85fee654dab20").then(data => {
+dnfApi.setitems.detail("040d72e3585ea068f2d85fee654dab20").then((data) => {
   console.log(data);
 });
 ```

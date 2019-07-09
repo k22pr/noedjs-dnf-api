@@ -1,53 +1,53 @@
-import Util from "../util";
+import { Query, Static } from "../util";
 
 /**
  * 해당 캐릭터가 장착한 장비 정보를 받아옵니다.
  *
- * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const equipment = (serverId: string, characterId: string) => {
+export const equipment = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/equip/equipment`
+    base: `df/servers/${serverId}/characters/${characterId}/equip/equipment`,
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };
 
 /**
  * 해당 캐릭터가 장착한 아바타 정보를 받아옵니다.
  *
- * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const avatar = (serverId: string, characterId: string) => {
+export const avatar = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/equip/avatar`
+    base: `df/servers/${serverId}/characters/${characterId}/equip/avatar`,
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };
 
 /**
  * 해당 캐릭터가 장착한 크리쳐 정보를 받아옵니다.
  *
- * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const creature = (serverId: string, characterId: string) => {
+export const creature = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/equip/creature`
+    base: `df/servers/${serverId}/characters/${characterId}/equip/creature`,
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };
 
 /**
  * 해당 캐릭터가 장착한 휘장 정보를 받아옵니다.
  *
- * @param {string} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const flag = (serverId: string, characterId: string) => {
+export const flag = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: `df/servers/${serverId}/characters/${characterId}/equip/flag`
+    base: `df/servers/${serverId}/characters/${characterId}/equip/flag`,
   };
-  return Util.Query.Request(opt);
+  return Query.Request(opt);
 };

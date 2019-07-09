@@ -49,8 +49,19 @@ interface Items {
   rarity: Rarity;
 }
 
-export default class Static {
-  public static ServerNames: Servers;
-  public static characters: Characters;
-  public static Autions: Autions;
+enum Server {
+  cain = "cain",
+  diregie = "diregie",
+  siroco = "siroco",
+  prey = "prey",
+  casillas = "casillas",
+  hilder = "hilder",
+  anton = "anton",
+  bakal = "bakal",
 }
+export { Server };
+
+// export default class Static {
+//   public static characters: Characters;
+//   public static Autions: Auctions;
+// }

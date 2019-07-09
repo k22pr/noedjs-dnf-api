@@ -1,11 +1,11 @@
 import axios from "axios";
 import querystring from "querystring";
 
-import Util from "./";
+import * as Util from "./";
 
 const sender = axios.create({
   baseURL: "https://api.neople.co.kr",
-  timeout: Util.Option.axiosTimeout
+  timeout: Util.Option.axiosTimeout,
 });
 
 export default class Request {
@@ -27,17 +27,17 @@ export default class Request {
 
     let rsp: any = sender
       .get(opt.url)
-      .then(res => {
+      .then((res) => {
         return (rsp = Util.Option.responeHeader
           ? {
               status: res.status,
               statusText: res.statusText,
               headers: res.headers,
-              body: res.data
+              body: res.data,
             }
           : res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         if (Util.Option.hideOnErrorApiKey) err.response.data.url = err.response.config.url.replace(Util.Option.key, Util.Option.hidekeyText);
         else err.response.data.url = err.response.config.url;
         return (rsp = {
@@ -46,9 +46,9 @@ export default class Request {
                 status: err.response.status,
                 statusText: err.response.statusText,
                 headers: err.response.headers,
-                body: err.response.data
+                body: err.response.data,
               }
-            : err.response.data
+            : err.response.data,
         });
         console.log("\x1b[31m[DNF_API] RequestError\x1b[0m :", err.response.data.url.replace(Util.Option.hidekeyText, `\x1b[33m${Util.Option.hidekeyText}\x1b[0m`));
       });

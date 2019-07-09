@@ -1,4 +1,4 @@
-import Util from "../util";
+import * as Util from "../util";
 
 /**
  * 현재 인게임에서 획득 가능한 아이템의 경우만 검색 가능합니다.
@@ -14,7 +14,7 @@ export const item = (itemName: string, params: any, query: any) => {
   //let querystring =
   let opt = {
     base: `df/items`,
-    params: params
+    params: params,
   };
   return Util.Query.Request(opt);
 };
@@ -25,7 +25,7 @@ export const item = (itemName: string, params: any, query: any) => {
  */
 export const detail = (itemId: string) => {
   let opt = {
-    base: `df/items/${itemId}`
+    base: `df/items/${itemId}`,
   };
   return Util.Query.Request(opt);
 };
