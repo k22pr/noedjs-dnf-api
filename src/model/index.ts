@@ -1,5 +1,9 @@
 import * as Static from "../util/static";
 
+import * as Char from "./character";
+
+export { Char };
+
 export type DnfErrorResponse = {
   url: string;
   status: number;
@@ -10,29 +14,6 @@ export type DnfErrorResponse = {
 export type DnfResponse<T> = {
   data?: T;
   error?: DnfErrorResponse;
-};
-
-export type Character = {
-  characterId: string;
-  characterName: string;
-  level: number;
-  jobId: string;
-  jobGrowId: string;
-  jobName: string;
-  jobGrowName: string;
-};
-
-export type CharacterInfo = {
-  characterId: string;
-  characterName: string;
-  level: number;
-  jobId: string;
-  jobGrowId: string;
-  jobName: string;
-  jobGrowName: string;
-  adventureName: string;
-  guildId: string;
-  guildName: string;
 };
 
 export type Item = {

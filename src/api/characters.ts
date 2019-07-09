@@ -8,14 +8,14 @@ import * as Model from "../model";
  * @param {string} [characterName=""] 검색할 캐릭터의 이름입니다.
  * @param {object} [params={}] 선택적 요청변수의 Object입니다.
  */
-export const characterName = (serverId: Static.Server, characterName: string, params: Params.ICharParams = {}): Promise<Model.DnfResponse<Model.Character[]>> => {
+export const characterName = (serverId: Static.Server, characterName: string, params: Params.ICharParams = {}): Promise<Model.DnfResponse<Model.Char.Character[]>> => {
   if (params === undefined) params = {};
   params.characterName = characterName;
   let opt = {
     base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters"),
     params: params,
   };
-  return Query.Request<Model.Character[]>(opt);
+  return Query.Request<Model.Char.Character[]>(opt);
 };
 
 /**
@@ -24,11 +24,11 @@ export const characterName = (serverId: Static.Server, characterName: string, pa
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const characterId = (serverId: Static.Server, characterId: string): Promise<Model.DnfResponse<Model.CharacterInfo>> => {
+export const characterId = (serverId: Static.Server, characterId: string): Promise<Model.DnfResponse<Model.Char.Info>> => {
   let opt = {
     base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId),
   };
-  return Query.Request<Model.CharacterInfo>(opt);
+  return Query.Request<Model.Char.Info>(opt);
 };
 
 /**
@@ -38,12 +38,12 @@ export const characterId = (serverId: Static.Server, characterId: string): Promi
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const timeline = (serverId: Static.Server, characterId: string, params: Params.ICharParams = {}) => {
+export const timeline = (serverId: Static.Server, characterId: string, params: Params.ICharParams = {}): Promise<Model.DnfResponse<Model.Char.Timeline>> => {
   let opt = {
     base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "timeline"),
     params: params,
   };
-  return Query.Request(opt);
+  return Query.Request<Model.Char.Timeline>(opt);
 };
 
 /**
