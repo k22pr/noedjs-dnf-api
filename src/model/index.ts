@@ -40,6 +40,26 @@ export type ItemDetail = {
   setItemName: string;
 };
 
+export type Auction = {
+  auctionNo: number;
+  regDate: Date;
+  expireDate: Date;
+  itemId: string;
+  itemName: string;
+  itemAvailableLevel: number;
+  itemRarity: string;
+  itemType: string;
+  itemTypeDetail: string;
+  refine: number;
+  reinforce: number;
+  amplificationName: string;
+  count: number;
+  price: number;
+  currentPrice: number;
+  unitPrice: number;
+  averagePrice: number;
+};
+
 export type SetItem = {
   setItemId: string;
   setItemName: string;
