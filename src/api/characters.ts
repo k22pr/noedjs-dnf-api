@@ -11,7 +11,7 @@ export const character = (serverId: Static.Server, characterName: string, params
   if (params === undefined) params = {};
   params.characterName = characterName;
   let opt = {
-    base: Query.UriBuilder(Static.Server, serverId, "characters"),
+    base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters"),
     params: params,
   };
   return Query.Request(opt);
@@ -25,7 +25,7 @@ export const character = (serverId: Static.Server, characterName: string, params
  */
 export const characterId = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: Query.UriBuilder(Static.Server, serverId, "characters", characterId),
+    base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId),
   };
   return Query.Request(opt);
 };
@@ -39,7 +39,7 @@ export const characterId = (serverId: Static.Server, characterId: string) => {
  */
 export const timeline = (serverId: Static.Server, characterId: string, params: any = {}) => {
   let opt = {
-    base: Query.UriBuilder(Static.Server, serverId, "characters", characterId, "timeline"),
+    base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "timeline"),
     params: params,
   };
   return Query.Request(opt);
@@ -53,7 +53,7 @@ export const timeline = (serverId: Static.Server, characterId: string, params: a
  */
 export const status = (serverId: Static.Server, characterId: string) => {
   let opt = {
-    base: Query.UriBuilder(Static.Server, serverId, "characters", characterId, "status"),
+    base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "status"),
   };
   return Query.Request(opt);
 };

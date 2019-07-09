@@ -1,5 +1,5 @@
-import Option from "./options";
+import Config from "./config";
 import Query from "./query";
 import * as Static from "./static";
 
-export { Option, Query, Static };
+export { Config, Query, Static };

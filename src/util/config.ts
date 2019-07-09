@@ -1,4 +1,4 @@
-export interface options {
+export interface Config {
   key: string;
   hideOnErrorApiKey: boolean;
   hidekeyText: string;
@@ -6,12 +6,12 @@ export interface options {
   returnJSON: boolean;
   responeHeader: boolean;
 }
-let defaultOption: options = {
+let defaultConfig: Config = {
   key: "",
   hideOnErrorApiKey: true,
   hidekeyText: "{HIDEKEY}",
   axiosTimeout: 5000,
   returnJSON: false,
-  responeHeader: false
+  responeHeader: false,
 };
-export default defaultOption;
+export default defaultConfig;
