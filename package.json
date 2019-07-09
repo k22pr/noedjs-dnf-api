@@ -1,6 +1,6 @@
 {
   "name": "dnf-api",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "던전 앤 파이터 API",
   "main": "./dist/chain.js",
   "types": "./dist/chain.d.ts",

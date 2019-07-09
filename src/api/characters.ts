@@ -7,7 +7,7 @@ import { Query, Static, Params } from "../util";
  * @param {string} [characterName=""] 검색할 캐릭터의 이름입니다.
  * @param {object} [params={}] 선택적 요청변수의 Object입니다.
  */
-export const character = (serverId: Static.Server, characterName: string, params: Params.CharactorParams = {}) => {
+export const characterName = (serverId: Static.Server, characterName: string, params: Params.ICharParams = {}) => {
   if (params === undefined) params = {};
   params.characterName = characterName;
   let opt = {
@@ -37,7 +37,7 @@ export const characterId = (serverId: Static.Server, characterId: string) => {
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const timeline = (serverId: Static.Server, characterId: string, params: any = {}) => {
+export const timeline = (serverId: Static.Server, characterId: string, params: Params.ICharParams = {}) => {
   let opt = {
     base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "timeline"),
     params: params,

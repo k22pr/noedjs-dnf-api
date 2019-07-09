@@ -1,20 +1,16 @@
-import { Query, Static } from "../util";
+import { Query, Static, Params } from "../util";
 
 /**
  * 경매장에 등록된 아이템을 "아이템 이름"을 기준으로 받아옵니다
  *
  * @param {string} itemName 검색할 아이템의 이름입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
- * @param {object} query q에 해당하는 값입니다.
  */
-export const itemName = (itemName: string, params: any, query: any) => {
-  if (params === undefined) params = {};
+export const itemName = (itemName: string, params: Params.IAuction = {}) => {
   params.itemName = itemName;
-  if (query) params.q = Query.makeItemQuery(query);
-  //let querystring =
   let opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction),
-    params: params,
+    params,
   };
   return Query.Request(opt);
 };
@@ -24,12 +20,9 @@ export const itemName = (itemName: string, params: any, query: any) => {
  *
  * @param {string} itemID 검색할 아이템의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
- * @param {object} query q에 해당하는 값입니다.
  */
-export const itemId = (itemId: string, params: any, query: any) => {
-  if (params === undefined) params = {};
+export const itemId = (itemId: string, params: Params.IAuction = {}) => {
   params.itemId = itemId;
-  if (query) params.q = Query.makeItemQuery(query);
   let opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction),
     params: params,
@@ -41,7 +34,7 @@ export const itemId = (itemId: string, params: any, query: any) => {
  *
  * @param {Number} auctionNo 검색할 경매장 번호입니다.
  */
-export const no = (auctionNo: string) => {
+export const no = (auctionNo: number) => {
   let opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction, auctionNo),
   };

@@ -1,4 +1,4 @@
-enum Server {
+export enum Server {
   cain = "cain",
   diregie = "diregie",
   siroco = "siroco",
@@ -8,8 +8,11 @@ enum Server {
   anton = "anton",
   bakal = "bakal",
 }
-
-enum Rarity {
+export enum Sort {
+  Asc = "asc",
+  Desc = "desc",
+}
+export enum Rarity {
   common = "커먼",
   uncommon = "언커먼",
   rare = "레어",
@@ -19,46 +22,23 @@ enum Rarity {
   legendary = "레전더리",
 }
 
-enum WordType {
+export enum AuctionWordType {
+  Match = "match",
+  Front = "front",
+  Full = "full",
+}
+export enum WordType {
   match = "match",
   front = "front",
   full = "full",
 }
-
-enum BaseUri {
+export enum CharactersWordType {
+  match = "match",
+  full = "full",
+}
+export enum BaseUri {
   Servers = "df/servers",
   Auction = "df/auction",
   Item = "df/items",
   SetItem = "df/setitems",
 }
-
-enum CharactersWordType {
-  match = "match",
-  full = "full",
-}
-
-interface Characters {
-  wordType: CharactersWordType;
-}
-
-interface Auctions {
-  sort: {
-    unitPrice: "unitPrice";
-    reinforce: "reinforce";
-    auctionNo: "auctionNo";
-  };
-  wordType: WordType;
-  query: {
-    rarity: Rarity;
-  };
-}
-
-interface Items {
-  rarity: Rarity;
-}
-export { Server, BaseUri, Rarity };
-
-// export default class Static {
-//   public static characters: Characters;
-//   public static Autions: Auctions;
-// }

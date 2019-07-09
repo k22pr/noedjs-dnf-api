@@ -1,16 +1,15 @@
-import { Query, Static } from "../util";
+import { Query, Static, Params } from "../util";
 
 /**
  * 현재 인게임에서 획득 가능한 아이템의 경우만 검색 가능합니다.
  *
  * @param {string} itemName 검색할 아이템의 명칭
  * @param {string} params 선택적 요청변수의 Object입니다.
- * @param {string} query 선택적 요청변수의 Object입니다. (실제 요청의 q에 해당하는 부분입니다.)
  */
-export const item = (itemName: string, params: any, query: any) => {
-  if (params === undefined) params = {};
+export const item = (itemName: string, params: Params.IItem) => {
+  //   if (params === undefined) params = {};
   params.itemName = itemName;
-  if (query) params.q = Query.makeItemQuery(query);
+  //   if (query) params.q = Query.makeItemQuery(query);
   //let querystring =
   let opt = {
     base: Query.UriBuilder(Static.BaseUri.Item),

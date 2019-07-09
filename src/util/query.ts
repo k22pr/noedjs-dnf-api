@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import querystring from "querystring";
-import urlencode from "urlencode";
+// import urlencode from "urlencode";
 import consola from "consola";
 
 import * as Util from "./";
@@ -129,6 +129,6 @@ export default class Request {
 
   public static makeItemQuery(query: any) {
     //  return JSON.stringify(query).replace(/\"|\{|\}/gi, "");
-    return query.urlencode;
+    return encodeURI(query);
   }
 }
