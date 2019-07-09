@@ -4,17 +4,7 @@ import querystring from "querystring";
 import consola from "consola";
 
 import * as Util from "./";
-type DnfErrorResponse = {
-  url: string;
-  status: number;
-  statusText: string;
-  code: string;
-  message: string;
-};
-type DnfResponse = {
-  data?: any;
-  error?: DnfErrorResponse;
-};
+import * as Model from "../model";
 
 const sender = axios.create({
   baseURL: "https://api.neople.co.kr",
@@ -36,7 +26,7 @@ export default class Request {
    * @param {object} opt (요청을 보낼 Parameter값)
    * @returns
    */
-  public static async Request(opt: any = {}, method: string = "GET"): Promise<DnfResponse> {
+  public static async Request<T>(opt: any = {}, method: string = "GET"): Promise<Model.DnfResponse<T>> {
     if (!Util.Config.key || Util.Config.key == "") {
       consola.error("Please change to your api key. ");
       // return null;
@@ -47,16 +37,19 @@ export default class Request {
     opt.params.apikey = Util.Config.key;
     opt.url = `${opt.base}?${querystring.stringify(opt.params)}`;
 
-    let responseData: DnfResponse;
+    let responseData: Model.DnfResponse<T>;
     switch (method.toLowerCase()) {
       case "post":
         responseData = await sender
           .post(opt.url)
           .then((res) => {
-            return { data: res.data };
+            let data: T;
+            if (res.data.rows) data = res.data.rows;
+            else data = res.data;
+            return { data };
           })
           .catch((err) => {
-            let error: DnfErrorResponse = {
+            let error: Model.DnfErrorResponse = {
               url: showUrl(opt.url),
               status: err.status,
               statusText: err.response.statusText,
@@ -71,10 +64,13 @@ export default class Request {
         responseData = await sender
           .get(opt.url)
           .then((res) => {
-            return { data: res.data };
+            let data: T;
+            if (res.data.rows) data = res.data.rows;
+            else data = res.data;
+            return { data };
           })
           .catch((err) => {
-            let error: DnfErrorResponse = {
+            let error: Model.DnfErrorResponse = {
               url: showUrl(opt.url),
               status: err.response.status,
               statusText: err.response.statusText,
@@ -85,46 +81,7 @@ export default class Request {
           });
         break;
     }
-
-    //  console.log(responseData);
-    //  if (Util.Config.returnJSON) rsp = JSON.stringify(rsp);
     return responseData;
-
-    //  let dnfResonse  : DnfResponse
-    //  let responseData: AxiosResponse<any> = sender.get(opt.url);
-
-    //  let rsp: any = sender
-    //    .get(opt.url)
-    //    .then((res) => {
-    //      return {
-    //        data: Util.Config.responeHeader
-    //          ? {
-    //              status: res.status,
-    //              statusText: res.statusText,
-    //              headers: res.headers,
-    //              body: res.data,
-    //            }
-    //          : res.data,
-    //      };
-    //    })
-    //    .catch((err) => {
-    //      if (Util.Config.hideOnErrorApiKey) err.response.data.url = err.response.config.url.replace(Util.Config.key, Util.Config.hidekeyText);
-    //      else err.response.data.url = err.response.config.url;
-    //      return (rsp = {
-    //        err: Util.Config.responeHeader
-    //          ? {
-    //              status: err.response.status,
-    //              statusText: err.response.statusText,
-    //              headers: err.response.headers,
-    //              body: err.response.data,
-    //            }
-    //          : err.response.data,
-    //      });
-    //      //   console.log("\x1b[31m[DNF_API] RequestError\x1b[0m :", err.response.data.url.replace(Util.Config.hidekeyText, `\x1b[33m${Util.Config.hidekeyText}\x1b[0m`));
-    //    });
-    //  //convert JSON
-    //  if (Util.Config.returnJSON) rsp = JSON.stringify(rsp);
-    //  return rsp;
   }
 
   public static makeItemQuery(query: any) {

@@ -1,5 +1,6 @@
 import * as Request from "./api";
 import * as Util from "./util";
+import * as Model from "./model/index";
 
 import * as Params from "./util/params";
 import Config from "./util/config";
@@ -14,4 +15,4 @@ export default class DnfApi {
 const ServerNames = Static.Server;
 const RarityNames = Static.Rarity;
 
-export { Request as Api, Config, Static, ServerNames, RarityNames, Query, Params };
+export { Request as Api, Config, Static, ServerNames, RarityNames, Query, Params, Model };
