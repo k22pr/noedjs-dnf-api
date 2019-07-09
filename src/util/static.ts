@@ -1,32 +1,33 @@
-interface Rarity {
-  common: "커먼";
-  uncommon: "언커먼";
-  rare: "레어";
-  unique: "유니크";
-  eqic: "에픽";
-  chronicle: "크로니클";
-  legendary: "레전더리";
+enum Server {
+  cain = "cain",
+  diregie = "diregie",
+  siroco = "siroco",
+  prey = "prey",
+  casillas = "casillas",
+  hilder = "hilder",
+  anton = "anton",
+  bakal = "bakal",
 }
 
-interface WordType {
-  match: "match";
-  front: "front";
-  full: "full";
-}
-interface CharactersWordType {
-  match: "match";
-  full: "full";
+enum Rarity {
+  common = "커먼",
+  uncommon = "언커먼",
+  rare = "레어",
+  unique = "유니크",
+  eqic = "에픽",
+  chronicle = "크로니클",
+  legendary = "레전더리",
 }
 
-interface Servers {
-  cain: "cain";
-  diregie: "diregie";
-  siroco: "siroco";
-  prey: "prey";
-  casillas: "casillas";
-  hilder: "hilder";
-  anton: "anton";
-  bakal: "bakal";
+enum WordType {
+  match = "match",
+  front = "front",
+  full = "full",
+}
+
+enum CharactersWordType {
+  match = "match",
+  full = "full",
 }
 
 interface Characters {
@@ -47,17 +48,6 @@ interface Auctions {
 
 interface Items {
   rarity: Rarity;
-}
-
-enum Server {
-  cain = "cain",
-  diregie = "diregie",
-  siroco = "siroco",
-  prey = "prey",
-  casillas = "casillas",
-  hilder = "hilder",
-  anton = "anton",
-  bakal = "bakal",
 }
 export { Server };
 
