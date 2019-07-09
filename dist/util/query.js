@@ -92,8 +92,10 @@ function () {
               case 9:
                 _context.next = 11;
                 return sender.post(opt.url).then(function (res) {
+                  var data;
+                  if (res.data.rows) data = res.data.rows;else data = res.data;
                   return {
-                    data: res.data
+                    data: data
                   };
                 })["catch"](function (err) {
                   var error = {
@@ -115,8 +117,10 @@ function () {
               case 13:
                 _context.next = 15;
                 return sender.get(opt.url).then(function (res) {
+                  var data;
+                  if (res.data.rows) data = res.data.rows;else data = res.data;
                   return {
-                    data: res.data
+                    data: data
                   };
                 })["catch"](function (err) {
                   var error = {

@@ -13,7 +13,7 @@ Object.defineProperty(exports, "Config", {
     return _config["default"];
   }
 });
-exports.Query = exports.Static = exports.Params = exports.Api = exports.RarityNames = exports.ServerNames = exports["default"] = void 0;
+exports.Query = exports.Static = exports.Params = exports.Model = exports.Api = exports.RarityNames = exports.ServerNames = exports["default"] = void 0;
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
@@ -24,6 +24,10 @@ var Request = _interopRequireWildcard(require("./api"));
 exports.Api = Request;
 
 var Util = _interopRequireWildcard(require("./util"));
+
+var Model = _interopRequireWildcard(require("./model/index"));
+
+exports.Model = Model;
 
 var Params = _interopRequireWildcard(require("./util/params"));
 
