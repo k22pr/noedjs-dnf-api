@@ -1,4 +1,5 @@
 "use strict";
+<<<<<<< Updated upstream
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
@@ -54,3 +55,12 @@ var ServerNames = Static.Server;
 exports.ServerNames = ServerNames;
 var RarityNames = Static.Rarity;
 exports.RarityNames = RarityNames;
+=======
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var api_1 = __importDefault(require("./api"));
+var util_1 = __importDefault(require("./util"));
+exports.default = { Util: util_1.default, Request: api_1.default };
+>>>>>>> Stashed changes

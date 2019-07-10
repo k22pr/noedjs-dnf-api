@@ -1,4 +1,5 @@
 "use strict";
+<<<<<<< Updated upstream
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -13,12 +14,20 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _util = require("../util");
 
+=======
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var util_1 = __importDefault(require("../util"));
+>>>>>>> Stashed changes
 /**
  * 현재 인게임에서 획득 가능한 아이템의 경우만 검색 가능합니다.
  *
  * @param {string} itemName 검색할 아이템의 명칭
  * @param {string} params 선택적 요청변수의 Object입니다.
  */
+<<<<<<< Updated upstream
 var item =
 /*#__PURE__*/
 function () {
@@ -59,11 +68,27 @@ function () {
     return _ref.apply(this, arguments);
   };
 }();
+=======
+exports.item = function (itemName, params, query) {
+    if (params === undefined)
+        params = {};
+    params.itemName = itemName;
+    if (query)
+        params.q = util_1.default.Query.makeItemQuery(query);
+    //let querystring =
+    var opt = {
+        base: "df/items",
+        params: params
+    };
+    return util_1.default.Query.Request(opt);
+};
+>>>>>>> Stashed changes
 /**
  * 해당하는 아이템의 상세정보를 요청합니다.
  *
  * @param {string} itemId 검색할 아이템의 ID
  */
+<<<<<<< Updated upstream
 
 
 exports.item = item;
@@ -73,6 +98,11 @@ var detail = function detail(itemId) {
     base: _util.Query.UriBuilder(_util.Static.BaseUri.Item, itemId)
   };
   return _util.Query.Request(opt);
+=======
+exports.detail = function (itemId) {
+    var opt = {
+        base: "df/items/" + itemId
+    };
+    return util_1.default.Query.Request(opt);
+>>>>>>> Stashed changes
 };
-
-exports.detail = detail;

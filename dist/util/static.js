@@ -1,4 +1,5 @@
 "use strict";
+<<<<<<< Updated upstream
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -74,3 +75,12 @@ exports.BaseUri = BaseUri;
   BaseUri["Item"] = "df/items";
   BaseUri["SetItem"] = "df/setitems";
 })(BaseUri || (exports.BaseUri = BaseUri = {}));
+=======
+Object.defineProperty(exports, "__esModule", { value: true });
+var Static = /** @class */ (function () {
+    function Static() {
+    }
+    return Static;
+}());
+exports.default = Static;
+>>>>>>> Stashed changes
