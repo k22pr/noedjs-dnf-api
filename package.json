@@ -27,7 +27,6 @@
     "axios": "^0.18.0",
     "babel-jest": "^24.8.0",
     "consola": "^2.9.0",
-    "jest": "^24.8.0",
     "querystring": "^0.2.0",
     "ts-jest": "^24.0.2",
     "urlencode": "^1.1.0"

@@ -1,8 +1,8 @@
-import * as Static from "../util/static";
-
 import * as Char from "./character";
+import * as Item from "./item";
+import * as SetItem from "./setitem";
 
-export { Char };
+export { Char, Item, SetItem };
 
 export type DnfErrorResponse = {
   url: string;
@@ -12,32 +12,8 @@ export type DnfErrorResponse = {
   message: string;
 };
 export type DnfResponse<T> = {
-  data?: T;
+  data: T;
   error?: DnfErrorResponse;
-};
-
-export type Item = {
-  itemId: string;
-  itemName: string;
-  itemRarity: Static.Rarity;
-  itemType: string;
-  itemTypeDetail: string;
-  itemAvailableLevel: number;
-};
-
-export type ItemDetail = {
-  itemId: string;
-  itemName: string;
-  itemRarity: Static.Rarity;
-  itemType: string;
-  itemTypeDetail: string;
-  itemAvailableLevel: number;
-  itemObtainInfo: string;
-  itemExplain: string;
-  itemExplainDetail: string;
-  itemFlavorText: string;
-  setItemId: string;
-  setItemName: string;
 };
 
 export type Auction = {
@@ -60,34 +36,7 @@ export type Auction = {
   averagePrice: number;
 };
 
-export type SetItem = {
-  setItemId: string;
-  setItemName: string;
-};
-
-export type SetItemDetail = {
-  setItemId: string;
-  setItemName: string;
-  setItems: [
-    {
-      slotId: string;
-      slotName: string;
-      itemId: string;
-      itemName: string;
-      itemRarity: string;
-    }
-  ];
-  setItemOption: [
-    {
-      optionNo: number;
-      explain: string;
-      detailExplain: string;
-      status: [
-        {
-          name: string;
-          value: number;
-        }
-      ];
-    }
-  ];
+export type Server = {
+  serverId: string;
+  serverName: string;
 };

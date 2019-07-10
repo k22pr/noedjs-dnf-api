@@ -1,25 +1,25 @@
 export enum Server {
-  cain = "cain",
-  diregie = "diregie",
-  siroco = "siroco",
-  prey = "prey",
-  casillas = "casillas",
-  hilder = "hilder",
-  anton = "anton",
-  bakal = "bakal",
+  Cain = "cain",
+  Diregie = "diregie",
+  Siroco = "siroco",
+  Prey = "prey",
+  Casillas = "casillas",
+  Hilder = "hilder",
+  Anton = "anton",
+  Bakal = "bakal",
 }
 export enum Sort {
   Asc = "asc",
   Desc = "desc",
 }
 export enum Rarity {
-  common = "커먼",
-  uncommon = "언커먼",
-  rare = "레어",
-  unique = "유니크",
-  eqic = "에픽",
-  chronicle = "크로니클",
-  legendary = "레전더리",
+  Common = "커먼",
+  Uncommon = "언커먼",
+  Rare = "레어",
+  Unique = "유니크",
+  Eqic = "에픽",
+  Chronicle = "크로니클",
+  Legendary = "레전더리",
 }
 
 export enum AuctionWordType {
@@ -28,13 +28,13 @@ export enum AuctionWordType {
   Full = "full",
 }
 export enum WordType {
-  match = "match",
-  front = "front",
-  full = "full",
+  Match = "match",
+  Front = "front",
+  Full = "full",
 }
 export enum CharactersWordType {
-  match = "match",
-  full = "full",
+  Match = "match",
+  Full = "full",
 }
 export enum BaseUri {
   Servers = "df/servers",

@@ -93,67 +93,6 @@ dnfApi.setOptions({
 //아래에 소스코드를 작성합니다.
 ```
 
-### 예제
-
-```js
-//API KEY SETTING
-dnfApi.setOptions({ key: "YOUR API KEY" });
-
-//"카인"서버에 닉네임이 "쑤남"인 캐릭터를 호출합니다.
-getChar(dnfApi.config.servers.cain, "쑤남");
-/**
- * (릭터가 존재하는 서버명과 캐릭터의 이름을 입력하면 해당 캐릭터의 정보를 출력해주는 함수)
- *
- * @param {string} serverName (검색할 서버의 이름을 입력합니다.)
- * @param {string} charName (검색할 캐릭터의 이름을 입력합니다.)
- */
-async function getChar(serverName, charName) {
-  //해당 캐릭터의 정보를 받아옵니다.
-  let opt = {
-    wordType: dnfApi.config.characters.wordType.match, // same to string type"match"
-    limit: 1,
-  };
-
-  if (charBase === undefined) return;
-  const charBase = await dnfApi.characters.character(serverName, charName, opt).then((data) => {
-    if (data.err) return console.log(data.err);
-    return data.rows[0];
-  });
-
-  //해당 캐릭터가 장착하고 있는 장비정보를 받아옵니다.
-  var equipment = await dnfApi.characters.equip.equipment(serverName, charBase.characterId).then((data) => {
-    if (data.err) return console.log(data.err);
-    return data;
-  });
-
-  opt = {
-    limit: 20,
-    code: 505,
-  };
-
-  //해당 캐릭터의 타임라인중 505(지옥파티 에픽획득) 정보를 받아옵니다.
-  var timeline = await dnfApi.characters.timeline(serverName, charBase.characterId, opt).then((data) => {
-    if (data.err) return console.log(data.err);
-    return data;
-  });
-
-  console.log("\n\t [캐릭터 정보]");
-  console.log(charBase);
-
-  console.log("\n\t [창작한 장비]");
-  equipment.equipment.map((now) => {
-    console.log(`${now.slotName} - ${now.itemName}(${now.itemRarity})`);
-  });
-
-  console.log("\n\t [최근 획득 에픽]");
-  timeline.timeline.rows.map((now) => {
-    console.log(`${now.data.dungeonName} : ${now.data.itemName}`);
-  });
-}
-```
-
----
-
 # 서버정보
 
 던전앤 파이터 서버 정보를 불러옵니다.
@@ -161,9 +100,11 @@ async function getChar(serverName, charName) {
 서버목록애 대한 정보는 [이곳](https://developers.neople.co.kr/contents/guide/pages/all#%EC%84%9C%EB%B2%84)을 참고해주세요.
 
 ```js
-dnfApi.servers.servers().then((data) => {
-  console.log(data);
-});
+let { error, data } = await dnf.Api.Server.List();
+if (error) consola.error(error);
+else {
+  consola.info(data);
+}
 ```
 
 ---
@@ -177,10 +118,11 @@ dnfApi.servers.servers().then((data) => {
 캐릭터를 닉네임으로 검색하여 받아옵니다.
 
 ```js
-dnfApi.characters.character("cain", "쑤남", opt).then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+let { error, data } = await dnf.Api.Characters.characterName(dnf.ServerNames.anton, "쑤남");
+if (error) console.error(error);
+else {
+  console.info(data);
+}
 ```
 
 ## 캐릭터 기본 정보
