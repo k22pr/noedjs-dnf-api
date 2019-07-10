@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var util_1 = require("../util");
+const util_1 = require("../util");
 /**
  *  아이템 및 장비를 통한 스킬 강화 제외 입니다.
  *
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-exports.style = function (serverId, characterId) {
-    var opt = {
-        base: "" + util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "style"),
+exports.style = (serverId, characterId) => {
+    let opt = {
+        base: `${util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "style")}`,
     };
     return util_1.Query.Request(opt);
 };
@@ -19,9 +19,9 @@ exports.style = function (serverId, characterId) {
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-exports.equipment = function (serverId, characterId) {
-    var opt = {
-        base: "" + util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "equipment"),
+exports.equipment = (serverId, characterId) => {
+    let opt = {
+        base: `${util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "equipment")}`,
     };
     return util_1.Query.Request(opt);
 };
@@ -31,9 +31,9 @@ exports.equipment = function (serverId, characterId) {
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-exports.avatar = function (serverId, characterId) {
-    var opt = {
-        base: "" + util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "avatar"),
+exports.avatar = (serverId, characterId) => {
+    let opt = {
+        base: `${util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "avatar")}`,
     };
     return util_1.Query.Request(opt);
 };
@@ -43,9 +43,9 @@ exports.avatar = function (serverId, characterId) {
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-exports.creature = function (serverId, characterId) {
-    var opt = {
-        base: "" + util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "creature"),
+exports.creature = (serverId, characterId) => {
+    let opt = {
+        base: `${util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "creature")}`,
     };
     return util_1.Query.Request(opt);
 };

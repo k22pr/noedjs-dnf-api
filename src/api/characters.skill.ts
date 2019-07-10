@@ -6,10 +6,10 @@ import { Query, Static } from "../util";
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
 export const style = (serverId: Static.Server, characterId: string) => {
-  let opt = {
-    base: `${Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "style")}`,
-  };
-  return Query.Request(opt);
+   let opt = {
+      base: `${Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "style")}`,
+   };
+   return Query.Request(opt);
 };
 
 /**
@@ -19,10 +19,10 @@ export const style = (serverId: Static.Server, characterId: string) => {
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
 export const equipment = (serverId: Static.Server, characterId: string) => {
-  let opt = {
-    base: `${Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "equipment")}`,
-  };
-  return Query.Request(opt);
+   let opt = {
+      base: `${Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "equipment")}`,
+   };
+   return Query.Request(opt);
 };
 
 /**
@@ -32,10 +32,10 @@ export const equipment = (serverId: Static.Server, characterId: string) => {
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
 export const avatar = (serverId: Static.Server, characterId: string) => {
-  let opt = {
-    base: `${Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "avatar")}`,
-  };
-  return Query.Request(opt);
+   let opt = {
+      base: `${Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "avatar")}`,
+   };
+   return Query.Request(opt);
 };
 
 /**
@@ -45,8 +45,8 @@ export const avatar = (serverId: Static.Server, characterId: string) => {
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
 export const creature = (serverId: Static.Server, characterId: string) => {
-  let opt = {
-    base: `${Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "creature")}`,
-  };
-  return Query.Request(opt);
+   let opt = {
+      base: `${Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "skill", "buff", "equip", "creature")}`,
+   };
+   return Query.Request(opt);
 };

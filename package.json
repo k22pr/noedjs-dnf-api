@@ -1,71 +1,9 @@
 {
-<<<<<<< Updated upstream
-  "name": "dnf-api",
-  "version": "0.4.2",
-  "description": "던전 앤 파이터 API",
-  "main": "./dist/chain.js",
-  "types": "./dist/chain.d.ts",
-  "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/plugin-transform-runtime": "^7.5.0",
-    "@babel/plugin-transform-typescript": "^7.5.1",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.5.0",
-    "@babel/preset-typescript": "^7.3.3",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-add-module-exports": "^1.0.2",
-    "nodemon": "^1.18.4",
-    "ts-loader": "^6.0.4",
-    "typescript": "^3.5.3"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.5.1",
-    "@types/jest": "^24.0.15",
-    "@types/node": "^12.0.12",
-    "axios": "^0.18.0",
-    "babel-jest": "^24.8.0",
-    "consola": "^2.9.0",
-    "querystring": "^0.2.0",
-    "ts-jest": "^24.0.2",
-    "urlencode": "^1.1.0"
-  },
-  "scripts": {
-    "babel-node": "babel-node --extensions \".ts,.tsx\"",
-    "serve": "nodemon --exec yarn run babel-node -- ./src/index.ts",
-    "build": "tsc",
-    "test:dev": "nodemon --exec yarn run babel-node -- ./test.ts",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/k22pr/dnf-api.git"
-  },
-  "keywords": [
-    "dnf"
-  ],
-  "author": "서버지기",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/k22pr/dnf-api/issues"
-  },
-  "homepage": "https://github.com/k22pr/dnf-api#readme"
-}
-=======
    "name": "dnf-api",
-   "version": "0.3.2",
+   "version": "0.4.2",
    "description": "던전 앤 파이터 API",
    "main": "./dist/index.js",
    "types": "./dist/index.d.ts",
-   "dependencies": {
-      "@babel/runtime": "^7.5.1",
-      "@types/node": "^12.0.12",
-      "axios": "^0.18.0",
-      "consola": "^2.9.0",
-      "querystring": "^0.2.0"
-   },
    "devDependencies": {
       "@babel/cli": "^7.1.2",
       "@babel/core": "^7.1.2",
@@ -76,17 +14,29 @@
       "@babel/polyfill": "^7.4.4",
       "@babel/preset-env": "^7.5.0",
       "@babel/preset-typescript": "^7.3.3",
-      "babel-plugin-add-module-exports": "^1.0.2",
       "babel-loader": "^8.0.6",
+      "babel-plugin-add-module-exports": "^1.0.2",
       "nodemon": "^1.18.4",
-      "ts-loader": "^6.0.4"
+      "ts-loader": "^6.0.4",
+      "typescript": "^3.5.3"
+   },
+   "dependencies": {
+      "@babel/runtime": "^7.5.1",
+      "@types/jest": "^24.0.15",
+      "@types/node": "^12.0.12",
+      "axios": "^0.18.0",
+      "babel-jest": "^24.8.0",
+      "consola": "^2.9.0",
+      "querystring": "^0.2.0",
+      "ts-jest": "^24.0.2",
+      "urlencode": "^1.1.0"
    },
    "scripts": {
-      "babel-node": "babel-node --presets @babel/preset-env",
+      "babel-node": "babel-node --extensions \".ts,.tsx\"",
       "serve": "nodemon --exec yarn run babel-node -- ./src/index.ts",
-      "build": "babel src --out-dir dist --extensions \".ts,.tsx\"",
-      "bundle": "node ./lib/bundle.js",
-      "test": "nodemon --exec yarn run babel-node -- ./test.js"
+      "build": "tsc",
+      "test:dev": "nodemon --exec yarn run babel-node -- ./test.ts",
+      "test": "jest"
    },
    "repository": {
       "type": "git",
@@ -102,4 +52,3 @@
    },
    "homepage": "https://github.com/k22pr/dnf-api#readme"
 }
->>>>>>> Stashed changes

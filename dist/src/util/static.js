@@ -2,14 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Server;
 (function (Server) {
-    Server["cain"] = "cain";
-    Server["diregie"] = "diregie";
-    Server["siroco"] = "siroco";
-    Server["prey"] = "prey";
-    Server["casillas"] = "casillas";
-    Server["hilder"] = "hilder";
-    Server["anton"] = "anton";
-    Server["bakal"] = "bakal";
+    Server["Cain"] = "cain";
+    Server["Diregie"] = "diregie";
+    Server["Siroco"] = "siroco";
+    Server["Prey"] = "prey";
+    Server["Casillas"] = "casillas";
+    Server["Hilder"] = "hilder";
+    Server["Anton"] = "anton";
+    Server["Bakal"] = "bakal";
 })(Server = exports.Server || (exports.Server = {}));
 var Sort;
 (function (Sort) {
@@ -18,13 +18,13 @@ var Sort;
 })(Sort = exports.Sort || (exports.Sort = {}));
 var Rarity;
 (function (Rarity) {
-    Rarity["common"] = "\uCEE4\uBA3C";
-    Rarity["uncommon"] = "\uC5B8\uCEE4\uBA3C";
-    Rarity["rare"] = "\uB808\uC5B4";
-    Rarity["unique"] = "\uC720\uB2C8\uD06C";
-    Rarity["eqic"] = "\uC5D0\uD53D";
-    Rarity["chronicle"] = "\uD06C\uB85C\uB2C8\uD074";
-    Rarity["legendary"] = "\uB808\uC804\uB354\uB9AC";
+    Rarity["Common"] = "\uCEE4\uBA3C";
+    Rarity["Uncommon"] = "\uC5B8\uCEE4\uBA3C";
+    Rarity["Rare"] = "\uB808\uC5B4";
+    Rarity["Unique"] = "\uC720\uB2C8\uD06C";
+    Rarity["Eqic"] = "\uC5D0\uD53D";
+    Rarity["Chronicle"] = "\uD06C\uB85C\uB2C8\uD074";
+    Rarity["Legendary"] = "\uB808\uC804\uB354\uB9AC";
 })(Rarity = exports.Rarity || (exports.Rarity = {}));
 var AuctionWordType;
 (function (AuctionWordType) {
@@ -34,14 +34,14 @@ var AuctionWordType;
 })(AuctionWordType = exports.AuctionWordType || (exports.AuctionWordType = {}));
 var WordType;
 (function (WordType) {
-    WordType["match"] = "match";
-    WordType["front"] = "front";
-    WordType["full"] = "full";
+    WordType["Match"] = "match";
+    WordType["Front"] = "front";
+    WordType["Full"] = "full";
 })(WordType = exports.WordType || (exports.WordType = {}));
 var CharactersWordType;
 (function (CharactersWordType) {
-    CharactersWordType["match"] = "match";
-    CharactersWordType["full"] = "full";
+    CharactersWordType["Match"] = "match";
+    CharactersWordType["Full"] = "full";
 })(CharactersWordType = exports.CharactersWordType || (exports.CharactersWordType = {}));
 var BaseUri;
 (function (BaseUri) {

@@ -10,11 +10,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var config_1 = __importDefault(require("./config"));
+const config_1 = __importDefault(require("./config"));
 exports.Config = config_1.default;
-var query_1 = __importDefault(require("./query"));
+const query_1 = __importDefault(require("./query"));
 exports.Query = query_1.default;
-var Params = __importStar(require("./params"));
+const Params = __importStar(require("./params"));
 exports.Params = Params;
-var Static = __importStar(require("./static"));
+const Static = __importStar(require("./static"));
 exports.Static = Static;

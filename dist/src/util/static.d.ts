@@ -1,25 +1,25 @@
 export declare enum Server {
-    cain = "cain",
-    diregie = "diregie",
-    siroco = "siroco",
-    prey = "prey",
-    casillas = "casillas",
-    hilder = "hilder",
-    anton = "anton",
-    bakal = "bakal"
+    Cain = "cain",
+    Diregie = "diregie",
+    Siroco = "siroco",
+    Prey = "prey",
+    Casillas = "casillas",
+    Hilder = "hilder",
+    Anton = "anton",
+    Bakal = "bakal"
 }
 export declare enum Sort {
     Asc = "asc",
     Desc = "desc"
 }
 export declare enum Rarity {
-    common = "\uCEE4\uBA3C",
-    uncommon = "\uC5B8\uCEE4\uBA3C",
-    rare = "\uB808\uC5B4",
-    unique = "\uC720\uB2C8\uD06C",
-    eqic = "\uC5D0\uD53D",
-    chronicle = "\uD06C\uB85C\uB2C8\uD074",
-    legendary = "\uB808\uC804\uB354\uB9AC"
+    Common = "\uCEE4\uBA3C",
+    Uncommon = "\uC5B8\uCEE4\uBA3C",
+    Rare = "\uB808\uC5B4",
+    Unique = "\uC720\uB2C8\uD06C",
+    Eqic = "\uC5D0\uD53D",
+    Chronicle = "\uD06C\uB85C\uB2C8\uD074",
+    Legendary = "\uB808\uC804\uB354\uB9AC"
 }
 export declare enum AuctionWordType {
     Match = "match",
@@ -27,13 +27,13 @@ export declare enum AuctionWordType {
     Full = "full"
 }
 export declare enum WordType {
-    match = "match",
-    front = "front",
-    full = "full"
+    Match = "match",
+    Front = "front",
+    Full = "full"
 }
 export declare enum CharactersWordType {
-    match = "match",
-    full = "full"
+    Match = "match",
+    Full = "full"
 }
 export declare enum BaseUri {
     Servers = "df/servers",

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var defaultConfig = {
+let defaultConfig = {
     key: "",
     hideOnErrorApiKey: true,
     hidekeyText: "{HIDEKEY}",

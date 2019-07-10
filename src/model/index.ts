@@ -5,38 +5,38 @@ import * as SetItem from "./setitem";
 export { Char, Item, SetItem };
 
 export type DnfErrorResponse = {
-  url: string;
-  status: number;
-  statusText: string;
-  code: string;
-  message: string;
+   url: string;
+   status: number;
+   statusText: string;
+   code: string;
+   message: string;
 };
 export type DnfResponse<T> = {
-  data: T;
-  error?: DnfErrorResponse;
+   data?: T;
+   error?: DnfErrorResponse;
 };
 
 export type Auction = {
-  auctionNo: number;
-  regDate: Date;
-  expireDate: Date;
-  itemId: string;
-  itemName: string;
-  itemAvailableLevel: number;
-  itemRarity: string;
-  itemType: string;
-  itemTypeDetail: string;
-  refine: number;
-  reinforce: number;
-  amplificationName: string;
-  count: number;
-  price: number;
-  currentPrice: number;
-  unitPrice: number;
-  averagePrice: number;
+   auctionNo: number;
+   regDate: Date;
+   expireDate: Date;
+   itemId: string;
+   itemName: string;
+   itemAvailableLevel: number;
+   itemRarity: string;
+   itemType: string;
+   itemTypeDetail: string;
+   refine: number;
+   reinforce: number;
+   amplificationName: string;
+   count: number;
+   price: number;
+   currentPrice: number;
+   unitPrice: number;
+   averagePrice: number;
 };
 
 export type Server = {
-  serverId: string;
-  serverName: string;
+   serverId: string;
+   serverName: string;
 };

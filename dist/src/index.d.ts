@@ -11,4 +11,4 @@ export default class DnfApi {
 }
 declare const ServerNames: typeof Util.Static.Server;
 declare const RarityNames: typeof Util.Static.Rarity;
-export { Request as Api, Config, Static, ServerNames, RarityNames, Query, Params, Model };
+export { Request as Api, Request, Config, Static, ServerNames, RarityNames, Query, Params, Model };

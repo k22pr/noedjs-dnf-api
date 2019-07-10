@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var util_1 = require("../util");
+const util_1 = require("../util");
 /**
  * 서버 이름과 캐릭터 닉네임을 입력하여 해당 캐릭터를 검색합니다.
  *
@@ -8,12 +8,11 @@ var util_1 = require("../util");
  * @param {string} [characterName=""] 검색할 캐릭터의 이름입니다.
  * @param {object} [params={}] 선택적 요청변수의 Object입니다.
  */
-exports.characterName = function (serverId, characterName, params) {
-    if (params === void 0) { params = {}; }
+exports.characterName = (serverId, characterName, params = {}) => {
     if (params === undefined)
         params = {};
     params.characterName = characterName;
-    var opt = {
+    let opt = {
         base: util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters"),
         params: params,
     };
@@ -25,8 +24,8 @@ exports.characterName = function (serverId, characterName, params) {
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-exports.characterId = function (serverId, characterId) {
-    var opt = {
+exports.characterId = (serverId, characterId) => {
+    let opt = {
         base: util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId),
     };
     return util_1.Query.Request(opt);
@@ -38,9 +37,8 @@ exports.characterId = function (serverId, characterId) {
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-exports.timeline = function (serverId, characterId, params) {
-    if (params === void 0) { params = {}; }
-    var opt = {
+exports.timeline = (serverId, characterId, params = {}) => {
+    let opt = {
         base: util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "timeline"),
         params: params,
     };
@@ -52,8 +50,8 @@ exports.timeline = function (serverId, characterId, params) {
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-exports.status = function (serverId, characterId) {
-    var opt = {
+exports.status = (serverId, characterId) => {
+    let opt = {
         base: util_1.Query.UriBuilder(util_1.Static.BaseUri.Servers, serverId, "characters", characterId, "status"),
     };
     return util_1.Query.Request(opt);
