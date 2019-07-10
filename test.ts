@@ -3,7 +3,7 @@ import consola from "consola";
 import * as dnf from "./src/index";
 import * as Util from "./src/util";
 
-dnf.Config.key = "CQgSJfvNanTZ8Dv0YQlLO8uBzTnomAag";
+dnf.Config.key = "66dmPNRfGfl6875tBlhUwHfPLjOpVAk6";
 
 // (async () => {
 //   let { error, data } = await dnf.Api.Server.List();

@@ -72,23 +72,13 @@ import dnfApi from "dnf-api";
 //or
 var dnfApi = require("dnf-api");
 
-dnfApi.setOptions({ key: "YOUR API KEY" });
-//or
-dnfApi.setOptions({
-  //자신의 API키
-  key: "YOUR API KEY",
-  //respone오류 에서 자신의 API KEY갑을 숨겨서 표시합니다.
-  hideOnErrorApiKey: true,
-  hidekeyText: "{HIDEKEY}",
-  //요청후 기다리는 최대 시간입니다 (ms)
-  axiosTimeout: 5000,
+//required
+dnf.Config.key = "YOUR API KEY";
 
-  //응답에 대한 정보를 JSON형태로 받습니다.
-  returnJSON: false,
-
-  //응답내용을 상세하게 출력하도록 변경합니다.
-  responeHeader: false,
-});
+//optional
+dnf.Config.hideOnErrorApiKey = true;
+dnf.Config.hidekeyText = { HIDEKEY };
+dnf.Config.axiosTimeout = 5000;
 
 //아래에 소스코드를 작성합니다.
 ```
