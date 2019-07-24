@@ -18,6 +18,13 @@ export default class Request {
    public static UriBuilder(...args: any[]): string {
       return args.join("/");
    }
+   public static queryBuilder(query: any): string {
+      let qString: string[] = [];
+      for (let key in query) {
+         qString.push(`${key}:${query[key]},`);
+      }
+      return qString.join(',');
+   }
 
    /**
     *  던전앤파이터 API 서버에 응답을 요청하는 함수 입니다.
@@ -29,13 +36,16 @@ export default class Request {
    public static async Request<T>(opt: any = {}, method: string = "GET"): Promise<Model.DnfResponse<T>> {
       if (!Util.Config.key || Util.Config.key == "") {
          consola.error("Please change to your api key. ");
-         // return null;
-         // return console.error("\x1b[31mPlease change to your api key. \n", "\x1b[33min setConfigs({key:YOURKEY})\x1b[0m");
       }
 
       if (opt.params == undefined) opt.params = {};
+      if (opt.params.q) opt.params.q = this.queryBuilder(opt.params.q);
+
       opt.params.apikey = Util.Config.key;
       opt.url = `${opt.base}?${querystring.stringify(opt.params)}`;
+
+      if (Util.Config.showURL) console.log(showUrl(opt.url));
+
 
       let responseData: Model.DnfResponse<T>;
       switch (method.toLowerCase()) {
