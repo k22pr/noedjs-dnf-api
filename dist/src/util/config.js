@@ -7,5 +7,6 @@ let defaultConfig = {
     axiosTimeout: 5000,
     returnJSON: false,
     responeHeader: false,
+    showURL: false
 };
 exports.default = defaultConfig;

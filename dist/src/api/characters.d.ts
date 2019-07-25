@@ -29,4 +29,4 @@ export declare const timeline: (serverId: Static.Server, characterId: string, pa
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export declare const status: (serverId: Static.Server, characterId: string) => Promise<Model.DnfResponse<{}>>;
+export declare const status: (serverId: Static.Server, characterId: string) => Promise<Model.DnfResponse<unknown>>;

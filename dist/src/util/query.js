@@ -34,6 +34,13 @@ class Request {
     static UriBuilder(...args) {
         return args.join("/");
     }
+    static queryBuilder(query) {
+        let qString = [];
+        for (let key in query) {
+            qString.push(`${key}:${query[key]},`);
+        }
+        return qString.join(',');
+    }
     /**
      *  던전앤파이터 API 서버에 응답을 요청하는 함수 입니다.
      * 해당 함수를 직접 호출 하는것을 권장하지 않습니다.
@@ -45,13 +52,15 @@ class Request {
         return __awaiter(this, void 0, void 0, function* () {
             if (!Util.Config.key || Util.Config.key == "") {
                 consola_1.default.error("Please change to your api key. ");
-                // return null;
-                // return console.error("\x1b[31mPlease change to your api key. \n", "\x1b[33min setConfigs({key:YOURKEY})\x1b[0m");
             }
             if (opt.params == undefined)
                 opt.params = {};
+            if (opt.params.q)
+                opt.params.q = this.queryBuilder(opt.params.q);
             opt.params.apikey = Util.Config.key;
             opt.url = `${opt.base}?${querystring_1.default.stringify(opt.params)}`;
+            if (Util.Config.showURL)
+                console.log(showUrl(opt.url));
             let responseData;
             switch (method.toLowerCase()) {
                 case "post":
