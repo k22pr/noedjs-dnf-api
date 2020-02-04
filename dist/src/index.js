@@ -26,9 +26,9 @@ const Query = __importStar(require("./util/query"));
 exports.Query = Query;
 class DnfApi {
 }
+exports.default = DnfApi;
 DnfApi.Util = Util;
 DnfApi.Request = Request;
-exports.default = DnfApi;
 const ServerNames = Static.Server;
 exports.ServerNames = ServerNames;
 const RarityNames = Static.Rarity;

@@ -1,4 +1,5 @@
-import consola from "consola";
+// import consola from "consola";
+const consola = require("consola");
 
 import * as dnf from "./src/index";
 import * as Util from "./src/util";

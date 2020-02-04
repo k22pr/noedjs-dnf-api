@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -15,7 +16,7 @@ const util_1 = require("../util");
  * @param {string} itemName 검색할 아이템의 명칭
  * @param {string} params 선택적 요청변수의 Object입니다.
  */
-exports.item = (itemName, params = {}) => __awaiter(this, void 0, void 0, function* () {
+exports.item = (itemName, params = {}) => __awaiter(void 0, void 0, void 0, function* () {
     //   if (params === undefined) params = {};
     params.itemName = itemName;
     //   if (query) params.q = Query.makeItemQuery(query);

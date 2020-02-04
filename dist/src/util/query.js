@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -21,7 +22,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const querystring_1 = __importDefault(require("querystring"));
 // import urlencode from "urlencode";
-const consola_1 = __importDefault(require("consola"));
+// import consola from "consola";
+const consola = require("consola");
 const Util = __importStar(require("./"));
 const sender = axios_1.default.create({
     baseURL: "https://api.neople.co.kr",
@@ -39,7 +41,7 @@ class Request {
         for (let key in query) {
             qString.push(`${key}:${query[key]},`);
         }
-        return qString.join(',');
+        return qString.join(",");
     }
     /**
      *  던전앤파이터 API 서버에 응답을 요청하는 함수 입니다.
@@ -51,7 +53,7 @@ class Request {
     static Request(opt = {}, method = "GET") {
         return __awaiter(this, void 0, void 0, function* () {
             if (!Util.Config.key || Util.Config.key == "") {
-                consola_1.default.error("Please change to your api key. ");
+                consola.error("Please change to your api key. ");
             }
             if (opt.params == undefined)
                 opt.params = {};
@@ -77,7 +79,7 @@ class Request {
                         .catch((err) => {
                         let error = {
                             url: showUrl(opt.url),
-                            status: err.status,
+                            status: err.status || 0,
                             statusText: err.response.statusText,
                             code: err.response.data.error.code,
                             message: err.response.data.error.message,
@@ -100,7 +102,7 @@ class Request {
                         .catch((err) => {
                         let error = {
                             url: showUrl(opt.url),
-                            status: err.response.status,
+                            status: err.response.status || 0,
                             statusText: err.response.statusText,
                             code: err.response.data.error.code,
                             message: err.response.data.error.message,
