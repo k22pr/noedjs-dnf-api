@@ -1,6 +1,3 @@
-// import consola from "consola";
-const consola = require("consola");
-
 import * as dnf from "./src/index";
 import * as Util from "./src/util";
 
@@ -14,12 +11,17 @@ dnf.Config.key = "66dmPNRfGfl6875tBlhUwHfPLjOpVAk6";
 //   }
 // })();
 
+// (async () => {
+//   let { error, data } = await dnf.Api.Characters.characterName(dnf.ServerNames.Anton, "쑤남");
+//   if (error) console.error(error);
+//   else {
+//     console.info(data);
+//   }
+// })();
+
 (async () => {
-  let { error, data } = await dnf.Api.Characters.characterName(dnf.ServerNames.Anton, "쑤남");
-  if (error) console.error(error);
-  else {
-    console.info(data);
-  }
+  let { error, data } = await dnf.Api.Action.itemId("37d04be64e33cccb04e96edd5d7c648a");
+  console.log(data);
 })();
 
 // (async () => {

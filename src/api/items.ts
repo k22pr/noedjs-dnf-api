@@ -25,7 +25,7 @@ export const item = async (itemName: string, params: Params.IItem = {}): Promise
  */
 export const detail = (itemId: string): Promise<Model.DnfResponse<Model.Item.Detail>> => {
   let opt = {
-    base: Query.UriBuilder(Static.BaseUri.Item, itemId),
+    base: Query.UriBuilder(Static.BaseUri.Item, itemId),  
   };
   return Query.Request<Model.Item.Detail>(opt);
 };
