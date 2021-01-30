@@ -3,6 +3,7 @@
 yarn.lock
 test*
 
+test.ts
 
 # Logs
 logs
