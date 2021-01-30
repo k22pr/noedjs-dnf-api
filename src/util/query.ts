@@ -59,14 +59,18 @@ export default class Request {
             return { data };
           })
           .catch((err: any) => {
-            let error: Model.DnfErrorResponse = {
-              url: showUrl(opt.url),
-              status: err.status || 0,
-              statusText: err.response.statusText,
-              code: err.response.data.error.code,
-              message: err.response.data.error.message,
-            };
-            return { error };
+            if (err.response) {
+              let error: Model.DnfErrorResponse = {
+                url: showUrl(opt.url),
+                status: err.response.status || 0,
+                statusText: err.response.statusText,
+                code: err.response.data.error.code,
+                message: err.response.data.error.message,
+              };
+              return { error };
+            } else {
+              return { err: err };
+            }
           });
         break;
       case "get":
@@ -80,14 +84,18 @@ export default class Request {
             return { data };
           })
           .catch((err: any) => {
-            let error: Model.DnfErrorResponse = {
-              url: showUrl(opt.url),
-              status: err.response.status || 0,
-              statusText: err.response.statusText,
-              code: err.response.data.error.code,
-              message: err.response.data.error.message,
-            };
-            return { error };
+            if (err.response) {
+              let error: Model.DnfErrorResponse = {
+                url: showUrl(opt.url),
+                status: err.response.status || 0,
+                statusText: err.response.statusText,
+                code: err.response.data.error.code,
+                message: err.response.data.error.message,
+              };
+              return { error };
+            } else {
+              return { err: err };
+            }
           });
         break;
     }

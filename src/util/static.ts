@@ -39,6 +39,7 @@ export enum CharactersWordType {
 export enum BaseUri {
   Servers = "df/servers",
   Auction = "df/auction",
+  AuctionSold = "df/auction-sold",
   Item = "df/items",
   SetItem = "df/setitems",
 }

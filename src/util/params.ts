@@ -41,6 +41,14 @@ export interface IAuctionQuery {
   maxRefine?: number;
 }
 
+export interface IActionSoldOption {
+  limit?: number;
+  wordType?: Static.AuctionWordType;
+  wordShort?: boolean;
+  itemId?: string;
+  itemName?: string;
+}
+
 export interface IItem {
   limit?: number;
   itemName?: string;

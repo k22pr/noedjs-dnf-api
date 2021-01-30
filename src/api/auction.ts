@@ -41,3 +41,21 @@ export const no = (auctionNo: number): Promise<Model.DnfResponse<Model.Auction>>
   };
   return Query.Request<Model.Auction>(opt);
 };
+
+export const auctionSoldName = (itemName: string, params: Params.IActionSoldOption = {}) => {
+  params.itemName = itemName;
+  let opt = {
+    base: Query.UriBuilder(Static.BaseUri.AuctionSold),
+    params,
+  };
+  return Query.Request<Model.AuctionSolid>(opt);
+};
+
+export const auctionSoldId = (itemId: string, params: Params.IActionSoldOption = {}) => {
+  params.itemId = itemId;
+  let opt = {
+    base: Query.UriBuilder(Static.BaseUri.AuctionSold),
+    params,
+  };
+  return Query.Request<Model.AuctionSolid>(opt);
+};
