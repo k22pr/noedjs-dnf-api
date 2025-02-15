@@ -1,5 +1,5 @@
 export interface IConfig {
-  key: string;
+  key: string | undefined;
   hideOnErrorApiKey: boolean;
   hideKeyText: string;
   timeout: number;

@@ -8,17 +8,19 @@
     "@types/bun": "1.1.6",
     "axios": "^0.18.1",
     "consola": "^2.15.3",
-    "querystring": "^0.2.1",
+    "prototype-helper": "^0.4.2",
+    "query-string": "^9.1.1",
     "undici": "^7.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "dotenv": "^16.4.7",
     "typescript": "5.5.3"
   },
   "scripts": {
     "dev": "bun --watch src/index.ts",
     "build": "bun build src/index.ts --minify --target=bun --outfile dist/index.js",
-    "test:dev": "nodemon --exec ts-node ./test.ts",
+    "test:dev": "bun --watch test.ts",
     "test": "jest"
   },
   "repository": {

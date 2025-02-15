@@ -1,31 +1,39 @@
-import querystring from "querystring";
 import consola from "consola";
-// import axios, { AxiosResponse } from "axios";
+import querystring from "query-string";
 import { Client, request } from "undici";
-import { BaseUri } from "./static";
 
 import type * as Model from "../model";
 import * as Util from "./";
 
-const client = new Client("https://api.neople.co.kr", {
-  connectTimeout: Util.Config.timeout,
-  allowH2: true,
-});
+const apiUrl = new URL("https://api.neople.co.kr");
+// const client = new Client("https://api.neople.co.kr", {
+//   connectTimeout: Util.Config.timeout,
+//   // allowH2: true,
+// });
 
-const sender = async <T>(
-  path: string,
-  method: "GET" | "POST",
-  query: Record<string, any>,
-) => {
-  const res = await client.request<Model.DnfResponse<T>>({
-    path,
+const sender = async <T>(path: string, method: "GET" | "POST", query: any) => {
+  // const res = await client.request<Model.DnfResponse<T>>({
+  // const res = await client.request<T>({
+  //   path,
+  //   method,
+  //   query,
+  // });
+  apiUrl.pathname = path;
+  apiUrl.search = querystring.stringify(query);
+
+  console.log("pathname", apiUrl.href);
+
+  const res = await request<Model.DnfResponse<T>>(apiUrl.href, {
     method,
-    query,
   });
   return res;
 };
 const showUrl = (url: string): string => {
-  return url.replace(Util.Config.key, Util.Config.hideKeyText);
+  if (Util.Config.key) {
+    return url.replace(Util.Config.key, Util.Config.hideKeyText);
+  } else {
+    return url;
+  }
 };
 
 // biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
@@ -33,7 +41,7 @@ export default class Request {
   public static UriBuilder(...args: any[]): string {
     return args.join("/");
   }
-  public static queryBuilder(query: any): string {
+  public static QueryBuilder(query: any): string {
     const qString: string[] = [];
     for (const key in query) {
       qString.push(`${key}:${query[key]},`);
@@ -57,14 +65,21 @@ export default class Request {
     }
 
     if (opt.params === undefined) opt.params = {};
-    if (opt.params.q) opt.params.q = Request.queryBuilder(opt.params.q);
+    if (opt.params.q) opt.params.q = Request.QueryBuilder(opt.params.q);
 
     opt.params.apikey = Util.Config.key;
-    opt.url = `${opt.base}?${querystring.stringify(opt.params)}`;
 
-    if (Util.Config.showURL) console.log(showUrl(opt.url));
+    if (Util.Config.showURL)
+      consola.log(
+        "request url:",
+        showUrl(`${opt.base}?${querystring.stringify(opt.params)}`),
+      );
 
-    const res = await sender<T>(opt.url, method, opt.params.q);
+    const res = await sender<Model.DnfResponse<T>>(
+      opt.base,
+      method,
+      opt.params,
+    );
     if (res.statusCode !== 200) {
       const resBody = (await res.body.json()) as Model.DnfResponse<T>;
       const error: Model.DnfErrorResponse = {
@@ -79,56 +94,6 @@ export default class Request {
       const resBody = (await res.body.json()) as Model.DnfResponse<T>;
       return { data: resBody.data };
     }
-
-    // switch (method.toUpperCase()) {
-    //   case "POST":
-    // responseData = await sender
-    //   .post(opt.url)
-    //   .then((res: any) => {
-    //     let data: T;
-    //     if (res.data.rows) data = res.data.rows;
-    //     else data = res.data;
-    //     return { data };
-    //   })
-    //   .catch((err: any) => {
-    //     if (err.response) {
-    //       const error: Model.DnfErrorResponse = {
-    //         url: showUrl(opt.url),
-    //         status: err.response.status || 0,
-    //         statusText: err.response.statusText,
-    //         code: err.response.data.error.code,
-    //         message: err.response.data.error.message,
-    //       };
-    //       return { error };
-    //     }
-    //     return { err: err };
-    //   });
-    // break;
-    //   // case "GET":
-    //   default:
-    //     responseData = await sender
-    //       .get(opt.url)
-    //       .then((res: any) => {
-    //         let data: T;
-    //         if (res.data.rows) data = res.data.rows;
-    //         else data = res.data;
-    //         return { data };
-    //       })
-    //       .catch((err: any) => {
-    //         if (err.response) {
-    //           const error: Model.DnfErrorResponse = {
-    //             url: showUrl(opt.url),
-    //             status: err.response.status || 0,
-    //             statusText: err.response.statusText,
-    //             code: err.response.data.error.code,
-    //             message: err.response.data.error.message,
-    //           };
-    //           return { error };
-    //         }
-    //         return { err: err };
-    //       });
-    //     break;
-    // }
   }
 
   public static makeItemQuery(query: any) {
