@@ -21,8 +21,6 @@ const sender = async <T>(path: string, method: "GET" | "POST", query: any) => {
   apiUrl.pathname = path;
   apiUrl.search = querystring.stringify(query);
 
-  console.log("pathname", apiUrl.href);
-
   const res = await request<Model.DnfResponse<T>>(apiUrl.href, {
     method,
   });
@@ -92,7 +90,7 @@ export default class Request {
       return { error };
     } else {
       const resBody = (await res.body.json()) as Model.DnfResponse<T>;
-      return { data: resBody.data };
+      return resBody;
     }
   }
 
