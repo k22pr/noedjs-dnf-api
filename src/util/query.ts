@@ -1,11 +1,12 @@
-import axios, { AxiosResponse } from "axios";
+// import axios, { AxiosResponse } from "axios";
+import { request } from 'undici'
 import querystring from "querystring";
 // import urlencode from "urlencode";
 // import consola from "consola";
 const consola = require("consola");
 
 import * as Util from "./";
-import * as Model from "../model";
+import * as Model from "../model"; 
 
 const sender = axios.create({
   baseURL: "https://api.neople.co.kr",

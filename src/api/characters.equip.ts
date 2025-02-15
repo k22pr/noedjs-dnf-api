@@ -1,5 +1,5 @@
 import { Query, Static } from "../util";
-
+  
 /**
  * 해당 캐릭터가 장착한 장비 정보를 받아옵니다.
  *

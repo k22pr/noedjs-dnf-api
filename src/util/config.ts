@@ -1,19 +1,19 @@
 export interface IConfig {
    key: string;
    hideOnErrorApiKey: boolean;
-   hidekeyText: string;
-   axiosTimeout: number;
+   hideKeyText: string;
+   timeout: number;
    returnJSON: boolean;
-   responeHeader: boolean;
+   responseHeader: boolean;
    showURL: boolean
 }
 let defaultConfig: IConfig = {
    key: "",
    hideOnErrorApiKey: true,
-   hidekeyText: "{HIDEKEY}",
-   axiosTimeout: 5000,
+   hideKeyText: "{HIDE_KEY}",
+   timeout: 5000,
    returnJSON: false,
-   responeHeader: false,
+   responseHeader: false,
    showURL: false
 };
 export default defaultConfig;

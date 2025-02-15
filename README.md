@@ -78,7 +78,7 @@ dnf.Config.key = "YOUR API KEY";
 //optional
 dnf.Config.hideOnErrorApiKey = true;
 dnf.Config.hidekeyText = { HIDEKEY };
-dnf.Config.axiosTimeout = 5000;
+dnf.Config.timeout = 5000;
 
 //아래에 소스코드를 작성합니다.
 ```
