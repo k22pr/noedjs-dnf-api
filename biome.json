@@ -15,7 +15,16 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["node_modules", "dist"]
+    "ignore": ["node_modules", "dist"],
+    "rules": {
+      "suspicious": {
+        "noImplicitAnyLet": "warn",
+        "noExplicitAny": "off"
+      },
+      "style": {
+        "noUselessElse": "off"
+      }
+    }
   },
   "javascript": {
     "parser": {

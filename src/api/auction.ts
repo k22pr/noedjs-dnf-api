@@ -1,5 +1,5 @@
-import { Query, Static, Params } from "../util";
-import * as Model from "../model";
+import type * as Model from "../model";
+import { type Params, Query, Static } from "../util";
 
 /**
  * 경매장에 등록된 아이템을 "아이템 이름"을 기준으로 받아옵니다
@@ -7,9 +7,12 @@ import * as Model from "../model";
  * @param {string} itemName 검색할 아이템의 이름입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const itemName = (itemName: string, params: Params.IAuction = {}): Promise<Model.DnfResponse<Model.Auction[]>> => {
+export const itemName = (
+  itemName: string,
+  params: Params.IAuction = {},
+): Promise<Model.DnfResponse<Model.Auction[]>> => {
   params.itemName = itemName;
-  let opt = {
+  const opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction),
     params,
   };
@@ -22,9 +25,12 @@ export const itemName = (itemName: string, params: Params.IAuction = {}): Promis
  * @param {string} itemID 검색할 아이템의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const itemId = (itemId: string, params: Params.IAuction = {}): Promise<Model.DnfResponse<Model.Auction[]>> => {
+export const itemId = (
+  itemId: string,
+  params: Params.IAuction = {},
+): Promise<Model.DnfResponse<Model.Auction[]>> => {
   params.itemId = itemId;
-  let opt = {
+  const opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction),
     params: params,
   };
@@ -35,25 +41,33 @@ export const itemId = (itemId: string, params: Params.IAuction = {}): Promise<Mo
  *
  * @param {Number} auctionNo 검색할 경매장 번호입니다.
  */
-export const no = (auctionNo: number): Promise<Model.DnfResponse<Model.Auction>> => {
-  let opt = {
+export const no = (
+  auctionNo: number,
+): Promise<Model.DnfResponse<Model.Auction>> => {
+  const opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction, auctionNo),
   };
   return Query.Request<Model.Auction>(opt);
 };
 
-export const auctionSoldName = (itemName: string, params: Params.IActionSoldOption = {}) => {
+export const auctionSoldName = (
+  itemName: string,
+  params: Params.IActionSoldOption = {},
+) => {
   params.itemName = itemName;
-  let opt = {
+  const opt = {
     base: Query.UriBuilder(Static.BaseUri.AuctionSold),
     params,
   };
   return Query.Request<Model.AuctionSolid>(opt);
 };
 
-export const auctionSoldId = (itemId: string, params: Params.IActionSoldOption = {}) => {
+export const auctionSoldId = (
+  itemId: string,
+  params: Params.IActionSoldOption = {},
+) => {
   params.itemId = itemId;
-  let opt = {
+  const opt = {
     base: Query.UriBuilder(Static.BaseUri.AuctionSold),
     params,
   };

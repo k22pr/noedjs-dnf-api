@@ -1,7 +1,7 @@
-import * as Static from "./static";
-export interface QueryOptions {
+import type * as Static from "./static";
+export interface QueryOptions<T = any> {
   base: string;
-  params?: any;
+  params?: T;
 }
 export interface ICharParams {
   characterName?: string;

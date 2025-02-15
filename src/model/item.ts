@@ -1,4 +1,4 @@
-import * as Static from "../util/static";
+import type * as Static from "../util/static";
 
 export type Item = {
   itemId: string;

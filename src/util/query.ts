@@ -1,28 +1,41 @@
-// import axios, { AxiosResponse } from "axios";
-import { request } from 'undici'
 import querystring from "querystring";
-// import urlencode from "urlencode";
-// import consola from "consola";
-const consola = require("consola");
+import consola from "consola";
+// import axios, { AxiosResponse } from "axios";
+import { Client, request } from "undici";
+import { BaseUri } from "./static";
 
+import type * as Model from "../model";
 import * as Util from "./";
-import * as Model from "../model"; 
 
-const sender = axios.create({
-  baseURL: "https://api.neople.co.kr",
-  timeout: Util.Config.axiosTimeout,
+const client = new Client("https://api.neople.co.kr", {
+  connectTimeout: Util.Config.timeout,
+  allowH2: true,
 });
+
+const sender = async <T>(
+  path: string,
+  method: "GET" | "POST",
+  query: Record<string, any>,
+) => {
+  const res = await client.request<Model.DnfResponse<T>>({
+    path,
+    method,
+    query,
+  });
+  return res;
+};
 const showUrl = (url: string): string => {
-  return url.replace(Util.Config.key, Util.Config.hidekeyText);
+  return url.replace(Util.Config.key, Util.Config.hideKeyText);
 };
 
+// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 export default class Request {
   public static UriBuilder(...args: any[]): string {
     return args.join("/");
   }
   public static queryBuilder(query: any): string {
-    let qString: string[] = [];
-    for (let key in query) {
+    const qString: string[] = [];
+    for (const key in query) {
       qString.push(`${key}:${query[key]},`);
     }
     return qString.join(",");
@@ -35,72 +48,87 @@ export default class Request {
    * @param {object} opt (요청을 보낼 Parameter값)
    * @returns
    */
-  public static async Request<T>(opt: any = {}, method: string = "GET"): Promise<Model.DnfResponse<T>> {
-    if (!Util.Config.key || Util.Config.key == "") {
+  public static async Request<T>(
+    opt: any = {},
+    method: "GET" | "POST" = "GET",
+  ): Promise<Model.DnfResponse<T>> {
+    if (!Util.Config.key || Util.Config.key === "") {
       consola.error("Please change to your api key. ");
     }
 
-    if (opt.params == undefined) opt.params = {};
-    if (opt.params.q) opt.params.q = this.queryBuilder(opt.params.q);
+    if (opt.params === undefined) opt.params = {};
+    if (opt.params.q) opt.params.q = Request.queryBuilder(opt.params.q);
 
     opt.params.apikey = Util.Config.key;
     opt.url = `${opt.base}?${querystring.stringify(opt.params)}`;
 
     if (Util.Config.showURL) console.log(showUrl(opt.url));
 
-    let responseData: Model.DnfResponse<T>;
-    switch (method.toLowerCase()) {
-      case "post":
-        responseData = await sender
-          .post(opt.url)
-          .then((res: any) => {
-            let data: T;
-            if (res.data.rows) data = res.data.rows;
-            else data = res.data;
-            return { data };
-          })
-          .catch((err: any) => {
-            if (err.response) {
-              let error: Model.DnfErrorResponse = {
-                url: showUrl(opt.url),
-                status: err.response.status || 0,
-                statusText: err.response.statusText,
-                code: err.response.data.error.code,
-                message: err.response.data.error.message,
-              };
-              return { error };
-            } else {
-              return { err: err };
-            }
-          });
-        break;
-      case "get":
-      default:
-        responseData = await sender
-          .get(opt.url)
-          .then((res: any) => {
-            let data: T;
-            if (res.data.rows) data = res.data.rows;
-            else data = res.data;
-            return { data };
-          })
-          .catch((err: any) => {
-            if (err.response) {
-              let error: Model.DnfErrorResponse = {
-                url: showUrl(opt.url),
-                status: err.response.status || 0,
-                statusText: err.response.statusText,
-                code: err.response.data.error.code,
-                message: err.response.data.error.message,
-              };
-              return { error };
-            } else {
-              return { err: err };
-            }
-          });
-        break;
+    const res = await sender<T>(opt.url, method, opt.params.q);
+    if (res.statusCode !== 200) {
+      const resBody = (await res.body.json()) as Model.DnfResponse<T>;
+      const error: Model.DnfErrorResponse = {
+        url: showUrl(opt.url),
+        status: res.statusCode || 0,
+        statusText: "",
+        code: resBody.error?.code || "",
+        message: resBody.error?.message || "",
+      };
+      return { error };
+    } else {
+      const resBody = (await res.body.json()) as Model.DnfResponse<T>;
+      return { data: resBody.data };
     }
-    return responseData;
+
+    // switch (method.toUpperCase()) {
+    //   case "POST":
+    // responseData = await sender
+    //   .post(opt.url)
+    //   .then((res: any) => {
+    //     let data: T;
+    //     if (res.data.rows) data = res.data.rows;
+    //     else data = res.data;
+    //     return { data };
+    //   })
+    //   .catch((err: any) => {
+    //     if (err.response) {
+    //       const error: Model.DnfErrorResponse = {
+    //         url: showUrl(opt.url),
+    //         status: err.response.status || 0,
+    //         statusText: err.response.statusText,
+    //         code: err.response.data.error.code,
+    //         message: err.response.data.error.message,
+    //       };
+    //       return { error };
+    //     }
+    //     return { err: err };
+    //   });
+    // break;
+    //   // case "GET":
+    //   default:
+    //     responseData = await sender
+    //       .get(opt.url)
+    //       .then((res: any) => {
+    //         let data: T;
+    //         if (res.data.rows) data = res.data.rows;
+    //         else data = res.data;
+    //         return { data };
+    //       })
+    //       .catch((err: any) => {
+    //         if (err.response) {
+    //           const error: Model.DnfErrorResponse = {
+    //             url: showUrl(opt.url),
+    //             status: err.response.status || 0,
+    //             statusText: err.response.statusText,
+    //             code: err.response.data.error.code,
+    //             message: err.response.data.error.message,
+    //           };
+    //           return { error };
+    //         }
+    //         return { err: err };
+    //       });
+    //     break;
+    // }
   }
 
   public static makeItemQuery(query: any) {

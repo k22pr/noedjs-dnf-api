@@ -9,8 +9,7 @@
     "axios": "^0.18.1",
     "consola": "^2.15.3",
     "querystring": "^0.2.1",
-    "undici": "^7.3.0",
-    "urlencode": "^1.1.0"
+    "undici": "^7.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -26,9 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/k22pr/dnf-api.git"
   },
-  "keywords": [
-    "dnf"
-  ],
+  "keywords": ["dnf"],
   "author": "서버지기",
   "license": "MIT",
   "bugs": {

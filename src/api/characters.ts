@@ -1,5 +1,5 @@
-import { Query, Static, Params } from "../util";
-import * as Model from "../model";
+import type * as Model from "../model";
+import { type Params, Query, Static } from "../util";
 
 /**
  * 서버 이름과 캐릭터 닉네임을 입력하여 해당 캐릭터를 검색합니다.
@@ -8,10 +8,14 @@ import * as Model from "../model";
  * @param {string} [characterName=""] 검색할 캐릭터의 이름입니다.
  * @param {object} [params={}] 선택적 요청변수의 Object입니다.
  */
-export const characterName = (serverId: Static.Server, characterName: string, params: Params.ICharParams = {}): Promise<Model.DnfResponse<Model.Char.Character[]>> => {
-  if (params === undefined) params = {};
+export const characterName = (
+  serverId: Static.Server,
+  characterName: string,
+  params: Params.ICharParams = {},
+): Promise<Model.DnfResponse<Model.Char.Character[]>> => {
+  // if (params === undefined) params = {};
   params.characterName = characterName;
-  let opt = {
+  const opt = {
     base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters"),
     params: params,
   };
@@ -24,9 +28,17 @@ export const characterName = (serverId: Static.Server, characterName: string, pa
  * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const characterId = (serverId: Static.Server, characterId: string): Promise<Model.DnfResponse<Model.Char.Info>> => {
-  let opt = {
-    base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId),
+export const characterId = (
+  serverId: Static.Server,
+  characterId: string,
+): Promise<Model.DnfResponse<Model.Char.Info>> => {
+  const opt = {
+    base: Query.UriBuilder(
+      Static.BaseUri.Servers,
+      serverId,
+      "characters",
+      characterId,
+    ),
   };
   return Query.Request<Model.Char.Info>(opt);
 };
@@ -38,9 +50,19 @@ export const characterId = (serverId: Static.Server, characterId: string): Promi
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const timeline = (serverId: Static.Server, characterId: string, params: Params.ICharParams = {}): Promise<Model.DnfResponse<Model.Char.Timeline>> => {
-  let opt = {
-    base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "timeline"),
+export const timeline = (
+  serverId: Static.Server,
+  characterId: string,
+  params: Params.ICharParams = {},
+): Promise<Model.DnfResponse<Model.Char.Timeline>> => {
+  const opt = {
+    base: Query.UriBuilder(
+      Static.BaseUri.Servers,
+      serverId,
+      "characters",
+      characterId,
+      "timeline",
+    ),
     params: params,
   };
   return Query.Request<Model.Char.Timeline>(opt);
@@ -53,8 +75,14 @@ export const timeline = (serverId: Static.Server, characterId: string, params: P
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
 export const status = (serverId: Static.Server, characterId: string) => {
-  let opt = {
-    base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters", characterId, "status"),
+  const opt = {
+    base: Query.UriBuilder(
+      Static.BaseUri.Servers,
+      serverId,
+      "characters",
+      characterId,
+      "status",
+    ),
   };
   return Query.Request(opt);
 };
