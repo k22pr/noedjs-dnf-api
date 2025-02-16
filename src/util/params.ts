@@ -7,11 +7,14 @@ export interface ICharParams {
   characterName?: string;
   jobId?: string;
   jobGrowId?: string;
+  isAllJobGrow?: boolean;
   wordType?: Static.CharactersWordType;
   limit?: number;
 }
 
 export interface ITimeLine {
+  serverId?: Static.Server;
+  characterId?: string;
   startDate?: Date;
   endDate?: Date;
   limit?: number;

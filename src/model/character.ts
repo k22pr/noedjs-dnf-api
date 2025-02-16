@@ -1,4 +1,7 @@
+import type { Static } from "../util";
+
 export type Character = {
+  serverId: Static.Server;
   characterId: string;
   characterName: string;
   level: number;
@@ -6,9 +9,11 @@ export type Character = {
   jobGrowId: string;
   jobName: string;
   jobGrowName: string;
+  fame: number;
 };
 
 export type Info = {
+  serverId: Static.Server;
   characterId: string;
   characterName: string;
   level: number;
@@ -16,12 +21,14 @@ export type Info = {
   jobGrowId: string;
   jobName: string;
   jobGrowName: string;
+  fame: number;
   adventureName: string;
-  guildId: string;
-  guildName: string;
+  guildId: string | null;
+  guildName: string | null;
 };
 
 export type Timeline = {
+  serverId: Static.Server;
   characterId: string;
   characterName: string;
   level: number;
@@ -38,6 +45,51 @@ export type Timeline = {
       end: Date;
     };
     next: string;
-    rows: any[];
+    rows: TimeLineRow[];
   };
+};
+
+export type TimeLineRow = {
+  code: number;
+  name: string;
+  date: string;
+  data: TimeLineRowData;
+};
+
+export type TimeLineRowData = {
+  itemId: string;
+  itemName: string;
+  itemRarity: Static.Rarity;
+  channelName: string;
+  channelNo: number;
+  dungeonName: string;
+  mistGear: boolean;
+};
+
+export type CharacterStatus = {
+  serverId: Static.Server;
+  characterId: string;
+  characterName: string;
+  level: number;
+  jobId: string;
+  jobGrowId: string;
+  jobName: string;
+  jobGrowName: string;
+  fame: number;
+  adventureName: string;
+  guildId: string | null;
+  guildName: string | null;
+  buff: Buff[];
+  status: NameValue[];
+};
+
+export type Buff = {
+  name: string;
+  level?: number;
+  status: NameValue[];
+};
+
+export type NameValue = {
+  name: string;
+  value: number;
 };

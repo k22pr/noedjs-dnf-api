@@ -12,14 +12,14 @@ export const characterName = (
   serverId: Static.Server,
   characterName: string,
   params: Params.ICharParams = {},
-): Promise<Model.DnfResponse<Model.Char.Character[]>> => {
+) => {
   // if (params === undefined) params = {};
   params.characterName = characterName;
   const opt = {
     base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters"),
     params: params,
   };
-  return Query.Request<Model.Char.Character[]>(opt);
+  return Query.Request<Model.Rows<Model.Char.Character>>(opt);
 };
 
 /**
@@ -53,7 +53,7 @@ export const characterId = (
 export const timeline = (
   serverId: Static.Server,
   characterId: string,
-  params: Params.ICharParams = {},
+  params: Params.ITimeLine = {},
 ): Promise<Model.DnfResponse<Model.Char.Timeline>> => {
   const opt = {
     base: Query.UriBuilder(
@@ -84,5 +84,5 @@ export const status = (serverId: Static.Server, characterId: string) => {
       "status",
     ),
   };
-  return Query.Request(opt);
+  return Query.Request<Model.Char.CharacterStatus>(opt);
 };

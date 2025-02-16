@@ -89,8 +89,10 @@ export default class Request {
       };
       return { error };
     } else {
-      const resBody = (await res.body.json()) as Model.DnfResponse<T>;
-      return resBody;
+      const resBody = (await res.body.json()) as T;
+      return {
+        data: resBody,
+      };
     }
   }
 
