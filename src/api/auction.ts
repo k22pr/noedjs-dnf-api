@@ -7,16 +7,13 @@ import { type Params, Query, Static } from "../util";
  * @param {string} itemName 검색할 아이템의 이름입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const itemName = (
-  itemName: string,
-  params: Params.IAuction = {},
-): Promise<Model.DnfResponse<Model.Auction[]>> => {
+export const itemName = (itemName: string, params: Params.IAuction = {}) => {
   params.itemName = itemName;
   const opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction),
     params,
   };
-  return Query.Request<Model.Auction[]>(opt);
+  return Query.Request<Model.Rows<Model.Auction>>(opt);
 };
 
 /**
@@ -25,25 +22,20 @@ export const itemName = (
  * @param {string} itemID 검색할 아이템의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const itemId = (
-  itemId: string,
-  params: Params.IAuction = {},
-): Promise<Model.DnfResponse<Model.Auction[]>> => {
+export const itemId = (itemId: string, params: Params.IAuction = {}) => {
   params.itemId = itemId;
   const opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction),
     params: params,
   };
-  return Query.Request<Model.Auction[]>(opt);
+  return Query.Request<Model.Rows<Model.Auction>>(opt);
 };
 /**
  * 경매장에 등록된 경매장번호로 받아옵니다.
  *
  * @param {Number} auctionNo 검색할 경매장 번호입니다.
  */
-export const no = (
-  auctionNo: number,
-): Promise<Model.DnfResponse<Model.Auction>> => {
+export const no = (auctionNo: number) => {
   const opt = {
     base: Query.UriBuilder(Static.BaseUri.Auction, auctionNo),
   };
@@ -59,7 +51,7 @@ export const auctionSoldName = (
     base: Query.UriBuilder(Static.BaseUri.AuctionSold),
     params,
   };
-  return Query.Request<Model.AuctionSolid>(opt);
+  return Query.Request<Model.Rows<Model.AuctionSolid>>(opt);
 };
 
 export const auctionSoldId = (
@@ -71,5 +63,5 @@ export const auctionSoldId = (
     base: Query.UriBuilder(Static.BaseUri.AuctionSold),
     params,
   };
-  return Query.Request<Model.AuctionSolid>(opt);
+  return Query.Request<Model.Rows<Model.AuctionSolid>>(opt);
 };

@@ -43,3 +43,9 @@ export enum BaseUri {
   Item = "df/items",
   SetItem = "df/setitems",
 }
+
+export enum reinforceType {
+  reinforce = "강화",
+  minRefine = "증폭",
+  modify = "개조",
+}

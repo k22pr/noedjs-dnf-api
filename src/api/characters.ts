@@ -63,7 +63,10 @@ export const timeline = (
       characterId,
       "timeline",
     ),
-    params: params,
+    params: {
+      ...params,
+      ...(params.code ? { code: Query.QueryBuilder(params.code) } : {}),
+    },
   };
   return Query.Request<Model.Char.Timeline>(opt);
 };

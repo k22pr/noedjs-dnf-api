@@ -7,30 +7,43 @@ import { type Params, Query, Static } from "../util";
  * @param {string} itemName 검색할 아이템의 명칭
  * @param {string} params 선택적 요청변수의 Object입니다.
  */
-export const item = async (
-  itemName: string,
-  params: Params.IItem = {},
-): Promise<Model.DnfResponse<Model.Item.Item[]>> => {
+export const item = async (itemName: string, params: Params.IItem = {}) => {
   //   if (params === undefined) params = {};
   params.itemName = itemName;
   //   if (query) params.q = Query.makeItemQuery(query);
   //let querystring =
   const opt = {
     base: Query.UriBuilder(Static.BaseUri.Item),
-    params: params,
+    params: {
+      ...params,
+      ...(params.hashtag
+        ? { hashtag: Query.QueryBuilder(params.hashtag) }
+        : {}),
+    },
   };
-  return await Query.Request<Model.Item.Item[]>(opt);
+  return await Query.Request<Model.Rows<Model.Item.Item>>(opt);
 };
 /**
  * 해당하는 아이템의 상세정보를 요청합니다.
  *
  * @param {string} itemId 검색할 아이템의 ID
  */
-export const detail = (
-  itemId: string,
-): Promise<Model.DnfResponse<Model.Item.Detail>> => {
+export const detail = (itemId: string) => {
   const opt = {
     base: Query.UriBuilder(Static.BaseUri.Item, itemId),
   };
   return Query.Request<Model.Item.Detail>(opt);
 };
+
+/**
+ * 26. 아이템 상점 판매 정보 조회
+ * 인게임 백과사전 기준의 상점 판매 95레벨 에픽, 100레벨 이상 유니크, 레전더리, 에픽 장비가 조회 가능 합니다.
+ *
+ * @param {string} itemId 검색할 아이템의 ID
+ */
+// export const shop = (itemId: string) => {
+//   const opt = {
+//     base: Query.UriBuilder(Static.BaseUri.Item, itemId),
+//   };
+//   return Query.Request<Model.Item.Detail>(opt);
+// };

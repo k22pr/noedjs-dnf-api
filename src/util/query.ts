@@ -39,7 +39,7 @@ export default class Request {
   public static UriBuilder(...args: any[]): string {
     return args.join("/");
   }
-  public static QueryBuilder(query: any): string {
+  public static QueryBuilder(query: string[] | number[]): string {
     const qString: string[] = [];
     for (const key in query) {
       qString.push(`${key}:${query[key]},`);

@@ -1,4 +1,5 @@
 import type { Static } from "../util";
+import type { NameValue } from "./";
 
 export type Character = {
   serverId: Static.Server;
@@ -87,9 +88,4 @@ export type Buff = {
   name: string;
   level?: number;
   status: NameValue[];
-};
-
-export type NameValue = {
-  name: string;
-  value: number;
 };

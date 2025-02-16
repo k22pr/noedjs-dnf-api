@@ -18,7 +18,7 @@ export interface ITimeLine {
   startDate?: Date;
   endDate?: Date;
   limit?: number;
-  code?: string;
+  code?: string[];
   next?: string;
 }
 
@@ -28,6 +28,8 @@ export interface IAuction {
   itemId?: string;
   itemName?: string;
   wordType?: Static.AuctionWordType;
+  wordShort?: boolean;
+  q?: IAuctionQuery;
 }
 export interface IAuctionSort {
   unitPrice?: Static.Sort;
@@ -38,10 +40,13 @@ export interface IAuctionQuery {
   minLevel?: number;
   maxLevel?: number;
   raity?: Static.Rarity;
+  reinforceTypeId: Static.reinforceType;
   minReinforce?: number;
   maxReinforce?: number;
   minRefine?: number;
   maxRefine?: number;
+  minFame?: number;
+  maxFame?: number;
 }
 
 export interface IActionSoldOption {
@@ -55,6 +60,7 @@ export interface IActionSoldOption {
 export interface IItem {
   limit?: number;
   itemName?: string;
+  hashtag?: string[];
   wordType?: Static.AuctionWordType;
   q?: IItemQuery;
 }
@@ -62,7 +68,7 @@ export interface IItemQuery {
   minLevel?: number;
   maxLevel?: number;
   rarity?: Static.Rarity;
-  trade?: boolean;
+  // trade?: boolean;
 }
 
 export interface ISetItem {
