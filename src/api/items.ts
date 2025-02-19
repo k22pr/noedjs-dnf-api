@@ -17,7 +17,7 @@ export const item = async (itemName: string, params: Params.IItem = {}) => {
     params: {
       ...params,
       ...(params.hashtag
-        ? { hashtag: Query.QueryBuilder(params.hashtag) }
+        ? { hashtag: Query.QueryBuilder(params.hashtag ?? []) }
         : {}),
     },
   };

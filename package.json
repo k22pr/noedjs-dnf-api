@@ -1,6 +1,6 @@
 {
   "name": "dnf-api",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "던전 앤 파이터 API",
   "main": "./dist/index.js",
   "types": "./dist/src/index.d.ts",
@@ -18,9 +18,9 @@
     "typescript": "5.5.3"
   },
   "scripts": {
-    "dev": "bun --watch src/index.ts",
+    "dev": "bun --watch test.ts",
     "bundle": "tsc --declaration --emitDeclarationOnly --outDir dist && bun build src/index.ts --minify --target=bun --outfile dist/index.js",
-    "test:dev": "bun --watch test.ts",
+    "dev:test": "bun --watch test.ts",
     "test": "jest"
   },
   "repository": {

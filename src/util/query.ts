@@ -81,7 +81,7 @@ export default class Request {
     if (res.statusCode !== 200) {
       const resBody = (await res.body.json()) as Model.DnfResponse<T>;
       const error: Model.DnfErrorResponse = {
-        url: showUrl(opt.url),
+        url: showUrl(opt.url ?? ""),
         status: res.statusCode || 0,
         statusText: "",
         code: resBody.error?.code || "",
