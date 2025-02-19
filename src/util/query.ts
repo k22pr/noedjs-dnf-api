@@ -28,7 +28,7 @@ const sender = async <T>(path: string, method: "GET" | "POST", query: any) => {
 };
 const showUrl = (url: string): string => {
   if (Util.Config.key) {
-    return url.replace(Util.Config.key, Util.Config.hideKeyText);
+    return url?.replace(Util.Config.key, Util.Config.hideKeyText);
   } else {
     return url;
   }
