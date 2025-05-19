@@ -40,7 +40,8 @@ export declare enum BaseUri {
     Auction = "df/auction",
     AuctionSold = "df/auction-sold",
     Item = "df/items",
-    SetItem = "df/setitems"
+    SetItem = "df/setitems",
+    Multi = "df/multi"
 }
 export declare enum reinforceType {
     reinforce = "\uAC15\uD654",

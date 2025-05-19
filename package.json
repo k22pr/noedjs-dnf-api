@@ -1,6 +1,6 @@
 {
   "name": "dnf-api",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "던전 앤 파이터 API",
   "main": "./dist/index.js",
   "types": "./dist/src/index.d.ts",
@@ -27,7 +27,9 @@
     "type": "git",
     "url": "git+https://github.com/k22pr/dnf-api.git"
   },
-  "keywords": ["dnf"],
+  "keywords": [
+    "dnf"
+  ],
   "author": "서버지기",
   "license": "MIT",
   "bugs": {

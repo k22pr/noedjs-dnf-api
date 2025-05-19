@@ -42,6 +42,7 @@ export enum BaseUri {
   AuctionSold = "df/auction-sold",
   Item = "df/items",
   SetItem = "df/setitems",
+  Multi = "df/multi",
 }
 
 export enum reinforceType {
