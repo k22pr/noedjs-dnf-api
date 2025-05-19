@@ -13,7 +13,7 @@ export const itemName = (itemName: string, params: params.IAuction = {}) => {
     base: query.UriBuilder(staticUtil.baseUri.Auction),
     params,
   };
-  return query.Request<model.IRows<model.IAuction>>(opt);
+  return query.Request<model.IRows<model.auction.IAuction>>(opt);
 };
 
 /**
@@ -28,7 +28,7 @@ export const itemId = (itemId: string, params: params.IAuction = {}) => {
     base: query.UriBuilder(staticUtil.baseUri.Auction),
     params: params,
   };
-  return query.Request<model.IRows<model.IAuction>>(opt);
+  return query.Request<model.IRows<model.auction.IAuction>>(opt);
 };
 /**
  * 경매장에 등록된 경매장번호로 받아옵니다.
@@ -39,7 +39,7 @@ export const no = (auctionNo: number) => {
   const opt = {
     base: query.UriBuilder(staticUtil.baseUri.Auction, auctionNo),
   };
-  return query.Request<model.IAuction>(opt);
+  return query.Request<model.auction.IAuction>(opt);
 };
 
 export const auctionSoldName = (
@@ -51,7 +51,7 @@ export const auctionSoldName = (
     base: query.UriBuilder(staticUtil.baseUri.AuctionSold),
     params,
   };
-  return query.Request<model.IRows<model.IAuctionSolid>>(opt);
+  return query.Request<model.IRows<model.auction.IAuctionSolid>>(opt);
 };
 
 export const auctionSoldId = (
@@ -63,5 +63,5 @@ export const auctionSoldId = (
     base: query.UriBuilder(staticUtil.baseUri.AuctionSold),
     params,
   };
-  return query.Request<model.IRows<model.IAuctionSolid>>(opt);
+  return query.Request<model.IRows<model.auction.IAuctionSolid>>(opt);
 };
