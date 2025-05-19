@@ -1,21 +1,14 @@
 import * as request from "./api";
 import * as model from "./model/index";
+import * as util from "./util";
 import config from "./util/config";
 import * as params from "./util/params";
 import * as query from "./util/query";
 import * as staticUtil from "./util/static";
-declare const serverNames: typeof staticUtil.server;
-declare const rarityNames: typeof staticUtil.rarity;
-declare const dnf: {
-    api: typeof request;
+export default class DnfApi {
+    util: typeof util;
     request: typeof request;
-    config: import("./util/config").IConfig;
-    staticUtil: typeof staticUtil;
-    serverNames: typeof staticUtil.server;
-    rarityNames: typeof staticUtil.rarity;
-    query: typeof query;
-    params: typeof params;
-    model: typeof model;
-};
-export { request as api, request, config, staticUtil, serverNames, rarityNames, query, params, model, };
-export default dnf;
+}
+declare const ServerNames: typeof util.staticUtil.server;
+declare const RarityNames: typeof util.staticUtil.rarity;
+export { request as api, request, config, staticUtil, ServerNames, RarityNames, query, params, model, };
