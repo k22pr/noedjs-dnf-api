@@ -1,9 +1,9 @@
-import * as Action from "./auction";
-import * as Characters from "./characters";
-import * as Equip from "./characters.equip";
-import * as Skill from "./characters.skill";
-import * as Item from "./items";
-import * as Multi from "./multi";
-import * as Server from "./server";
-import * as SetItem from "./setitems";
-export { Action, Equip, Skill, Characters, Item, SetItem, Server, Multi };
+import * as action from "./auction";
+import * as characters from "./characters";
+import * as equip from "./characters.equip";
+import * as skill from "./characters.skill";
+import * as item from "./items";
+import * as multi from "./multi";
+import * as server from "./server";
+import * as setItem from "./setitems";
+export { action, equip, skill, characters, item, setItem, server, multi };

@@ -1,4 +1,4 @@
-import type * as Static from "./static";
+import type * as staticUtil from "./static";
 export interface QueryOptions<T = any> {
   base: string;
   params?: T;
@@ -8,12 +8,12 @@ export interface ICharParams {
   jobId?: string;
   jobGrowId?: string;
   isAllJobGrow?: boolean;
-  wordType?: Static.CharactersWordType;
+  wordType?: staticUtil.charactersWordType;
   limit?: number;
 }
 
 export interface ITimeLine {
-  serverId?: Static.Server;
+  serverId?: staticUtil.server;
   characterId?: string;
   startDate?: Date;
   endDate?: Date;
@@ -27,20 +27,20 @@ export interface IAuction {
   sort?: IAuctionSort;
   itemId?: string;
   itemName?: string;
-  wordType?: Static.AuctionWordType;
+  wordType?: staticUtil.auctionWordType;
   wordShort?: boolean;
   q?: IAuctionQuery;
 }
 export interface IAuctionSort {
-  unitPrice?: Static.Sort;
-  reinforce?: Static.Sort;
-  auctionNo?: Static.Sort;
+  unitPrice?: staticUtil.sort;
+  reinforce?: staticUtil.sort;
+  auctionNo?: staticUtil.sort;
 }
 export interface IAuctionQuery {
   minLevel?: number;
   maxLevel?: number;
-  raity?: Static.Rarity;
-  reinforceTypeId: Static.reinforceType;
+  raity?: staticUtil.rarity;
+  reinforceTypeId: staticUtil.reinforceType;
   minReinforce?: number;
   maxReinforce?: number;
   minRefine?: number;
@@ -51,7 +51,7 @@ export interface IAuctionQuery {
 
 export interface IActionSoldOption {
   limit?: number;
-  wordType?: Static.AuctionWordType;
+  wordType?: staticUtil.auctionWordType;
   wordShort?: boolean;
   itemId?: string;
   itemName?: string;
@@ -61,20 +61,20 @@ export interface IItem {
   limit?: number;
   itemName?: string;
   hashtag?: string[];
-  wordType?: Static.AuctionWordType;
+  wordType?: staticUtil.auctionWordType;
   q?: IItemQuery;
 }
 export interface IItemQuery {
   minLevel?: number;
   maxLevel?: number;
-  rarity?: Static.Rarity;
+  rarity?: staticUtil.rarity;
   // trade?: boolean;
 }
 
 export interface ISetItem {
   setItemName?: string;
   limit?: number;
-  wordType?: Static.AuctionWordType;
+  wordType?: staticUtil.auctionWordType;
 }
 export interface ISkill {
   jobGrowId: string;

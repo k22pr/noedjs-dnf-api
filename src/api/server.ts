@@ -3,7 +3,7 @@ import { query, staticUtil } from "../util";
 
 export const List = (): Promise<Model.IDnfResponse<Model.IServer[]>> => {
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.Servers),
+    base: query.UriBuilder(staticUtil.baseUri.Servers),
   };
   return query.Request<Model.IServer[]>(opt);
 };

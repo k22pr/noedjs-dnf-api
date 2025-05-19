@@ -1,19 +1,22 @@
 import type * as Static from "../util/static";
-import type { NameValue } from "./";
+import type { INameValue } from "./";
 export declare enum ItemDetailKind {
     Material = "material",
     Equip = "equip"
 }
-export type Item = {
+/** 아이템 인터페이스 */
+export interface IItem {
     itemId: string;
     itemName: string;
     itemRarity: Static.Rarity;
     itemType: string;
     itemTypeDetail: string;
     itemAvailableLevel: number;
-};
-export type Detail = MaterialDetail | EquipDetail;
-export type MaterialDetail = {
+}
+/** 아이템 상세 인터페이스(합성 타입) */
+export type IDetail = IMaterialDetail | IEquipDetail;
+/** 재료 아이템 상세 인터페이스 */
+export interface IMaterialDetail {
     kind: ItemDetailKind.Material;
     itemId: string;
     itemName: string;
@@ -29,9 +32,10 @@ export type MaterialDetail = {
     fame: number;
     setItemId: string | null;
     setItemName: string | null;
-    obtainInfo: ObtainInfo;
-};
-export type EquipDetail = {
+    obtainInfo: IObtainInfo;
+}
+/** 장비 아이템 상세 인터페이스 */
+export interface IEquipDetail {
     kind: ItemDetailKind.Equip;
     itemId: string;
     itemName: string;
@@ -47,44 +51,53 @@ export type EquipDetail = {
     fame: number;
     setItemId: string | null;
     setItemName: string | null;
-    itemStatus: NameValue[];
-    tune: Tune;
-    itemBuff: ItemBuff;
+    itemStatus: INameValue[];
+    tune: ITune;
+    itemBuff: IItemBuff;
     hashtag: string[];
-    obtainInfo: ObtainInfoDetail;
-};
-export type Tune = {
+    obtainInfo: IObtainInfoDetail;
+}
+/** 튠 정보 인터페이스 */
+export interface ITune {
     level: number;
     setPoint: number;
-};
-export type ItemBuff = {
+}
+/** 아이템 버프 인터페이스 */
+export interface IItemBuff {
     explain: string;
     explainDetail: string;
     reinforceSkill: any[];
     status: any | null;
-};
-export type ObtainInfo = {
+}
+/** 획득 정보 인터페이스 */
+export interface IObtainInfo {
     dungeon: string | null;
-    shop: ShopInfo[];
-};
-export type ObtainInfoDetail = {
-    dungeon: Dungeon[];
-    shop: ShopDetail[];
-};
-export type Dungeon = {
+    shop: IShopInfo[];
+}
+/** 획득 상세 정보 인터페이스 */
+export interface IObtainInfoDetail {
+    dungeon: IDungeon[];
+    shop: IShopDetail[];
+}
+/** 던전 정보 인터페이스 */
+export interface IDungeon {
     type: string;
-    rows: DungeonRow[];
-};
-export type DungeonRow = {
+    rows: IDungeonRow[];
+}
+/** 던전 행 인터페이스 */
+export interface IDungeonRow {
     name: string;
-};
-export type ShopInfo = {
+}
+/** 상점 정보 인터페이스 */
+export interface IShopInfo {
     type: string;
-};
-export type ShopDetail = {
-    rows: ShopRow[];
-};
-export type ShopRow = {
+}
+/** 상점 상세 정보 인터페이스 */
+export interface IShopDetail {
+    rows: IShopRow[];
+}
+/** 상점 행 인터페이스 */
+export interface IShopRow {
     name: string;
     details: string[];
-};
+}

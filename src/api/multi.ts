@@ -8,7 +8,7 @@ import { type params, query, staticUtil } from "../util";
  */
 export const items = (itemIdList: string[]) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.Multi, "items"),
+    base: query.UriBuilder(staticUtil.baseUri.Multi, "items"),
     params: {
       itemIds: itemIdList.join(","),
     },

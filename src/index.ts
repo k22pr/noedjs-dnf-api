@@ -1,29 +1,35 @@
-import * as Request from "./api";
-import * as Model from "./model/index";
-import * as Util from "./util";
+import * as request from "./api";
+import * as model from "./model/index";
 
-import Config from "./util/config";
-import * as Params from "./util/params";
-import * as Query from "./util/query";
-import * as Static from "./util/static";
+import config from "./util/config";
+import * as params from "./util/params";
+import * as query from "./util/query";
+import * as staticUtil from "./util/static";
 
-// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
-export default class DnfApi {
-  public static Util = Util;
-  public static Request = Request;
-}
+const serverNames = staticUtil.server;
+const rarityNames = staticUtil.rarity;
 
-const ServerNames = Static.Server;
-const RarityNames = Static.Rarity;
+const dnf = {
+  api: request,
+  request,
+  config,
+  staticUtil,
+  serverNames,
+  rarityNames,
+  query,
+  params,
+  model,
+};
 
 export {
-  Request as Api,
-  Request,
-  Config,
-  Static,
-  ServerNames,
-  RarityNames,
-  Query,
-  Params,
-  Model,
+  request as api,
+  request,
+  config,
+  staticUtil,
+  serverNames,
+  rarityNames,
+  query,
+  params,
+  model,
 };
+export default dnf;

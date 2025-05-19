@@ -13,7 +13,7 @@ export const setitem = (
 ): Promise<Model.IDnfResponse<Model.setItem.ISetItem[]>> => {
   params.setItemName = setItemName;
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.SetItem),
+    base: query.UriBuilder(staticUtil.baseUri.SetItem),
     params: params,
   };
   return query.Request<Model.setItem.ISetItem[]>(opt);
@@ -28,7 +28,7 @@ export const detail = (
   setItemId: string
 ): Promise<Model.IDnfResponse<Model.setItem.IDetail>> => {
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.SetItem, setItemId),
+    base: query.UriBuilder(staticUtil.baseUri.SetItem, setItemId),
   };
   return query.Request<Model.setItem.IDetail>(opt);
 };

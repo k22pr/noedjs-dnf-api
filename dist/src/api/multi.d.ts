@@ -4,4 +4,4 @@ import type * as Model from "../model";
  *
  * @param {string} itemId 검색할 아이템의 ID
  */
-export declare const items: (itemIdList: string[]) => Promise<Model.DnfResponse<Model.Item.Detail[]>>;
+export declare const items: (itemIdList: string[]) => Promise<Model.IDnfResponse<Model.item.IDetail[]>>;

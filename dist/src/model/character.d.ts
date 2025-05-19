@@ -1,7 +1,8 @@
-import type { Static } from "../util";
-import type { NameValue } from "./";
-export type Character = {
-    serverId: Static.Server;
+import type { staticUtil } from "../util";
+import type { INameValue } from "./";
+/** 캐릭터 정보 인터페이스 */
+export interface ICharacter {
+    serverId: staticUtil.Server;
     characterId: string;
     characterName: string;
     level: number;
@@ -10,9 +11,10 @@ export type Character = {
     jobName: string;
     jobGrowName: string;
     fame: number;
-};
-export type Info = {
-    serverId: Static.Server;
+}
+/** 캐릭터 상세 정보 인터페이스 */
+export interface IInfo {
+    serverId: staticUtil.Server;
     characterId: string;
     characterName: string;
     level: number;
@@ -24,9 +26,10 @@ export type Info = {
     adventureName: string;
     guildId: string | null;
     guildName: string | null;
-};
-export type Timeline = {
-    serverId: Static.Server;
+}
+/** 캐릭터 타임라인 인터페이스 */
+export interface ITimeline {
+    serverId: staticUtil.Server;
     characterId: string;
     characterName: string;
     level: number;
@@ -43,26 +46,29 @@ export type Timeline = {
             end: Date;
         };
         next: string;
-        rows: TimeLineRow[];
+        rows: ITimeLineRow[];
     };
-};
-export type TimeLineRow = {
+}
+/** 타임라인 행 인터페이스 */
+export interface ITimeLineRow {
     code: number;
     name: string;
     date: string;
-    data: TimeLineRowData;
-};
-export type TimeLineRowData = {
+    data: ITimeLineRowData;
+}
+/** 타임라인 행 데이터 인터페이스 */
+export interface ITimeLineRowData {
     itemId: string;
     itemName: string;
-    itemRarity: Static.Rarity;
+    itemRarity: staticUtil.Rarity;
     channelName: string;
     channelNo: number;
     dungeonName: string;
     mistGear: boolean;
-};
-export type CharacterStatus = {
-    serverId: Static.Server;
+}
+/** 캐릭터 상태 인터페이스 */
+export interface ICharacterStatus {
+    serverId: staticUtil.Server;
     characterId: string;
     characterName: string;
     level: number;
@@ -74,11 +80,12 @@ export type CharacterStatus = {
     adventureName: string;
     guildId: string | null;
     guildName: string | null;
-    buff: Buff[];
-    status: NameValue[];
-};
-export type Buff = {
+    buff: IBuff[];
+    status: INameValue[];
+}
+/** 버프 정보 인터페이스 */
+export interface IBuff {
     name: string;
     level?: number;
-    status: NameValue[];
-};
+    status: INameValue[];
+}

@@ -1,24 +1,29 @@
-import * as Char from "./character";
-import * as Item from "./item";
-import * as SetItem from "./setitem";
-export { Char, Item, SetItem };
-export type DnfErrorResponse = {
+import * as char from "./character";
+import * as item from "./item";
+import * as setItem from "./setitem";
+export { char, item, setItem };
+/** 에러 응답 인터페이스 */
+export interface IDnfErrorResponse {
     url: string;
     status: number;
     statusText: string;
     code: string;
     message: string;
-};
-export type DnfSuccess<T> = {
+}
+/** 성공 응답 인터페이스 */
+export interface IDnfSuccess<T> {
     data: T;
     error?: never;
-};
-export type DnfError = {
+}
+/** 에러 정보 인터페이스 */
+export interface IDnfError {
     data?: never;
-    error: DnfErrorResponse;
-};
-export type DnfResponse<T> = DnfSuccess<T> | DnfError;
-export type Auction = {
+    error: IDnfErrorResponse;
+}
+/** 응답 타입(합성 타입) */
+export type IDnfResponse<T> = IDnfSuccess<T> | IDnfError;
+/** 경매장 아이템 인터페이스 */
+export interface IAuction {
     auctionNo: number;
     regDate: Date;
     expireDate: Date;
@@ -42,8 +47,9 @@ export type Auction = {
     averagePrice: number;
     upgrade?: number;
     upgradeMax?: number;
-};
-export type AuctionSolid = {
+}
+/** 판매 완료 아이템 인터페이스 */
+export interface IAuctionSolid {
     soldDate: string;
     itemId: string;
     itemName: string;
@@ -62,15 +68,18 @@ export type AuctionSolid = {
     unitPrice: number;
     upgrade?: number;
     upgradeMax?: number;
-};
-export type Rows<T> = {
+}
+/** 행 배열 인터페이스 */
+export interface IRows<T> {
     rows: T[];
-};
-export type Server = {
+}
+/** 서버 정보 인터페이스 */
+export interface IServer {
     serverId: string;
     serverName: string;
-};
-export type NameValue = {
+}
+/** 이름-값 쌍 인터페이스 */
+export interface INameValue {
     name: string;
     value: string | number;
-};
+}

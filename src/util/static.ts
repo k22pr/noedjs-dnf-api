@@ -1,4 +1,4 @@
-export enum Server {
+export enum server {
   Cain = "cain",
   Diregie = "diregie",
   Siroco = "siroco",
@@ -8,11 +8,11 @@ export enum Server {
   Anton = "anton",
   Bakal = "bakal",
 }
-export enum Sort {
+export enum sort {
   Asc = "asc",
   Desc = "desc",
 }
-export enum Rarity {
+export enum rarity {
   Common = "커먼",
   Uncommon = "언커먼",
   Rare = "레어",
@@ -22,21 +22,21 @@ export enum Rarity {
   Legendary = "레전더리",
 }
 
-export enum AuctionWordType {
+export enum auctionWordType {
   Match = "match",
   Front = "front",
   Full = "full",
 }
-export enum WordType {
+export enum wordType {
   Match = "match",
   Front = "front",
   Full = "full",
 }
-export enum CharactersWordType {
+export enum charactersWordType {
   Match = "match",
   Full = "full",
 }
-export enum BaseUri {
+export enum baseUri {
   Servers = "df/servers",
   Auction = "df/auction",
   AuctionSold = "df/auction-sold",

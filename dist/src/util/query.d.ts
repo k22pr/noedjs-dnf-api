@@ -9,6 +9,6 @@ export default class Request {
      * @param {object} opt (요청을 보낼 Parameter값)
      * @returns
      */
-    static Request<T>(opt?: any, method?: "GET" | "POST"): Promise<Model.DnfResponse<T>>;
+    static Request<T>(opt?: any, method?: "GET" | "POST"): Promise<Model.IDnfResponse<T>>;
     static makeItemQuery(query: any): string;
 }

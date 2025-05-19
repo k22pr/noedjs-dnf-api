@@ -13,7 +13,7 @@ export const item = async (itemName: string, params: params.IItem = {}) => {
   //   if (query) params.q = query.makeItemQuery(query);
   //let querystring =
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.Item),
+    base: query.UriBuilder(staticUtil.baseUri.Item),
     params: {
       ...params,
       ...(params.hashtag
@@ -30,7 +30,7 @@ export const item = async (itemName: string, params: params.IItem = {}) => {
  */
 export const detail = (itemId: string) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.Item, itemId),
+    base: query.UriBuilder(staticUtil.baseUri.Item, itemId),
   };
   return query.Request<model.IDnfResponse<model.item.IDetail>>(opt);
 };

@@ -1,8 +1,8 @@
 import consola from "consola";
 import querystring from "query-string";
-import { Client, request } from "undici";
+import { request } from "undici";
 
-import type * as Model from "../model";
+import type * as model from "../model";
 import * as Util from "./";
 
 const apiUrl = new URL("https://api.neople.co.kr");
@@ -12,7 +12,7 @@ const apiUrl = new URL("https://api.neople.co.kr");
 // });
 
 const sender = async <T>(path: string, method: "GET" | "POST", query: any) => {
-  // const res = await client.request<Model.DnfResponse<T>>({
+  // const res = await client.request<model.DnfResponse<T>>({
   // const res = await client.request<T>({
   //   path,
   //   method,
@@ -21,7 +21,7 @@ const sender = async <T>(path: string, method: "GET" | "POST", query: any) => {
   apiUrl.pathname = path;
   apiUrl.search = querystring.stringify(query);
 
-  const res = await request<Model.IDnfResponse<T>>(apiUrl.href, {
+  const res = await request<model.IDnfResponse<T>>(apiUrl.href, {
     method,
   });
   return res;
@@ -57,7 +57,7 @@ export default class Request {
   public static async Request<T>(
     opt: any = {},
     method: "GET" | "POST" = "GET"
-  ): Promise<Model.IDnfResponse<T>> {
+  ): Promise<model.IDnfResponse<T>> {
     if (!Util.config.key || Util.config.key === "") {
       consola.error("Please change to your api key. ");
     }
@@ -73,14 +73,14 @@ export default class Request {
         showUrl(`${opt.base}?${querystring.stringify(opt.params)}`)
       );
 
-    const res = await sender<Model.IDnfResponse<T>>(
+    const res = await sender<model.IDnfResponse<T>>(
       opt.base,
       method,
       opt.params
     );
     if (res.statusCode !== 200) {
-      const resBody = (await res.body.json()) as Model.IDnfResponse<T>;
-      const error: Model.IDnfErrorResponse = {
+      const resBody = (await res.body.json()) as model.IDnfResponse<T>;
+      const error: model.IDnfErrorResponse = {
         url: showUrl(opt.url ?? ""),
         status: res.statusCode || 0,
         statusText: "",
