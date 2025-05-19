@@ -12,20 +12,14 @@ const apiUrl = new URL("https://api.neople.co.kr");
 // });
 
 const sender = async <T>(path: string, method: "GET" | "POST", query: any) => {
-  // const res = await client.request<model.DnfResponse<T>>({
-  // const res = await client.request<T>({
-  //   path,
-  //   method,
-  //   query,
-  // });
   apiUrl.pathname = path;
   apiUrl.search = querystring.stringify(query);
-
   const res = await request<model.IDnfResponse<T>>(apiUrl.href, {
     method,
   });
   return res;
 };
+
 const showUrl = (url: string): string => {
   if (Util.config.key) {
     return url?.replace(Util.config.key, Util.config.hideKeyText);
@@ -73,11 +67,7 @@ export default class Request {
         showUrl(`${opt.base}?${querystring.stringify(opt.params)}`)
       );
 
-    const res = await sender<model.IDnfResponse<T>>(
-      opt.base,
-      method,
-      opt.params
-    );
+    const res = await sender<T>(opt.base, method, opt.params);
     if (res.statusCode !== 200) {
       const resBody = (await res.body.json()) as model.IDnfResponse<T>;
       const error: model.IDnfErrorResponse = {
