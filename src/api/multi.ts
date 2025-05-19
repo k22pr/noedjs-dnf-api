@@ -1,4 +1,4 @@
-import type * as Model from "../model";
+import type * as model from "../model";
 import { type params, query, staticUtil } from "../util";
 
 /**
@@ -13,5 +13,5 @@ export const items = (itemIdList: string[]) => {
       itemIds: itemIdList.join(","),
     },
   };
-  return query.Request<Model.item.IDetail[]>(opt);
+  return query.Request<model.IRows<model.item.IDetail>>(opt);
 };
