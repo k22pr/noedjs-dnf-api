@@ -2,7 +2,7 @@ import type { staticUtil } from "../util";
 import type { INameValue } from "./";
 /** 캐릭터 정보 인터페이스 */
 export interface ICharacter {
-    serverId: staticUtil.Server;
+    serverId: staticUtil.server;
     characterId: string;
     characterName: string;
     level: number;
@@ -14,7 +14,7 @@ export interface ICharacter {
 }
 /** 캐릭터 상세 정보 인터페이스 */
 export interface IInfo {
-    serverId: staticUtil.Server;
+    serverId: staticUtil.server;
     characterId: string;
     characterName: string;
     level: number;
@@ -29,7 +29,7 @@ export interface IInfo {
 }
 /** 캐릭터 타임라인 인터페이스 */
 export interface ITimeline {
-    serverId: staticUtil.Server;
+    serverId: staticUtil.server;
     characterId: string;
     characterName: string;
     level: number;
@@ -60,7 +60,7 @@ export interface ITimeLineRow {
 export interface ITimeLineRowData {
     itemId: string;
     itemName: string;
-    itemRarity: staticUtil.Rarity;
+    itemRarity: staticUtil.rarity;
     channelName: string;
     channelNo: number;
     dungeonName: string;
@@ -68,7 +68,7 @@ export interface ITimeLineRowData {
 }
 /** 캐릭터 상태 인터페이스 */
 export interface ICharacterStatus {
-    serverId: staticUtil.Server;
+    serverId: staticUtil.server;
     characterId: string;
     characterName: string;
     level: number;

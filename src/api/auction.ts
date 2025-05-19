@@ -10,7 +10,7 @@ import { type params, query, staticUtil } from "../util";
 export const itemName = (itemName: string, params: params.IAuction = {}) => {
   params.itemName = itemName;
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.Auction),
+    base: query.UriBuilder(staticUtil.baseUri.Auction),
     params,
   };
   return query.Request<model.IRows<model.IAuction>>(opt);
@@ -25,7 +25,7 @@ export const itemName = (itemName: string, params: params.IAuction = {}) => {
 export const itemId = (itemId: string, params: params.IAuction = {}) => {
   params.itemId = itemId;
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.Auction),
+    base: query.UriBuilder(staticUtil.baseUri.Auction),
     params: params,
   };
   return query.Request<model.IRows<model.IAuction>>(opt);
@@ -37,7 +37,7 @@ export const itemId = (itemId: string, params: params.IAuction = {}) => {
  */
 export const no = (auctionNo: number) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.Auction, auctionNo),
+    base: query.UriBuilder(staticUtil.baseUri.Auction, auctionNo),
   };
   return query.Request<model.IAuction>(opt);
 };
@@ -48,7 +48,7 @@ export const auctionSoldName = (
 ) => {
   params.itemName = itemName;
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.AuctionSold),
+    base: query.UriBuilder(staticUtil.baseUri.AuctionSold),
     params,
   };
   return query.Request<model.IRows<model.IAuctionSolid>>(opt);
@@ -60,7 +60,7 @@ export const auctionSoldId = (
 ) => {
   params.itemId = itemId;
   const opt = {
-    base: query.UriBuilder(staticUtil.BaseUri.AuctionSold),
+    base: query.UriBuilder(staticUtil.baseUri.AuctionSold),
     params,
   };
   return query.Request<model.IRows<model.IAuctionSolid>>(opt);

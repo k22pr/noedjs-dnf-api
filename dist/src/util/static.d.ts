@@ -1,4 +1,4 @@
-export declare enum Server {
+export declare enum server {
     Cain = "cain",
     Diregie = "diregie",
     Siroco = "siroco",
@@ -8,11 +8,11 @@ export declare enum Server {
     Anton = "anton",
     Bakal = "bakal"
 }
-export declare enum Sort {
+export declare enum sort {
     Asc = "asc",
     Desc = "desc"
 }
-export declare enum Rarity {
+export declare enum rarity {
     Common = "\uCEE4\uBA3C",
     Uncommon = "\uC5B8\uCEE4\uBA3C",
     Rare = "\uB808\uC5B4",
@@ -21,21 +21,21 @@ export declare enum Rarity {
     Chronicle = "\uD06C\uB85C\uB2C8\uD074",
     Legendary = "\uB808\uC804\uB354\uB9AC"
 }
-export declare enum AuctionWordType {
+export declare enum auctionWordType {
     Match = "match",
     Front = "front",
     Full = "full"
 }
-export declare enum WordType {
+export declare enum wordType {
     Match = "match",
     Front = "front",
     Full = "full"
 }
-export declare enum CharactersWordType {
+export declare enum charactersWordType {
     Match = "match",
     Full = "full"
 }
-export declare enum BaseUri {
+export declare enum baseUri {
     Servers = "df/servers",
     Auction = "df/auction",
     AuctionSold = "df/auction-sold",

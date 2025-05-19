@@ -1,4 +1,4 @@
-import type * as Model from "../model";
+import type * as model from "../model";
 export default class Request {
     static UriBuilder(...args: any[]): string;
     static QueryBuilder(query: string[] | number[]): string;
@@ -9,6 +9,6 @@ export default class Request {
      * @param {object} opt (요청을 보낼 Parameter값)
      * @returns
      */
-    static Request<T>(opt?: any, method?: "GET" | "POST"): Promise<Model.IDnfResponse<T>>;
+    static Request<T>(opt?: any, method?: "GET" | "POST"): Promise<model.IDnfResponse<T>>;
     static makeItemQuery(query: any): string;
 }
