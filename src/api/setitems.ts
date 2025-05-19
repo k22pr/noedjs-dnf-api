@@ -7,10 +7,7 @@ import { type params, query, staticUtil } from "../util";
  * @param {string} setItemName 세트 아이템의 이름입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const setitem = (
-  setItemName: string,
-  params: params.ISetItem = {}
-): Promise<Model.IDnfResponse<Model.setItem.ISetItem[]>> => {
+export const setitem = (setItemName: string, params: params.ISetItem = {}) => {
   params.setItemName = setItemName;
   const opt = {
     base: query.UriBuilder(staticUtil.baseUri.SetItem),
@@ -24,9 +21,7 @@ export const setitem = (
  *
  * @param {string} setItemId 세트 아이템의 ID입니다.
  */
-export const detail = (
-  setItemId: string
-): Promise<Model.IDnfResponse<Model.setItem.IDetail>> => {
+export const detail = (setItemId: string) => {
   const opt = {
     base: query.UriBuilder(staticUtil.baseUri.SetItem, setItemId),
   };

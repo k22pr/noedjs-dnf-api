@@ -31,7 +31,7 @@ export const characterName = (
 export const characterId = (
   serverId: staticUtil.server,
   characterId: string
-): Promise<model.IDnfResponse<model.char.IInfo>> => {
+) => {
   const opt = {
     base: query.UriBuilder(
       staticUtil.baseUri.Servers,
@@ -54,7 +54,7 @@ export const timeline = (
   serverId: staticUtil.server,
   characterId: string,
   params: params.ITimeLine = {}
-): Promise<model.IDnfResponse<model.char.ITimeline>> => {
+) => {
   const opt = {
     base: query.UriBuilder(
       staticUtil.baseUri.Servers,

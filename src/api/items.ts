@@ -21,7 +21,7 @@ export const item = async (itemName: string, params: params.IItem = {}) => {
         : {}),
     },
   };
-  return await query.Request<model.IDnfResponse<model.item.IItem>>(opt);
+  return await query.Request<model.item.IItem>(opt);
 };
 /**
  * 해당하는 아이템의 상세정보를 요청합니다.
@@ -32,7 +32,7 @@ export const detail = (itemId: string) => {
   const opt = {
     base: query.UriBuilder(staticUtil.baseUri.Item, itemId),
   };
-  return query.Request<model.IDnfResponse<model.item.IDetail>>(opt);
+  return query.Request<model.item.IDetail>(opt);
 };
 
 /**
