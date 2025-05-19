@@ -1,6 +1,6 @@
-import Config from "./config";
-import * as Params from "./params";
-import Query from "./query";
-import * as Static from "./static";
+import config from "./config";
+import * as params from "./params";
+import query from "./query";
+import * as staticUtil from "./static";
 
-export { Config, Query, Static, Params };
+export { config, query, staticUtil, params };

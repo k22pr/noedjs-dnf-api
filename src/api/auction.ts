@@ -1,5 +1,5 @@
-import type * as Model from "../model";
-import { type Params, Query, Static } from "../util";
+import type * as model from "../model";
+import { type params, query, staticUtil } from "../util";
 
 /**
  * 경매장에 등록된 아이템을 "아이템 이름"을 기준으로 받아옵니다
@@ -7,13 +7,13 @@ import { type Params, Query, Static } from "../util";
  * @param {string} itemName 검색할 아이템의 이름입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const itemName = (itemName: string, params: Params.IAuction = {}) => {
+export const itemName = (itemName: string, params: params.IAuction = {}) => {
   params.itemName = itemName;
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.Auction),
+    base: query.UriBuilder(staticUtil.BaseUri.Auction),
     params,
   };
-  return Query.Request<Model.Rows<Model.Auction>>(opt);
+  return query.Request<model.IRows<model.IAuction>>(opt);
 };
 
 /**
@@ -22,13 +22,13 @@ export const itemName = (itemName: string, params: Params.IAuction = {}) => {
  * @param {string} itemID 검색할 아이템의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
-export const itemId = (itemId: string, params: Params.IAuction = {}) => {
+export const itemId = (itemId: string, params: params.IAuction = {}) => {
   params.itemId = itemId;
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.Auction),
+    base: query.UriBuilder(staticUtil.BaseUri.Auction),
     params: params,
   };
-  return Query.Request<Model.Rows<Model.Auction>>(opt);
+  return query.Request<model.IRows<model.IAuction>>(opt);
 };
 /**
  * 경매장에 등록된 경매장번호로 받아옵니다.
@@ -37,31 +37,31 @@ export const itemId = (itemId: string, params: Params.IAuction = {}) => {
  */
 export const no = (auctionNo: number) => {
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.Auction, auctionNo),
+    base: query.UriBuilder(staticUtil.BaseUri.Auction, auctionNo),
   };
-  return Query.Request<Model.Auction>(opt);
+  return query.Request<model.IAuction>(opt);
 };
 
 export const auctionSoldName = (
   itemName: string,
-  params: Params.IActionSoldOption = {},
+  params: params.IActionSoldOption = {}
 ) => {
   params.itemName = itemName;
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.AuctionSold),
+    base: query.UriBuilder(staticUtil.BaseUri.AuctionSold),
     params,
   };
-  return Query.Request<Model.Rows<Model.AuctionSolid>>(opt);
+  return query.Request<model.IRows<model.IAuctionSolid>>(opt);
 };
 
 export const auctionSoldId = (
   itemId: string,
-  params: Params.IActionSoldOption = {},
+  params: params.IActionSoldOption = {}
 ) => {
   params.itemId = itemId;
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.AuctionSold),
+    base: query.UriBuilder(staticUtil.BaseUri.AuctionSold),
     params,
   };
-  return Query.Request<Model.Rows<Model.AuctionSolid>>(opt);
+  return query.Request<model.IRows<model.IAuctionSolid>>(opt);
 };

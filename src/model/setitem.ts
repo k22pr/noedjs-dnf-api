@@ -1,9 +1,11 @@
-export type SetItem = {
+/** 세트 아이템 인터페이스 */
+export interface ISetItem {
   setItemId: string;
   setItemName: string;
-};
+}
 
-export type Detail = {
+/** 세트 아이템 상세 인터페이스 */
+export interface IDetail {
   setItemId: string;
   setItemName: string;
   setItems: [
@@ -28,4 +30,4 @@ export type Detail = {
       ];
     }
   ];
-};
+}

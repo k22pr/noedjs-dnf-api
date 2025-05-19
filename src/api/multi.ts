@@ -1,5 +1,5 @@
 import type * as Model from "../model";
-import { type Params, Query, Static } from "../util";
+import { type params, query, staticUtil } from "../util";
 
 /**
  * 해당하는 아이템의 상세정보를 요청합니다.
@@ -8,10 +8,10 @@ import { type Params, Query, Static } from "../util";
  */
 export const items = (itemIdList: string[]) => {
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.Multi, "items"),
+    base: query.UriBuilder(staticUtil.BaseUri.Multi, "items"),
     params: {
       itemIds: itemIdList.join(","),
     },
   };
-  return Query.Request<Model.Item.Detail[]>(opt);
+  return query.Request<Model.item.IDetail[]>(opt);
 };

@@ -1,81 +1,81 @@
-import { Query, Static } from "../util";
+import { query, staticUtil } from "../util";
 
 /**
  * 해당 캐릭터가 장착한 장비 정보를 받아옵니다.
  *
- * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const equipment = (serverId: Static.Server, characterId: string) => {
+export const equipment = (serverId: staticUtil.Server, characterId: string) => {
   const opt = {
-    base: Query.UriBuilder(
-      Static.BaseUri.Servers,
+    base: query.UriBuilder(
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId,
       "equip",
-      "equipment",
+      "equipment"
     ),
   };
-  return Query.Request(opt);
+  return query.Request(opt);
 };
 
 /**
  * 해당 캐릭터가 장착한 아바타 정보를 받아옵니다.
  *
- * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const avatar = (serverId: Static.Server, characterId: string) => {
+export const avatar = (serverId: staticUtil.Server, characterId: string) => {
   const opt = {
-    base: Query.UriBuilder(
-      Static.BaseUri.Servers,
+    base: query.UriBuilder(
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId,
       "equip",
-      "avatar",
+      "avatar"
     ),
   };
-  return Query.Request(opt);
+  return query.Request(opt);
 };
 
 /**
  * 해당 캐릭터가 장착한 크리쳐 정보를 받아옵니다.
  *
- * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const creature = (serverId: Static.Server, characterId: string) => {
+export const creature = (serverId: staticUtil.Server, characterId: string) => {
   const opt = {
-    base: Query.UriBuilder(
-      Static.BaseUri.Servers,
+    base: query.UriBuilder(
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId,
       "equip",
-      "creature",
+      "creature"
     ),
   };
-  return Query.Request(opt);
+  return query.Request(opt);
 };
 
 /**
  * 해당 캐릭터가 장착한 휘장 정보를 받아옵니다.
  *
- * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const flag = (serverId: Static.Server, characterId: string) => {
+export const flag = (serverId: staticUtil.Server, characterId: string) => {
   const opt = {
-    base: Query.UriBuilder(
-      Static.BaseUri.Servers,
+    base: query.UriBuilder(
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId,
       "equip",
-      "flag",
+      "flag"
     ),
   };
-  return Query.Request(opt);
+  return query.Request(opt);
 };

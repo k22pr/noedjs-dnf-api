@@ -1,5 +1,5 @@
 import type * as Model from "../model";
-import { type Params, Query, Static } from "../util";
+import { type params, query, staticUtil } from "../util";
 
 /**
  * 세트 아이템 정보를 세트의 이름으로 검색합니다.
@@ -9,14 +9,14 @@ import { type Params, Query, Static } from "../util";
  */
 export const setitem = (
   setItemName: string,
-  params: Params.ISetItem = {},
-): Promise<Model.DnfResponse<Model.SetItem.SetItem[]>> => {
+  params: params.ISetItem = {}
+): Promise<Model.IDnfResponse<Model.setItem.ISetItem[]>> => {
   params.setItemName = setItemName;
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.SetItem),
+    base: query.UriBuilder(staticUtil.BaseUri.SetItem),
     params: params,
   };
-  return Query.Request<Model.SetItem.SetItem[]>(opt);
+  return query.Request<Model.setItem.ISetItem[]>(opt);
 };
 
 /**
@@ -25,10 +25,10 @@ export const setitem = (
  * @param {string} setItemId 세트 아이템의 ID입니다.
  */
 export const detail = (
-  setItemId: string,
-): Promise<Model.DnfResponse<Model.SetItem.Detail>> => {
+  setItemId: string
+): Promise<Model.IDnfResponse<Model.setItem.IDetail>> => {
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.SetItem, setItemId),
+    base: query.UriBuilder(staticUtil.BaseUri.SetItem, setItemId),
   };
-  return Query.Request<Model.SetItem.Detail>(opt);
+  return query.Request<Model.setItem.IDetail>(opt);
 };

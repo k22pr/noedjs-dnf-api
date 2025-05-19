@@ -1,91 +1,91 @@
-import type * as Model from "../model";
-import { type Params, Query, Static } from "../util";
+import type * as model from "../model";
+import { type params, query, staticUtil } from "../util";
 
 /**
  * 서버 이름과 캐릭터 닉네임을 입력하여 해당 캐릭터를 검색합니다.
  *
- * @param {Static.Server} [serverId=""] 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} [serverId=""] 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} [characterName=""] 검색할 캐릭터의 이름입니다.
  * @param {object} [params={}] 선택적 요청변수의 Object입니다.
  */
 export const characterName = (
-  serverId: Static.Server,
+  serverId: staticUtil.Server,
   characterName: string,
-  params: Params.ICharParams = {},
+  params: params.ICharParams = {}
 ) => {
   // if (params === undefined) params = {};
   params.characterName = characterName;
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.Servers, serverId, "characters"),
+    base: query.UriBuilder(staticUtil.BaseUri.Servers, serverId, "characters"),
     params: params,
   };
-  return Query.Request<Model.Rows<Model.Char.Character>>(opt);
+  return query.Request<model.IRows<model.char.ICharacter>>(opt);
 };
 
 /**
  * 캐릭터 ID를 입력하여 해당 캐릭터 정보를 받아옵니다
  *
- * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
 export const characterId = (
-  serverId: Static.Server,
-  characterId: string,
-): Promise<Model.DnfResponse<Model.Char.Info>> => {
+  serverId: staticUtil.Server,
+  characterId: string
+): Promise<model.IDnfResponse<model.char.IInfo>> => {
   const opt = {
-    base: Query.UriBuilder(
-      Static.BaseUri.Servers,
+    base: query.UriBuilder(
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
-      characterId,
+      characterId
     ),
   };
-  return Query.Request<Model.Char.Info>(opt);
+  return query.Request<model.char.IInfo>(opt);
 };
 
 /**
  * 캐릭터 ID를 입력하여 해당 캐릭터의 타임라인 정보를 검색합니다.
  *
- * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
 export const timeline = (
-  serverId: Static.Server,
+  serverId: staticUtil.Server,
   characterId: string,
-  params: Params.ITimeLine = {},
-): Promise<Model.DnfResponse<Model.Char.Timeline>> => {
+  params: params.ITimeLine = {}
+): Promise<model.IDnfResponse<model.char.ITimeline>> => {
   const opt = {
-    base: Query.UriBuilder(
-      Static.BaseUri.Servers,
+    base: query.UriBuilder(
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId,
-      "timeline",
+      "timeline"
     ),
     params: {
       ...params,
-      ...(params.code ? { code: Query.QueryBuilder(params.code) } : {}),
+      ...(params.code ? { code: query.QueryBuilder(params.code) } : {}),
     },
   };
-  return Query.Request<Model.Char.Timeline>(opt);
+  return query.Request<model.char.ITimeline>(opt);
 };
 
 /**
  * 캐릭터 ID를 입력하여 해당 캐릭터의 능력치 정보를 검색합니다.
  *
- * @param {Static.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const status = (serverId: Static.Server, characterId: string) => {
+export const status = (serverId: staticUtil.Server, characterId: string) => {
   const opt = {
-    base: Query.UriBuilder(
-      Static.BaseUri.Servers,
+    base: query.UriBuilder(
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId,
-      "status",
+      "status"
     ),
   };
-  return Query.Request<Model.Char.CharacterStatus>(opt);
+  return query.Request<model.char.ICharacterStatus>(opt);
 };

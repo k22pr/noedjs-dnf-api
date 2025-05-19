@@ -1,9 +1,9 @@
 import type * as Model from "../model";
-import { Query, Static } from "../util";
+import { query, staticUtil } from "../util";
 
-export const List = (): Promise<Model.DnfResponse<Model.Server[]>> => {
+export const List = (): Promise<Model.IDnfResponse<Model.IServer[]>> => {
   const opt = {
-    base: Query.UriBuilder(Static.BaseUri.Servers),
+    base: query.UriBuilder(staticUtil.BaseUri.Servers),
   };
-  return Query.Request<Model.Server[]>(opt);
+  return query.Request<Model.IServer[]>(opt);
 };

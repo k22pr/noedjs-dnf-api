@@ -21,14 +21,14 @@ const sender = async <T>(path: string, method: "GET" | "POST", query: any) => {
   apiUrl.pathname = path;
   apiUrl.search = querystring.stringify(query);
 
-  const res = await request<Model.DnfResponse<T>>(apiUrl.href, {
+  const res = await request<Model.IDnfResponse<T>>(apiUrl.href, {
     method,
   });
   return res;
 };
 const showUrl = (url: string): string => {
-  if (Util.Config.key) {
-    return url?.replace(Util.Config.key, Util.Config.hideKeyText);
+  if (Util.config.key) {
+    return url?.replace(Util.config.key, Util.config.hideKeyText);
   } else {
     return url;
   }
@@ -56,31 +56,31 @@ export default class Request {
    */
   public static async Request<T>(
     opt: any = {},
-    method: "GET" | "POST" = "GET",
-  ): Promise<Model.DnfResponse<T>> {
-    if (!Util.Config.key || Util.Config.key === "") {
+    method: "GET" | "POST" = "GET"
+  ): Promise<Model.IDnfResponse<T>> {
+    if (!Util.config.key || Util.config.key === "") {
       consola.error("Please change to your api key. ");
     }
 
     if (opt.params === undefined) opt.params = {};
     if (opt.params.q) opt.params.q = Request.QueryBuilder(opt.params.q);
 
-    opt.params.apikey = Util.Config.key;
+    opt.params.apikey = Util.config.key;
 
-    if (Util.Config.showURL)
+    if (Util.config.showURL)
       consola.log(
         "request url:",
-        showUrl(`${opt.base}?${querystring.stringify(opt.params)}`),
+        showUrl(`${opt.base}?${querystring.stringify(opt.params)}`)
       );
 
-    const res = await sender<Model.DnfResponse<T>>(
+    const res = await sender<Model.IDnfResponse<T>>(
       opt.base,
       method,
-      opt.params,
+      opt.params
     );
     if (res.statusCode !== 200) {
-      const resBody = (await res.body.json()) as Model.DnfResponse<T>;
-      const error: Model.DnfErrorResponse = {
+      const resBody = (await res.body.json()) as Model.IDnfResponse<T>;
+      const error: Model.IDnfErrorResponse = {
         url: showUrl(opt.url ?? ""),
         status: res.statusCode || 0,
         statusText: "",
