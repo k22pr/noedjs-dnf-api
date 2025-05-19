@@ -55,6 +55,7 @@ export interface IActionSoldOption {
   wordShort?: boolean;
   itemId?: string;
   itemName?: string;
+  sort?: IAuctionSort;
 }
 
 export interface IItem {
