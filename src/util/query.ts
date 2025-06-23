@@ -58,6 +58,8 @@ export default class Request {
 
     if (opt.params === undefined) opt.params = {};
     if (opt.params.q) opt.params.q = Request.QueryBuilder(opt.params.q);
+    if (opt.params.sort)
+      opt.params.sort = Request.QueryBuilder(opt.params.sort);
 
     opt.params.apikey = Util.config.key;
 
