@@ -13,7 +13,7 @@ export const style = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "skill",
-      "style"
+      "style",
     )}`,
   };
   return query.Request(opt);
@@ -35,7 +35,7 @@ export const equipment = (serverId: staticUtil.server, characterId: string) => {
       "skill",
       "buff",
       "equip",
-      "equipment"
+      "equipment",
     )}`,
   };
   return query.Request(opt);
@@ -57,7 +57,7 @@ export const avatar = (serverId: staticUtil.server, characterId: string) => {
       "skill",
       "buff",
       "equip",
-      "avatar"
+      "avatar",
     )}`,
   };
   return query.Request(opt);
@@ -79,7 +79,7 @@ export const creature = (serverId: staticUtil.server, characterId: string) => {
       "skill",
       "buff",
       "equip",
-      "creature"
+      "creature",
     )}`,
   };
   return query.Request(opt);

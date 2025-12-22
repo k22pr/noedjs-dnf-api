@@ -14,7 +14,7 @@ export const equipment = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "equipment"
+      "equipment",
     ),
   };
   return query.Request(opt);
@@ -34,7 +34,7 @@ export const avatar = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "avatar"
+      "avatar",
     ),
   };
   return query.Request(opt);
@@ -54,7 +54,7 @@ export const creature = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "creature"
+      "creature",
     ),
   };
   return query.Request(opt);
@@ -74,7 +74,7 @@ export const flag = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "flag"
+      "flag",
     ),
   };
   return query.Request(opt);
