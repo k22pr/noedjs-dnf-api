@@ -1,18 +1,17 @@
 {
   "name": "dnf-api",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "던전 앤 파이터 API",
+  "type": "module",
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
-    "@types/bun": "1.1.6",
-    "axios": "^0.18.1",
     "consola": "^2.15.3",
-    "prototype-helper": "^0.4.2",
-    "query-string": "^9.1.1",
-    "undici": "^7.3.0"
+    "prototype-helper": "^0.4.2"
   },
   "devDependencies": {
+    "@types/bun": "^1.1.6",
     "@biomejs/biome": "^1.9.4",
     "dotenv": "^16.4.7",
     "typescript": "5.5.3"
@@ -21,7 +20,11 @@
     "dev": "bun --watch test.ts",
     "bundle": "tsc --declaration --emitDeclarationOnly --outDir dist && bun build src/index.ts --minify --target=bun --outfile dist/index.js",
     "dev:test": "bun --watch test.ts",
-    "test": "jest"
+    "lint": "biome lint ./src",
+    "lint:fix": "biome lint --write ./src",
+    "format": "biome format --write ./src",
+    "check": "biome check ./src",
+    "check:fix": "biome check --write ./src"
   },
   "repository": {
     "type": "git",

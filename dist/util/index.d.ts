@@ -4,14 +4,4 @@ import query from "./query";
 import { requestQueue } from "./queue";
 import { createRequest } from "./request-helper";
 import * as staticUtil from "./static";
-
-export {
-  config,
-  setConfig,
-  resetConfig,
-  query,
-  staticUtil,
-  params,
-  createRequest,
-  requestQueue,
-};
+export { config, setConfig, resetConfig, query, staticUtil, params, createRequest, requestQueue, };

@@ -11,7 +11,7 @@ import { type params, query, staticUtil } from "../util";
 export const characterName = (
   serverId: staticUtil.server,
   characterName: string,
-  params: params.ICharParams = {}
+  params: params.ICharParams = {},
 ) => {
   // if (params === undefined) params = {};
   params.characterName = characterName;
@@ -30,14 +30,14 @@ export const characterName = (
  */
 export const characterId = (
   serverId: staticUtil.server,
-  characterId: string
+  characterId: string,
 ) => {
   const opt = {
     base: query.UriBuilder(
       staticUtil.baseUri.Servers,
       serverId,
       "characters",
-      characterId
+      characterId,
     ),
   };
   return query.Request<model.char.IInfo>(opt);
@@ -53,7 +53,7 @@ export const characterId = (
 export const timeline = (
   serverId: staticUtil.server,
   characterId: string,
-  params: params.ITimeLine = {}
+  params: params.ITimeLine = {},
 ) => {
   const opt = {
     base: query.UriBuilder(
@@ -61,7 +61,7 @@ export const timeline = (
       serverId,
       "characters",
       characterId,
-      "timeline"
+      "timeline",
     ),
     params: {
       ...params,
@@ -84,7 +84,7 @@ export const status = (serverId: staticUtil.server, characterId: string) => {
       serverId,
       "characters",
       characterId,
-      "status"
+      "status",
     ),
   };
   return query.Request<model.char.ICharacterStatus>(opt);

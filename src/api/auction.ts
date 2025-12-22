@@ -44,7 +44,7 @@ export const no = (auctionNo: number) => {
 
 export const auctionSoldName = (
   itemName: string,
-  params: params.IActionSoldOption = {}
+  params: params.IActionSoldOption = {},
 ) => {
   params.itemName = itemName;
   const opt = {
@@ -56,7 +56,7 @@ export const auctionSoldName = (
 
 export const auctionSoldId = (
   itemId: string,
-  params: params.IActionSoldOption = {}
+  params: params.IActionSoldOption = {},
 ) => {
   params.itemId = itemId;
   const opt = {

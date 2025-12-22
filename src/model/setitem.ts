@@ -15,7 +15,7 @@ export interface IDetail {
       itemId: string;
       itemName: string;
       itemRarity: string;
-    }
+    },
   ];
   setItemOption: [
     {
@@ -26,8 +26,8 @@ export interface IDetail {
         {
           name: string;
           value: number;
-        }
+        },
       ];
-    }
+    },
   ];
 }
