@@ -41,9 +41,20 @@ export const detail = (itemId: string) => {
  *
  * @param {string} itemId 검색할 아이템의 ID
  */
-// export const shop = (itemId: string) => {
-//   const opt = {
-//     base: query.UriBuilder(staticUtil.BaseUri.Item, itemId),
-//   };
-//   return query.Request<model.item.detail>(opt);
-// };
+export const shop = (itemId: string) => {
+  const opt = {
+    base: query.UriBuilder(staticUtil.baseUri.Item, itemId, "shop"),
+  };
+  return query.Request<model.item.IShop>(opt);
+};
+
+/**
+ * 28. 아이템 해시태그 조회
+ * 아이템 검색에 사용 가능한 해시태그 목록을 조회합니다.
+ */
+export const hashtag = () => {
+  const opt = {
+    base: query.UriBuilder(staticUtil.baseUri.ItemHashtag),
+  };
+  return query.Request<model.item.IHashtag>(opt);
+};

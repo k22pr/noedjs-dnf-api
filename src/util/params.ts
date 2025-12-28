@@ -93,3 +93,52 @@ export interface ISetItem extends BaseParams {
 export interface ISkill extends BaseParams {
   jobGrowId: string;
 }
+
+/** 캐릭터 명성 검색 파라미터 */
+export interface ICharactersFame extends BaseParams {
+  minFame?: number;
+  maxFame?: number;
+  jobId?: string;
+  jobGrowId?: string;
+  isAllJobGrow?: boolean;
+  isBuff?: boolean;
+  limit?: number;
+}
+
+/** 아바타 마켓 상품 검색 파라미터 */
+export interface IAvatarMarketSale extends BaseParams {
+  limit?: number;
+  sort?: IAvatarMarketSort;
+  hashtag?: string[];
+  title?: string;
+  wordType?: staticUtil.wordType;
+  q?: IAvatarMarketQuery;
+}
+
+/** 아바타 마켓 시세 검색 파라미터 */
+export interface IAvatarMarketSold extends BaseParams {
+  limit?: number;
+  sort?: IAvatarMarketSort;
+  hashtag?: string[];
+  title?: string;
+  wordType?: staticUtil.wordType;
+  q?: IAvatarMarketQuery;
+}
+
+/** 아바타 마켓 정렬 옵션 */
+export interface IAvatarMarketSort {
+  price?: staticUtil.sort;
+  goodsNo?: staticUtil.sort;
+}
+
+/** 아바타 마켓 검색 쿼리 */
+export interface IAvatarMarketQuery {
+  jobId?: string;
+  emblemCode?: number;
+  avatarSet?: boolean;
+  avatarRarity?: staticUtil.avatarRarity;
+  minPrice?: number;
+  maxPrice?: number;
+  minAvatarCount?: number;
+  maxAvatarCount?: number;
+}

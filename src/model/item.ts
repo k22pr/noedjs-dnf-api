@@ -115,3 +115,35 @@ export interface IShopRow {
   name: string;
   details: string[];
 }
+
+/** 아이템 상점 판매 정보 인터페이스 */
+export interface IShop {
+  itemId: string;
+  itemName: string;
+  itemRarity: string;
+  itemTypeId: string;
+  itemType: string;
+  itemTypeDetailId: string;
+  itemTypeDetail: string;
+  shopInfo: IShopSaleInfo[];
+}
+
+/** 상점 판매 상세 정보 인터페이스 */
+export interface IShopSaleInfo {
+  shopName: string;
+  npcName: string;
+  cost: IShopCost[];
+}
+
+/** 상점 비용 인터페이스 */
+export interface IShopCost {
+  type: string;
+  itemId?: string;
+  itemName?: string;
+  value: number;
+}
+
+/** 아이템 해시태그 목록 인터페이스 */
+export interface IHashtag {
+  hashtag: string[];
+}

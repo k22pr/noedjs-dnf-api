@@ -14,7 +14,7 @@ export const equipment = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "equipment",
+      "equipment"
     ),
   };
   return query.Request(opt);
@@ -34,7 +34,7 @@ export const avatar = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "avatar",
+      "avatar"
     ),
   };
   return query.Request(opt);
@@ -54,7 +54,7 @@ export const creature = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "creature",
+      "creature"
     ),
   };
   return query.Request(opt);
@@ -74,7 +74,30 @@ export const flag = (serverId: staticUtil.server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "flag",
+      "flag"
+    ),
+  };
+  return query.Request(opt);
+};
+
+/**
+ * 해당 캐릭터의 안개 융화 정보를 받아옵니다.
+ *
+ * @param {staticUtil.server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {string} characterId 검색할 캐릭터의 ID입니다.
+ */
+export const mistAssimilation = (
+  serverId: staticUtil.server,
+  characterId: string
+) => {
+  const opt = {
+    base: query.UriBuilder(
+      staticUtil.baseUri.Servers,
+      serverId,
+      "characters",
+      characterId,
+      "equip",
+      "mist-assimilation"
     ),
   };
   return query.Request(opt);

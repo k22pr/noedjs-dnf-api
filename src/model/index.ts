@@ -1,9 +1,11 @@
 import * as auction from "./auction";
+import * as avatarMarket from "./avatar-market";
 import * as char from "./character";
 import * as item from "./item";
+import * as job from "./job";
 import * as setItem from "./setitem";
 
-export { char, item, setItem, auction };
+export { char, item, setItem, auction, avatarMarket, job };
 
 /** 에러 응답 인터페이스 */
 export interface IDnfErrorResponse {

@@ -34,17 +34,34 @@ API 키는 <a href="https://developers.neople.co.kr/main" target="_blank">develo
     - [스위칭 장착 장비](#스위칭-장착-장비)
     - [스위칭 장착 아바타](#스위칭-장착-아바타)
     - [스위칭 장착 크리처](#스위칭-장착-크리처)
+  - [장착 안개 융화](#장착-안개-융화)
+  - [캐릭터 명성 검색](#캐릭터-명성-검색)
 - [경매장](#경매장)
   - [경매장 등록 아이템 검색 (이름)](<#경매장-등록-아이템-검색-(이름)>)
   - [경매장 등록 아이템 조회 (경매장 등록 번호)](<경매장-등록-아이템-조회-(경매장-등록-번호)>)
+  - [경매장 복수 아이템 검색](#경매장-복수-아이템-검색)
+  - [경매장 시세 검색](#경매장-시세-검색)
 - [아이템](#아이템)
   - [아이템 검색](#아이템-검색)
   - [아이템 상세 정보](#아이템-상세-정보)
+  - [아이템 상점 판매 정보](#아이템-상점-판매-정보)
+  - [아이템 해시태그](#아이템-해시태그)
+- [아바타 마켓](#아바타-마켓)
+  - [아바타 마켓 상품 검색](#아바타-마켓-상품-검색)
+  - [아바타 마켓 상품 조회](#아바타-마켓-상품-조회)
+  - [아바타 마켓 시세 검색](#아바타-마켓-시세-검색)
+  - [아바타 마켓 해시태그](#아바타-마켓-해시태그)
 - [직업](#직업)
   - [직업 정보](#직업-정보)
+  - [직업별 스킬 리스트](#직업별-스킬-리스트)
+  - [직업별 스킬 상세 정보](#직업별-스킬-상세-정보)
 - [세트 아이템](#세트-아이템)
   - [세트 아이템 검색](#세트-아이템-검색)
   - [세트 아이템 상세 정보](#세트-아이템-상세-정보)
+- [다중 조회](#다중-조회)
+  - [다중 아이템 조회](#다중-아이템-조회)
+  - [다중 세트 아이템 조회](#다중-세트-아이템-조회)
+  - [다중 스킬 조회](#다중-스킬-조회)
 
 ---
 
@@ -108,7 +125,10 @@ else {
 캐릭터를 닉네임으로 검색하여 받아옵니다.
 
 ```js
-let { error, data } = await dnf.Api.Characters.characterName(dnf.ServerNames.anton, "쑤남");
+let { error, data } = await dnf.Api.Characters.characterName(
+  dnf.ServerNames.anton,
+  "쑤남"
+);
 if (error) console.error(error);
 else {
   console.info(data);
@@ -120,10 +140,12 @@ else {
 캐릭터에 대한 기본적인 정보를 받아옵니다.
 
 ```js
-dnfApi.characters.characterId("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters
+  .characterId("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ## 타임라인 정보
@@ -136,19 +158,23 @@ dnfApi.characters.characterId("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((
 let opt = {
   limit: 10,
 };
-dnfApi.characters.timeline("cain", "d018e5f7e7519e34b8ef21db0c40fd98", opt).then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters
+  .timeline("cain", "d018e5f7e7519e34b8ef21db0c40fd98", opt)
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ## 능력치 정보
 
 ```js
-dnfApi.characters.status("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters
+  .status("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ---
@@ -158,37 +184,45 @@ dnfApi.characters.status("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data)
 ## 장착 장비 정보
 
 ```js
-dnfApi.characters.equip.equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters.equip
+  .equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ## 장착 아바타 정보
 
 ```js
-dnfApi.characters.equip.avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters.equip
+  .avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ## 장착 크리쳐 정보
 
 ```js
-dnfApi.characters.equip.creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters.equip
+  .creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ## 장착 휘장 정보
 
 ```js
-dnfApi.characters.equip.flag("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters.equip
+  .flag("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ---
@@ -198,28 +232,34 @@ dnfApi.characters.equip.flag("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((d
 ## 스위칭 장착 장비
 
 ```js
-dnfApi.characters.skill.equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters.skill
+  .equipment("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ## 스위칭 장착 아바타
 
 ```js
-dnfApi.characters.skill.avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters.skill
+  .avatar("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ## 스위칭 장착 크리처
 
 ```js
-dnfApi.characters.skill.creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98").then((data) => {
-  if (data.err) return console.log(data.err);
-  console.log(data);
-});
+dnfApi.characters.skill
+  .creature("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
 ```
 
 ---
@@ -308,6 +348,192 @@ dnfApi.setitems.setitem("오감", opt).then((data) => {
 
 ```js
 dnfApi.setitems.detail("040d72e3585ea068f2d85fee654dab20").then((data) => {
+  console.log(data);
+});
+```
+
+---
+
+# 캐릭터 안개 융화
+
+## 장착 안개 융화
+
+```js
+dnfApi.equip
+  .mistAssimilation("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .then((data) => {
+    if (data.err) return console.log(data.err);
+    console.log(data);
+  });
+```
+
+---
+
+# 캐릭터 명성 검색
+
+명성 구간으로 캐릭터를 검색합니다. 최근 90일 이내 접속한 110 레벨 이상 캐릭터만 검색 가능합니다.
+
+```js
+let opt = {
+  minFame: 50000,
+  maxFame: 52000,
+  limit: 10,
+};
+dnfApi.characters.charactersFame("cain", opt).then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+---
+
+# 경매장 복수 아이템 검색
+
+여러 아이템 ID로 경매장을 검색합니다 (최대 10개).
+
+```js
+dnfApi.auction.itemIds(["itemId1", "itemId2", "itemId3"]).then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+---
+
+# 경매장 시세 검색
+
+```js
+dnfApi.auction.auctionSoldName("마그토늄").then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+---
+
+# 아이템 상점 판매 정보
+
+인게임 백과사전 기준의 상점 판매 정보를 조회합니다.
+
+```js
+dnfApi.items.shop("c6a38ab8c7540cfc51ea2b0b8b610fa7").then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+---
+
+# 아이템 해시태그
+
+아이템 검색에 사용 가능한 해시태그 목록을 조회합니다.
+
+```js
+dnfApi.items.hashtag().then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+---
+
+# 아바타 마켓
+
+## 아바타 마켓 상품 검색
+
+```js
+let opt = {
+  limit: 10,
+  hashtag: ["귀여운", "세련된"],
+};
+dnfApi.avatarMarket.sale(opt).then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+## 아바타 마켓 상품 조회
+
+```js
+dnfApi.avatarMarket.saleDetail(12345678).then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+## 아바타 마켓 시세 검색
+
+```js
+dnfApi.avatarMarket.sold({ limit: 10 }).then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+## 아바타 마켓 해시태그
+
+```js
+dnfApi.avatarMarket.hashtag("category").then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+---
+
+# 직업별 스킬
+
+## 직업별 스킬 리스트
+
+```js
+dnfApi.jobs.skills("jobId", "jobGrowId").then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+## 직업별 스킬 상세 정보
+
+```js
+dnfApi.jobs.skillDetail("jobId", "skillId").then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+---
+
+# 다중 조회
+
+## 다중 아이템 조회
+
+아이템 최대 15개를 한 번에 조회합니다.
+
+```js
+dnfApi.multi.items(["itemId1", "itemId2", "itemId3"]).then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+## 다중 세트 아이템 조회
+
+세트 아이템 최대 15개를 한 번에 조회합니다.
+
+```js
+dnfApi.multi.setItems(["setItemId1", "setItemId2"]).then((data) => {
+  if (data.err) return console.log(data.err);
+  console.log(data);
+});
+```
+
+## 다중 스킬 조회
+
+스킬 최대 10개를 한 번에 조회합니다.
+
+```js
+dnfApi.multi.skills("jobId", ["skillId1", "skillId2"]).then((data) => {
+  if (data.err) return console.log(data.err);
   console.log(data);
 });
 ```

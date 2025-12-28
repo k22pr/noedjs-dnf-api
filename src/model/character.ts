@@ -96,3 +96,39 @@ export interface IBuff {
   level?: number;
   status: INameValue[];
 }
+
+/** 캐릭터 명성 검색 결과 인터페이스 */
+export interface ICharacterFame {
+  serverId: staticUtil.server;
+  characterId: string;
+  characterName: string;
+  level: number;
+  jobId: string;
+  jobGrowId: string;
+  jobName: string;
+  jobGrowName: string;
+  fame: number;
+}
+
+/** 안개 융화 정보 인터페이스 */
+export interface IMistAssimilation {
+  serverId: staticUtil.server;
+  characterId: string;
+  characterName: string;
+  level: number;
+  jobId: string;
+  jobGrowId: string;
+  jobName: string;
+  jobGrowName: string;
+  mistAssimilation: {
+    level: number;
+    expRate: number;
+    status: IMistStatus[];
+  };
+}
+
+/** 안개 융화 상태 인터페이스 */
+export interface IMistStatus {
+  name: string;
+  value: number;
+}

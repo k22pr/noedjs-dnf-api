@@ -11,7 +11,7 @@ import { type params, query, staticUtil } from "../util";
 export const characterName = (
   serverId: staticUtil.server,
   characterName: string,
-  params: params.ICharParams = {},
+  params: params.ICharParams = {}
 ) => {
   // if (params === undefined) params = {};
   params.characterName = characterName;
@@ -30,14 +30,14 @@ export const characterName = (
  */
 export const characterId = (
   serverId: staticUtil.server,
-  characterId: string,
+  characterId: string
 ) => {
   const opt = {
     base: query.UriBuilder(
       staticUtil.baseUri.Servers,
       serverId,
       "characters",
-      characterId,
+      characterId
     ),
   };
   return query.Request<model.char.IInfo>(opt);
@@ -53,7 +53,7 @@ export const characterId = (
 export const timeline = (
   serverId: staticUtil.server,
   characterId: string,
-  params: params.ITimeLine = {},
+  params: params.ITimeLine = {}
 ) => {
   const opt = {
     base: query.UriBuilder(
@@ -61,7 +61,7 @@ export const timeline = (
       serverId,
       "characters",
       characterId,
-      "timeline",
+      "timeline"
     ),
     params: {
       ...params,
@@ -84,8 +84,31 @@ export const status = (serverId: staticUtil.server, characterId: string) => {
       serverId,
       "characters",
       characterId,
-      "status",
+      "status"
     ),
   };
   return query.Request<model.char.ICharacterStatus>(opt);
+};
+
+/**
+ * 캐릭터를 명성 구간으로 검색합니다.
+ * 최근 90일 이내 접속한 110 레벨 이상 캐릭터만 검색 가능합니다.
+ * 최대 2,000 범위내에서만 검색 가능합니다.
+ *
+ * @param {staticUtil.server} serverId 캐릭터가 존재하는 서버의 이름입니다. 'all'로 전체 서버 검색 가능
+ * @param {object} params 선택적 요청변수의 Object입니다.
+ */
+export const charactersFame = (
+  serverId: staticUtil.server | "all",
+  params: params.ICharactersFame = {}
+) => {
+  const opt = {
+    base: query.UriBuilder(
+      staticUtil.baseUri.Servers,
+      serverId,
+      "characters-fame"
+    ),
+    params: params,
+  };
+  return query.Request<model.IRows<model.char.ICharacterFame>>(opt);
 };

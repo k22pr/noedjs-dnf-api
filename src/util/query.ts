@@ -34,7 +34,7 @@ const toSearchParams = (params: BaseParams): URLSearchParams => {
 const sender = async <T>(
   path: string,
   method: "GET" | "POST",
-  query: BaseParams,
+  query: BaseParams
 ): Promise<{
   ok: boolean;
   status: number;
@@ -91,27 +91,29 @@ export function QueryBuilder(query: (string | number)[]): string {
  */
 export async function Request<T>(
   opt: RequestOptions = { base: "" },
-  method: "GET" | "POST" = "GET",
+  method: "GET" | "POST" = "GET"
 ): Promise<model.IDnfResponse<T>> {
   if (!Util.config.key) {
     throw new Error(
-      "API key is required. Set config.key before making requests.",
+      "API key is required. Set config.key before making requests."
     );
   }
 
-  const params: BaseParams = opt.params ?? {};
+  const params: BaseParams = { ...opt.params };
 
-    if (opt.params === undefined) opt.params = {};
-    if (opt.params.q) opt.params.q = Request.QueryBuilder(opt.params.q);
-    if (opt.params.sort)
-      opt.params.sort = Request.QueryBuilder(opt.params.sort);
+  if (params.q && Array.isArray(params.q)) {
+    params.q = QueryBuilder(params.q as (string | number)[]);
+  }
+  if (params.sort && Array.isArray(params.sort)) {
+    params.sort = QueryBuilder(params.sort as (string | number)[]);
+  }
 
   params.apikey = Util.config.key;
 
   if (Util.config.showURL) {
     consola.log(
       "request url:",
-      showUrl(`${opt.base}?${toSearchParams(params)}`),
+      showUrl(`${opt.base}?${toSearchParams(params)}`)
     );
   }
 

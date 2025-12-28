@@ -40,13 +40,28 @@ export enum baseUri {
   Servers = "df/servers",
   Auction = "df/auction",
   AuctionSold = "df/auction-sold",
+  AvatarMarket = "df/avatar-market",
   Item = "df/items",
+  ItemHashtag = "df/item-hashtag",
   SetItem = "df/setitems",
   Multi = "df/multi",
+  Jobs = "df/jobs",
+  Skills = "df/skills",
 }
 
 export enum reinforceType {
   reinforce = "강화",
   minRefine = "증폭",
   modify = "개조",
+}
+
+export enum hashtagType {
+  Category = "category",
+  Mood = "mood",
+}
+
+export enum avatarRarity {
+  Premium = "상급",
+  Rare = "레어",
+  Mixed = "혼합",
 }
