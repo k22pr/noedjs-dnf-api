@@ -12,11 +12,11 @@ export interface ICharParams extends BaseParams {
     jobId?: string;
     jobGrowId?: string;
     isAllJobGrow?: boolean;
-    wordType?: staticUtil.charactersWordType;
+    wordType?: staticUtil.CharactersWordType;
     limit?: number;
 }
 export interface ITimeLine extends BaseParams {
-    serverId?: staticUtil.server;
+    serverId?: staticUtil.Server;
     characterId?: string;
     startDate?: Date;
     endDate?: Date;
@@ -29,20 +29,20 @@ export interface IAuction extends BaseParams {
     sort?: IAuctionSort;
     itemId?: string;
     itemName?: string;
-    wordType?: staticUtil.auctionWordType;
+    wordType?: staticUtil.AuctionWordType;
     wordShort?: boolean;
     q?: IAuctionQuery;
 }
 export interface IAuctionSort {
-    unitPrice?: staticUtil.sort;
-    reinforce?: staticUtil.sort;
-    auctionNo?: staticUtil.sort;
+    unitPrice?: staticUtil.Sort;
+    reinforce?: staticUtil.Sort;
+    auctionNo?: staticUtil.Sort;
 }
 export interface IAuctionQuery {
     minLevel?: number;
     maxLevel?: number;
-    raity?: staticUtil.rarity;
-    reinforceTypeId: staticUtil.reinforceType;
+    rarity?: staticUtil.Rarity;
+    reinforceTypeId: staticUtil.ReinforceType;
     minReinforce?: number;
     maxReinforce?: number;
     minRefine?: number;
@@ -50,9 +50,9 @@ export interface IAuctionQuery {
     minFame?: number;
     maxFame?: number;
 }
-export interface IActionSoldOption extends BaseParams {
+export interface IAuctionSoldOption extends BaseParams {
     limit?: number;
-    wordType?: staticUtil.auctionWordType;
+    wordType?: staticUtil.AuctionWordType;
     wordShort?: boolean;
     itemId?: string;
     itemName?: string;
@@ -62,19 +62,63 @@ export interface IItem extends BaseParams {
     limit?: number;
     itemName?: string;
     hashtag?: string[];
-    wordType?: staticUtil.auctionWordType;
+    wordType?: staticUtil.AuctionWordType;
     q?: IItemQuery;
 }
 export interface IItemQuery {
     minLevel?: number;
     maxLevel?: number;
-    rarity?: staticUtil.rarity;
+    rarity?: staticUtil.Rarity;
 }
 export interface ISetItem extends BaseParams {
     setItemName?: string;
     limit?: number;
-    wordType?: staticUtil.auctionWordType;
+    wordType?: staticUtil.AuctionWordType;
 }
 export interface ISkill extends BaseParams {
     jobGrowId: string;
+}
+/** 캐릭터 명성 검색 파라미터 */
+export interface ICharactersFame extends BaseParams {
+    minFame?: number;
+    maxFame?: number;
+    jobId?: string;
+    jobGrowId?: string;
+    isAllJobGrow?: boolean;
+    isBuff?: boolean;
+    limit?: number;
+}
+/** 아바타 마켓 상품 검색 파라미터 */
+export interface IAvatarMarketSale extends BaseParams {
+    limit?: number;
+    sort?: IAvatarMarketSort;
+    hashtag?: string[];
+    title?: string;
+    wordType?: staticUtil.WordType;
+    q?: IAvatarMarketQuery;
+}
+/** 아바타 마켓 시세 검색 파라미터 */
+export interface IAvatarMarketSold extends BaseParams {
+    limit?: number;
+    sort?: IAvatarMarketSort;
+    hashtag?: string[];
+    title?: string;
+    wordType?: staticUtil.WordType;
+    q?: IAvatarMarketQuery;
+}
+/** 아바타 마켓 정렬 옵션 */
+export interface IAvatarMarketSort {
+    price?: staticUtil.Sort;
+    goodsNo?: staticUtil.Sort;
+}
+/** 아바타 마켓 검색 쿼리 */
+export interface IAvatarMarketQuery {
+    jobId?: string;
+    emblemCode?: number;
+    avatarSet?: boolean;
+    avatarRarity?: staticUtil.AvatarRarity;
+    minPrice?: number;
+    maxPrice?: number;
+    minAvatarCount?: number;
+    maxAvatarCount?: number;
 }

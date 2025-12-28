@@ -9,6 +9,6 @@ export default class DnfApi {
     util: typeof util;
     request: typeof request;
 }
-declare const ServerNames: typeof util.staticUtil.server;
-declare const RarityNames: typeof util.staticUtil.rarity;
+declare const ServerNames: typeof util.staticUtil.Server;
+declare const RarityNames: typeof util.staticUtil.Rarity;
 export { request as api, request, config, staticUtil, ServerNames, RarityNames, query, params, model, };

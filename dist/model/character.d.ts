@@ -2,7 +2,7 @@ import type { staticUtil } from "../util";
 import type { INameValue } from "./";
 /** 캐릭터 정보 인터페이스 */
 export interface ICharacter {
-    serverId: staticUtil.server;
+    serverId: staticUtil.Server;
     characterId: string;
     characterName: string;
     level: number;
@@ -14,7 +14,7 @@ export interface ICharacter {
 }
 /** 캐릭터 상세 정보 인터페이스 */
 export interface IInfo {
-    serverId: staticUtil.server;
+    serverId: staticUtil.Server;
     characterId: string;
     characterName: string;
     level: number;
@@ -29,7 +29,7 @@ export interface IInfo {
 }
 /** 캐릭터 타임라인 인터페이스 */
 export interface ITimeline {
-    serverId: staticUtil.server;
+    serverId: staticUtil.Server;
     characterId: string;
     characterName: string;
     level: number;
@@ -60,7 +60,7 @@ export interface ITimeLineRow {
 export interface ITimeLineRowData {
     itemId: string;
     itemName: string;
-    itemRarity: staticUtil.rarity;
+    itemRarity: staticUtil.Rarity;
     channelName: string;
     channelNo: number;
     dungeonName: string;
@@ -68,7 +68,7 @@ export interface ITimeLineRowData {
 }
 /** 캐릭터 상태 인터페이스 */
 export interface ICharacterStatus {
-    serverId: staticUtil.server;
+    serverId: staticUtil.Server;
     characterId: string;
     characterName: string;
     level: number;
@@ -88,4 +88,37 @@ export interface IBuff {
     name: string;
     level?: number;
     status: INameValue[];
+}
+/** 캐릭터 명성 검색 결과 인터페이스 */
+export interface ICharacterFame {
+    serverId: staticUtil.Server;
+    characterId: string;
+    characterName: string;
+    level: number;
+    jobId: string;
+    jobGrowId: string;
+    jobName: string;
+    jobGrowName: string;
+    fame: number;
+}
+/** 안개 융화 정보 인터페이스 */
+export interface IMistAssimilation {
+    serverId: staticUtil.Server;
+    characterId: string;
+    characterName: string;
+    level: number;
+    jobId: string;
+    jobGrowId: string;
+    jobName: string;
+    jobGrowName: string;
+    mistAssimilation: {
+        level: number;
+        expRate: number;
+        status: IMistStatus[];
+    };
+}
+/** 안개 융화 상태 인터페이스 */
+export interface IMistStatus {
+    name: string;
+    value: number;
 }

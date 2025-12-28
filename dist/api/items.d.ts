@@ -19,3 +19,9 @@ export declare const detail: (itemId: string) => Promise<model.IDnfResponse<mode
  *
  * @param {string} itemId 검색할 아이템의 ID
  */
+export declare const shop: (itemId: string) => Promise<model.IDnfResponse<model.item.IShop>>;
+/**
+ * 28. 아이템 해시태그 조회
+ * 아이템 검색에 사용 가능한 해시태그 목록을 조회합니다.
+ */
+export declare const hashtag: () => Promise<model.IDnfResponse<model.item.IHashtag>>;
