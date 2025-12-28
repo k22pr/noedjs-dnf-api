@@ -9,7 +9,7 @@ import { type params, query, staticUtil } from "../util";
  */
 export const sale = (params: params.IAvatarMarketSale = {}) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.AvatarMarket, "sale"),
+    base: query.UriBuilder(staticUtil.BaseUri.AvatarMarket, "sale"),
     params: {
       ...params,
       ...(params.hashtag
@@ -27,7 +27,7 @@ export const sale = (params: params.IAvatarMarketSale = {}) => {
  */
 export const saleDetail = (goodsNo: number) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.AvatarMarket, "sale", goodsNo),
+    base: query.UriBuilder(staticUtil.BaseUri.AvatarMarket, "sale", goodsNo),
   };
   return query.Request<model.avatarMarket.ISaleDetail>(opt);
 };
@@ -40,7 +40,7 @@ export const saleDetail = (goodsNo: number) => {
  */
 export const sold = (params: params.IAvatarMarketSold = {}) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.AvatarMarket, "sold"),
+    base: query.UriBuilder(staticUtil.BaseUri.AvatarMarket, "sold"),
     params: {
       ...params,
       ...(params.hashtag
@@ -58,7 +58,7 @@ export const sold = (params: params.IAvatarMarketSold = {}) => {
  */
 export const soldDetail = (goodsNo: number) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.AvatarMarket, "sold", goodsNo),
+    base: query.UriBuilder(staticUtil.BaseUri.AvatarMarket, "sold", goodsNo),
   };
   return query.Request<model.avatarMarket.ISoldDetail>(opt);
 };
@@ -68,9 +68,9 @@ export const soldDetail = (goodsNo: number) => {
  *
  * @param {string} hashtagType 해시태그 타입 (category: 카테고리, mood: 분위기)
  */
-export const hashtag = (hashtagType?: staticUtil.hashtagType) => {
+export const hashtag = (hashtagType?: staticUtil.HashtagType) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.AvatarMarket, "hashtag"),
+    base: query.UriBuilder(staticUtil.BaseUri.AvatarMarket, "hashtag"),
     params: hashtagType ? { hashtagType } : {},
   };
   return query.Request<model.avatarMarket.IHashtag>(opt);

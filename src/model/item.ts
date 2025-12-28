@@ -10,7 +10,7 @@ export enum ItemDetailKind {
 export interface IItem {
   itemId: string;
   itemName: string;
-  itemRarity: Static.rarity;
+  itemRarity: Static.Rarity;
   itemType: string;
   itemTypeDetail: string;
   itemAvailableLevel: number;

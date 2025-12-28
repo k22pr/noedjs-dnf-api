@@ -12,8 +12,8 @@ export default class DnfApi {
   request = request;
 }
 
-const ServerNames = staticUtil.server;
-const RarityNames = staticUtil.rarity;
+const ServerNames = staticUtil.Server;
+const RarityNames = staticUtil.Rarity;
 
 export {
   request as api,

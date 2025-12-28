@@ -13,7 +13,7 @@ export const item = async (itemName: string, params: params.IItem = {}) => {
   //   if (query) params.q = query.makeItemQuery(query);
   //let querystring =
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Item),
+    base: query.UriBuilder(staticUtil.BaseUri.Item),
     params: {
       ...params,
       ...(params.hashtag
@@ -30,7 +30,7 @@ export const item = async (itemName: string, params: params.IItem = {}) => {
  */
 export const detail = (itemId: string) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Item, itemId),
+    base: query.UriBuilder(staticUtil.BaseUri.Item, itemId),
   };
   return query.Request<model.item.IDetail>(opt);
 };
@@ -43,7 +43,7 @@ export const detail = (itemId: string) => {
  */
 export const shop = (itemId: string) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Item, itemId, "shop"),
+    base: query.UriBuilder(staticUtil.BaseUri.Item, itemId, "shop"),
   };
   return query.Request<model.item.IShop>(opt);
 };
@@ -54,7 +54,7 @@ export const shop = (itemId: string) => {
  */
 export const hashtag = () => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.ItemHashtag),
+    base: query.UriBuilder(staticUtil.BaseUri.ItemHashtag),
   };
   return query.Request<model.item.IHashtag>(opt);
 };

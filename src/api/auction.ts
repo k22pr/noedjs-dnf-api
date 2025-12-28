@@ -10,7 +10,7 @@ import { type params, query, staticUtil } from "../util";
 export const itemName = (itemName: string, params: params.IAuction = {}) => {
   params.itemName = itemName;
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Auction),
+    base: query.UriBuilder(staticUtil.BaseUri.Auction),
     params,
   };
   return query.Request<model.IRows<model.auction.IAuction>>(opt);
@@ -25,7 +25,7 @@ export const itemName = (itemName: string, params: params.IAuction = {}) => {
 export const itemId = (itemId: string, params: params.IAuction = {}) => {
   params.itemId = itemId;
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Auction),
+    base: query.UriBuilder(staticUtil.BaseUri.Auction),
     params: params,
   };
   return query.Request<model.IRows<model.auction.IAuction>>(opt);
@@ -37,18 +37,18 @@ export const itemId = (itemId: string, params: params.IAuction = {}) => {
  */
 export const no = (auctionNo: number) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Auction, auctionNo),
+    base: query.UriBuilder(staticUtil.BaseUri.Auction, auctionNo),
   };
   return query.Request<model.auction.IAuction>(opt);
 };
 
 export const auctionSoldName = (
   itemName: string,
-  params: params.IActionSoldOption = {}
+  params: params.IAuctionSoldOption = {}
 ) => {
   params.itemName = itemName;
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.AuctionSold),
+    base: query.UriBuilder(staticUtil.BaseUri.AuctionSold),
     params,
   };
   return query.Request<model.IRows<model.auction.IAuctionSolid>>(opt);
@@ -56,11 +56,11 @@ export const auctionSoldName = (
 
 export const auctionSoldId = (
   itemId: string,
-  params: params.IActionSoldOption = {}
+  params: params.IAuctionSoldOption = {}
 ) => {
   params.itemId = itemId;
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.AuctionSold),
+    base: query.UriBuilder(staticUtil.BaseUri.AuctionSold),
     params,
   };
   return query.Request<model.IRows<model.auction.IAuctionSolid>>(opt);
@@ -74,7 +74,7 @@ export const auctionSoldId = (
  */
 export const itemIds = (itemIdList: string[], params: params.IAuction = {}) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Auction),
+    base: query.UriBuilder(staticUtil.BaseUri.Auction),
     params: {
       ...params,
       itemIds: itemIdList.join(","),
@@ -91,10 +91,10 @@ export const itemIds = (itemIdList: string[], params: params.IAuction = {}) => {
  */
 export const auctionSoldIds = (
   itemIdList: string[],
-  params: params.IActionSoldOption = {}
+  params: params.IAuctionSoldOption = {}
 ) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.AuctionSold),
+    base: query.UriBuilder(staticUtil.BaseUri.AuctionSold),
     params: {
       ...params,
       itemIds: itemIdList.join(","),

@@ -7,7 +7,7 @@ import { query, staticUtil } from "../util";
  */
 export const list = () => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Jobs),
+    base: query.UriBuilder(staticUtil.BaseUri.Jobs),
   };
   return query.Request<model.job.IJob[]>(opt);
 };
@@ -20,7 +20,7 @@ export const list = () => {
  */
 export const skills = (jobId: string, jobGrowId: string) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Skills, jobId),
+    base: query.UriBuilder(staticUtil.BaseUri.Skills, jobId),
     params: { jobGrowId },
   };
   return query.Request<model.job.ISkillList>(opt);
@@ -34,7 +34,7 @@ export const skills = (jobId: string, jobGrowId: string) => {
  */
 export const skillDetail = (jobId: string, skillId: string) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Skills, jobId, skillId),
+    base: query.UriBuilder(staticUtil.BaseUri.Skills, jobId, skillId),
   };
   return query.Request<model.job.ISkillDetail>(opt);
 };

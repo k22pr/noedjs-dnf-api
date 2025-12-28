@@ -4,19 +4,19 @@ import { type params, query, staticUtil } from "../util";
 /**
  * 서버 이름과 캐릭터 닉네임을 입력하여 해당 캐릭터를 검색합니다.
  *
- * @param {staticUtil.server} [serverId=""] 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} [serverId=""] 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} [characterName=""] 검색할 캐릭터의 이름입니다.
  * @param {object} [params={}] 선택적 요청변수의 Object입니다.
  */
 export const characterName = (
-  serverId: staticUtil.server,
+  serverId: staticUtil.Server,
   characterName: string,
   params: params.ICharParams = {}
 ) => {
   // if (params === undefined) params = {};
   params.characterName = characterName;
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Servers, serverId, "characters"),
+    base: query.UriBuilder(staticUtil.BaseUri.Servers, serverId, "characters"),
     params: params,
   };
   return query.Request<model.IRows<model.char.ICharacter>>(opt);
@@ -25,16 +25,16 @@ export const characterName = (
 /**
  * 캐릭터 ID를 입력하여 해당 캐릭터 정보를 받아옵니다
  *
- * @param {staticUtil.server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
 export const characterId = (
-  serverId: staticUtil.server,
+  serverId: staticUtil.Server,
   characterId: string
 ) => {
   const opt = {
     base: query.UriBuilder(
-      staticUtil.baseUri.Servers,
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId
@@ -46,18 +46,18 @@ export const characterId = (
 /**
  * 캐릭터 ID를 입력하여 해당 캐릭터의 타임라인 정보를 검색합니다.
  *
- * @param {staticUtil.server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
 export const timeline = (
-  serverId: staticUtil.server,
+  serverId: staticUtil.Server,
   characterId: string,
   params: params.ITimeLine = {}
 ) => {
   const opt = {
     base: query.UriBuilder(
-      staticUtil.baseUri.Servers,
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId,
@@ -74,13 +74,13 @@ export const timeline = (
 /**
  * 캐릭터 ID를 입력하여 해당 캐릭터의 능력치 정보를 검색합니다.
  *
- * @param {staticUtil.server} serverId 캐릭터가 존재하는 서버의 이름입니다.
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const status = (serverId: staticUtil.server, characterId: string) => {
+export const status = (serverId: staticUtil.Server, characterId: string) => {
   const opt = {
     base: query.UriBuilder(
-      staticUtil.baseUri.Servers,
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters",
       characterId,
@@ -95,16 +95,16 @@ export const status = (serverId: staticUtil.server, characterId: string) => {
  * 최근 90일 이내 접속한 110 레벨 이상 캐릭터만 검색 가능합니다.
  * 최대 2,000 범위내에서만 검색 가능합니다.
  *
- * @param {staticUtil.server} serverId 캐릭터가 존재하는 서버의 이름입니다. 'all'로 전체 서버 검색 가능
+ * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다. 'all'로 전체 서버 검색 가능
  * @param {object} params 선택적 요청변수의 Object입니다.
  */
 export const charactersFame = (
-  serverId: staticUtil.server | "all",
+  serverId: staticUtil.Server | "all",
   params: params.ICharactersFame = {}
 ) => {
   const opt = {
     base: query.UriBuilder(
-      staticUtil.baseUri.Servers,
+      staticUtil.BaseUri.Servers,
       serverId,
       "characters-fame"
     ),

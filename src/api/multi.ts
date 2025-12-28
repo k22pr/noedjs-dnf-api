@@ -8,7 +8,7 @@ import { type params, query, staticUtil } from "../util";
  */
 export const items = (itemIdList: string[]) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Multi, "items"),
+    base: query.UriBuilder(staticUtil.BaseUri.Multi, "items"),
     params: {
       itemIds: itemIdList.join(","),
     },
@@ -25,7 +25,7 @@ export const items = (itemIdList: string[]) => {
  */
 export const setItems = (setItemIdList: string[]) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Multi, "setitems"),
+    base: query.UriBuilder(staticUtil.BaseUri.Multi, "setitems"),
     params: {
       setItemIds: setItemIdList.join(","),
     },
@@ -43,7 +43,7 @@ export const setItems = (setItemIdList: string[]) => {
  */
 export const skills = (jobId: string, skillIdList: string[]) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.Multi, "skills", jobId),
+    base: query.UriBuilder(staticUtil.BaseUri.Multi, "skills", jobId),
     params: {
       skillIds: skillIdList.join(","),
     },

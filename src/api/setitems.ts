@@ -10,7 +10,7 @@ import { type params, query, staticUtil } from "../util";
 export const setitem = (setItemName: string, params: params.ISetItem = {}) => {
   params.setItemName = setItemName;
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.SetItem),
+    base: query.UriBuilder(staticUtil.BaseUri.SetItem),
     params: params,
   };
   return query.Request<Model.setItem.ISetItem[]>(opt);
@@ -23,7 +23,7 @@ export const setitem = (setItemName: string, params: params.ISetItem = {}) => {
  */
 export const detail = (setItemId: string) => {
   const opt = {
-    base: query.UriBuilder(staticUtil.baseUri.SetItem, setItemId),
+    base: query.UriBuilder(staticUtil.BaseUri.SetItem, setItemId),
   };
   return query.Request<Model.setItem.IDetail>(opt);
 };
