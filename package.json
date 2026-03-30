@@ -1,6 +1,6 @@
 {
   "name": "dnf-api",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "던전 앤 파이터 API",
   "type": "module",
   "main": "./dist/index.js",

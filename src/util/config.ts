@@ -8,6 +8,7 @@ export interface IConfig {
   responseHeader: boolean;
   showURL: boolean;
   maxRequestsPerSecond: number;
+  maxRequestsPerMinute: number;
 }
 
 // 기본 설정값
@@ -19,7 +20,8 @@ const defaultConfig: IConfig = {
   returnJSON: false,
   responseHeader: false,
   showURL: false,
-  maxRequestsPerSecond: 1000,
+  maxRequestsPerSecond: 500,
+  maxRequestsPerMinute: 30_000,
 };
 
 // 현재 설정 (복사본)
