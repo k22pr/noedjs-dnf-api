@@ -2,8 +2,8 @@
 */config/config.auth.js
 yarn.lock
 test*
-
 test.ts
+dist/
 
 # Logs
 logs

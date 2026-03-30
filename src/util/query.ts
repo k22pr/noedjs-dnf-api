@@ -43,7 +43,7 @@ const toSearchParams = (params: BaseParams): URLSearchParams => {
 const sender = async <T>(
   path: string,
   method: "GET" | "POST",
-  query: BaseParams
+  query: BaseParams,
 ): Promise<{
   ok: boolean;
   status: number;
@@ -79,7 +79,6 @@ export function UriBuilder(...args: (string | number)[]): string {
   return args.join("/");
 }
 
-
 /**
  * 던전앤파이터 API 서버에 요청을 보내는 함수입니다.
  * @param opt 요청 옵션
@@ -88,11 +87,11 @@ export function UriBuilder(...args: (string | number)[]): string {
  */
 export async function Request<T>(
   opt: RequestOptions = { base: "" },
-  method: "GET" | "POST" = "GET"
+  method: "GET" | "POST" = "GET",
 ): Promise<model.IDnfResponse<T>> {
   if (!Util.config.key) {
     throw new Error(
-      "API key is required. Set config.key before making requests."
+      "API key is required. Set config.key before making requests.",
     );
   }
 
@@ -102,7 +101,7 @@ export async function Request<T>(
   if (Util.config.showURL) {
     consola.log(
       "request url:",
-      showUrl(`${opt.base}?${toSearchParams(params)}`)
+      showUrl(`${opt.base}?${toSearchParams(params)}`),
     );
   }
 

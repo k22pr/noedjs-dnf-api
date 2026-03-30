@@ -40,11 +40,17 @@ export class RequestQueue {
     const now = Date.now();
 
     // 1초 윈도우 밖의 타임스탬프 제거
-    while (this.secondTimestamps.length > 0 && now - this.secondTimestamps[0] >= 1000) {
+    while (
+      this.secondTimestamps.length > 0 &&
+      now - this.secondTimestamps[0] >= 1000
+    ) {
       this.secondTimestamps.shift();
     }
     // 1분 윈도우 밖의 타임스탬프 제거
-    while (this.minuteTimestamps.length > 0 && now - this.minuteTimestamps[0] >= 60_000) {
+    while (
+      this.minuteTimestamps.length > 0 &&
+      now - this.minuteTimestamps[0] >= 60_000
+    ) {
       this.minuteTimestamps.shift();
     }
 
@@ -110,8 +116,11 @@ export class RequestQueue {
     const now = Date.now();
     return {
       queueLength: this.queue.length,
-      requestsInLastSecond: this.secondTimestamps.filter((t) => now - t < 1000).length,
-      requestsInLastMinute: this.minuteTimestamps.filter((t) => now - t < 60_000).length,
+      requestsInLastSecond: this.secondTimestamps.filter((t) => now - t < 1000)
+        .length,
+      requestsInLastMinute: this.minuteTimestamps.filter(
+        (t) => now - t < 60_000,
+      ).length,
       maxPerSecond: config.maxRequestsPerSecond,
       maxPerMinute: config.maxRequestsPerMinute,
     };

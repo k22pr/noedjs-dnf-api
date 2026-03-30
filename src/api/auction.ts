@@ -44,7 +44,7 @@ export const no = (auctionNo: number) => {
 
 export const auctionSoldName = (
   itemName: string,
-  params: params.IAuctionSoldOption = {}
+  params: params.IAuctionSoldOption = {},
 ) => {
   params.itemName = itemName;
   const opt = {
@@ -56,7 +56,7 @@ export const auctionSoldName = (
 
 export const auctionSoldId = (
   itemId: string,
-  params: params.IAuctionSoldOption = {}
+  params: params.IAuctionSoldOption = {},
 ) => {
   params.itemId = itemId;
   const opt = {
@@ -91,7 +91,7 @@ export const itemIds = (itemIdList: string[], params: params.IAuction = {}) => {
  */
 export const auctionSoldIds = (
   itemIdList: string[],
-  params: params.IAuctionSoldOption = {}
+  params: params.IAuctionSoldOption = {},
 ) => {
   const opt = {
     base: query.UriBuilder(staticUtil.BaseUri.AuctionSold),

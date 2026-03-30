@@ -11,7 +11,7 @@ import { type params, query, staticUtil } from "../util";
 export const characterName = (
   serverId: staticUtil.Server,
   characterName: string,
-  params: params.ICharParams = {}
+  params: params.ICharParams = {},
 ) => {
   // if (params === undefined) params = {};
   params.characterName = characterName;
@@ -30,14 +30,14 @@ export const characterName = (
  */
 export const characterId = (
   serverId: staticUtil.Server,
-  characterId: string
+  characterId: string,
 ) => {
   const opt = {
     base: query.UriBuilder(
       staticUtil.BaseUri.Servers,
       serverId,
       "characters",
-      characterId
+      characterId,
     ),
   };
   return query.Request<model.char.IInfo>(opt);
@@ -53,7 +53,7 @@ export const characterId = (
 export const timeline = (
   serverId: staticUtil.Server,
   characterId: string,
-  params: params.ITimeLine = {}
+  params: params.ITimeLine = {},
 ) => {
   const opt = {
     base: query.UriBuilder(
@@ -61,7 +61,7 @@ export const timeline = (
       serverId,
       "characters",
       characterId,
-      "timeline"
+      "timeline",
     ),
     params,
   };
@@ -81,7 +81,7 @@ export const status = (serverId: staticUtil.Server, characterId: string) => {
       serverId,
       "characters",
       characterId,
-      "status"
+      "status",
     ),
   };
   return query.Request<model.char.ICharacterStatus>(opt);
@@ -97,13 +97,13 @@ export const status = (serverId: staticUtil.Server, characterId: string) => {
  */
 export const charactersFame = (
   serverId: staticUtil.Server | "all",
-  params: params.ICharactersFame = {}
+  params: params.ICharactersFame = {},
 ) => {
   const opt = {
     base: query.UriBuilder(
       staticUtil.BaseUri.Servers,
       serverId,
-      "characters-fame"
+      "characters-fame",
     ),
     params: params,
   };

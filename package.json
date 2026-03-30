@@ -6,25 +6,26 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": ["dist"],
   "dependencies": {
     "consola": "^3.4.2",
     "prototype-helper": "^1.2.0"
   },
   "devDependencies": {
     "@types/bun": "^1.1.6",
-    "@biomejs/biome": "^2.3.10",
     "dotenv": "^17.2.3",
+    "oxfmt": "^0.42.0",
+    "oxlint": "^1.57.0",
     "typescript": "5.9.3"
   },
   "scripts": {
     "dev": "bun --watch test.ts",
     "bundle": "bun x rimraf dist && tsc --declaration --emitDeclarationOnly --outDir dist && bun build src/index.ts --minify --target=bun --outfile dist/index.js",
     "dev:test": "bun --watch test.ts",
-    "lint": "biome lint ./src",
-    "lint:fix": "biome lint --write ./src",
-    "format": "biome format --write ./src",
-    "check": "biome check ./src",
-    "check:fix": "biome check --write ./src"
+    "lint": "oxlint ./src",
+    "lint:fix": "oxlint --fix ./src",
+    "format": "oxfmt --write ./src",
+    "format:check": "oxfmt --check ./src"
   },
   "repository": {
     "type": "git",

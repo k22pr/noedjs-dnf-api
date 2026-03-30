@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "rules": {
+    "no-explicit-any": "off",
+    "no-useless-else": "off"
+  },
+  "ignorePatterns": ["node_modules", "dist"]
+}

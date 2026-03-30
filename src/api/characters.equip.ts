@@ -14,7 +14,7 @@ export const equipment = (serverId: staticUtil.Server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "equipment"
+      "equipment",
     ),
   };
   return query.Request(opt);
@@ -34,7 +34,7 @@ export const avatar = (serverId: staticUtil.Server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "avatar"
+      "avatar",
     ),
   };
   return query.Request(opt);
@@ -54,7 +54,7 @@ export const creature = (serverId: staticUtil.Server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "creature"
+      "creature",
     ),
   };
   return query.Request(opt);
@@ -74,7 +74,7 @@ export const oath = (serverId: staticUtil.Server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "oath"
+      "oath",
     ),
   };
   return query.Request(opt);
@@ -88,7 +88,7 @@ export const oath = (serverId: staticUtil.Server, characterId: string) => {
  */
 export const mistAssimilation = (
   serverId: staticUtil.Server,
-  characterId: string
+  characterId: string,
 ) => {
   const opt = {
     base: query.UriBuilder(
@@ -97,7 +97,7 @@ export const mistAssimilation = (
       "characters",
       characterId,
       "equip",
-      "mist-assimilation"
+      "mist-assimilation",
     ),
   };
   return query.Request(opt);
