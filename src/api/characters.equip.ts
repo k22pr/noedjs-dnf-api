@@ -61,12 +61,12 @@ export const creature = (serverId: staticUtil.Server, characterId: string) => {
 };
 
 /**
- * 해당 캐릭터가 장착한 휘장 정보를 받아옵니다.
+ * 해당 캐릭터가 장착한 서약 정보를 받아옵니다.
  *
  * @param {staticUtil.Server} serverId 캐릭터가 존재하는 서버의 이름입니다.
  * @param {string} characterId 검색할 캐릭터의 ID입니다.
  */
-export const flag = (serverId: staticUtil.Server, characterId: string) => {
+export const oath = (serverId: staticUtil.Server, characterId: string) => {
   const opt = {
     base: query.UriBuilder(
       staticUtil.BaseUri.Servers,
@@ -74,7 +74,7 @@ export const flag = (serverId: staticUtil.Server, characterId: string) => {
       "characters",
       characterId,
       "equip",
-      "flag"
+      "oath"
     ),
   };
   return query.Request(opt);

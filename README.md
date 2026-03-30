@@ -29,7 +29,7 @@ API 키는 <a href="https://developers.neople.co.kr/main" target="_blank">develo
     - [장착 장비 정보](#장착-장비-정보)
     - [장착 아바타 정보](#장착-아바타-정보)
     - [장착 크리쳐 정보](#장착-크리쳐-정보)
-    - [장착 휘장 정보](#장착-휘장-정보)
+    - [장착 서약 정보](#장착-서약-정보)
   - [버프 스킬 강화 (스위칭)](<#버프-스킬-강화-(스위칭)>)
     - [스위칭 장착 장비](#스위칭-장착-장비)
     - [스위칭 장착 아바타](#스위칭-장착-아바타)
@@ -214,11 +214,11 @@ dnfApi.characters.equip
   });
 ```
 
-## 장착 휘장 정보
+## 장착 서약 정보
 
 ```js
 dnfApi.characters.equip
-  .flag("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
+  .oath("cain", "d018e5f7e7519e34b8ef21db0c40fd98")
   .then((data) => {
     if (data.err) return console.log(data.err);
     console.log(data);

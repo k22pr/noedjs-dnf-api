@@ -28,7 +28,8 @@ const toSearchParams = (params: BaseParams): URLSearchParams => {
   for (const [key, value] of Object.entries(params)) {
     if (value === undefined) continue;
     if (typeof value === "object" && !Array.isArray(value)) {
-      entries.push([key, objectToColonString(value as Record<string, unknown>)]);
+      const s = objectToColonString(value as Record<string, unknown>);
+      if (s) entries.push([key, s]);
     } else if (Array.isArray(value)) {
       entries.push([key, value.join(",")]);
     } else {
@@ -131,5 +132,4 @@ export function makeItemQuery(query: string): string {
   return encodeURI(query);
 }
 
-// 기존 호환성을 위한 default export
 export default { UriBuilder, Request, makeItemQuery };
