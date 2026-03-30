@@ -4,6 +4,7 @@ yarn.lock
 test*
 test.ts
 .vscode/
+.cluade/
 dist/
 
 # Logs
