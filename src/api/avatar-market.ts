@@ -10,12 +10,7 @@ import { type params, query, staticUtil } from "../util";
 export const sale = (params: params.IAvatarMarketSale = {}) => {
   const opt = {
     base: query.UriBuilder(staticUtil.BaseUri.AvatarMarket, "sale"),
-    params: {
-      ...params,
-      ...(params.hashtag
-        ? { hashtag: query.QueryBuilder(params.hashtag) }
-        : {}),
-    },
+    params,
   };
   return query.Request<model.IRows<model.avatarMarket.ISale>>(opt);
 };
@@ -41,12 +36,7 @@ export const saleDetail = (goodsNo: number) => {
 export const sold = (params: params.IAvatarMarketSold = {}) => {
   const opt = {
     base: query.UriBuilder(staticUtil.BaseUri.AvatarMarket, "sold"),
-    params: {
-      ...params,
-      ...(params.hashtag
-        ? { hashtag: query.QueryBuilder(params.hashtag) }
-        : {}),
-    },
+    params,
   };
   return query.Request<model.IRows<model.avatarMarket.ISold>>(opt);
 };

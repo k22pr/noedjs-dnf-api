@@ -14,12 +14,7 @@ export const item = async (itemName: string, params: params.IItem = {}) => {
   //let querystring =
   const opt = {
     base: query.UriBuilder(staticUtil.BaseUri.Item),
-    params: {
-      ...params,
-      ...(params.hashtag
-        ? { hashtag: query.QueryBuilder(params.hashtag ?? []) }
-        : {}),
-    },
+    params,
   };
   return await query.Request<model.item.IItem>(opt);
 };

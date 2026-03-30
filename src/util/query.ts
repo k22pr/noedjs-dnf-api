@@ -14,13 +14,21 @@ export interface RequestOptions {
 
 const API_BASE_URL = "https://api.neople.co.kr";
 
-// 파라미터를 URLSearchParams로 변환 (중첩 객체는 JSON으로 직렬화)
+// 객체를 "key:value,key:value" 형식의 문자열로 변환
+const objectToColonString = (obj: Record<string, unknown>): string => {
+  return Object.entries(obj)
+    .filter(([, v]) => v !== undefined)
+    .map(([k, v]) => `${k}:${v}`)
+    .join(",");
+};
+
+// 파라미터를 URLSearchParams로 변환 (중첩 객체는 key:value 형식으로 직렬화)
 const toSearchParams = (params: BaseParams): URLSearchParams => {
   const entries: [string, string][] = [];
   for (const [key, value] of Object.entries(params)) {
     if (value === undefined) continue;
     if (typeof value === "object" && !Array.isArray(value)) {
-      entries.push([key, JSON.stringify(value)]);
+      entries.push([key, objectToColonString(value as Record<string, unknown>)]);
     } else if (Array.isArray(value)) {
       entries.push([key, value.join(",")]);
     } else {
@@ -70,18 +78,6 @@ export function UriBuilder(...args: (string | number)[]): string {
   return args.join("/");
 }
 
-/**
- * 쿼리 문자열을 빌드합니다.
- * @param query 쿼리 배열
- * @returns 쿼리 문자열
- */
-export function QueryBuilder(query: (string | number)[]): string {
-  const qString: string[] = [];
-  for (const key in query) {
-    qString.push(`${key}:${query[key]},`);
-  }
-  return qString.join(",");
-}
 
 /**
  * 던전앤파이터 API 서버에 요청을 보내는 함수입니다.
@@ -100,14 +96,6 @@ export async function Request<T>(
   }
 
   const params: BaseParams = { ...opt.params };
-
-  if (params.q && Array.isArray(params.q)) {
-    params.q = QueryBuilder(params.q as (string | number)[]);
-  }
-  if (params.sort && Array.isArray(params.sort)) {
-    params.sort = QueryBuilder(params.sort as (string | number)[]);
-  }
-
   params.apikey = Util.config.key;
 
   if (Util.config.showURL) {
@@ -144,4 +132,4 @@ export function makeItemQuery(query: string): string {
 }
 
 // 기존 호환성을 위한 default export
-export default { UriBuilder, QueryBuilder, Request, makeItemQuery };
+export default { UriBuilder, Request, makeItemQuery };
